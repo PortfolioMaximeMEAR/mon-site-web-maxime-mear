@@ -3,348 +3,533 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Maxime Mear — Responsable Qualité | Aérospatiale & Défense</title>
+<title id="page-title" data-en="Maxime Mear — Quality Manager | Aerospace & Defense">Maxime Mear — Responsable Qualité | Aérospatiale & Défense</title>
 <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Outfit:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
+<style>
+  .nav-links { display:flex; gap:1.25rem; list-style:none; flex-wrap:nowrap; overflow-x:auto; scrollbar-width:none; }
+  .nav-links::-webkit-scrollbar { display:none; }
+  .nav-links a { font-size:0.78rem; font-weight:500; letter-spacing:0.04em; color:var(--muted); transition:color 0.2s; white-space:nowrap; }
+  .nav-links a:hover, .nav-links a.active { color:var(--blue); }
+  .lang-toggle { display:flex; align-items:center; background:var(--bg); border:1.5px solid var(--border); border-radius:100px; padding:3px; gap:2px; margin-right:1.25rem; }
+  .lang-btn { display:inline-flex; align-items:center; gap:0.4rem; padding:0.3rem 0.75rem; border-radius:100px; font-size:0.75rem; font-weight:600; color:var(--muted); text-decoration:none; transition:all 0.22s ease; white-space:nowrap; border:none; background:transparent; cursor:pointer; }
+  .lang-btn .lf { font-size:1rem; line-height:1; }
+  .lang-btn .lc { letter-spacing:0.06em; }
+  .lang-btn.active { background:var(--navy); color:#fff; box-shadow:0 2px 8px rgba(10,31,61,0.18); }
+  .lang-btn:not(.active):hover { color:var(--navy); background:var(--border); }
+  .btn-cv { padding:0.85rem 2rem; background:var(--sky); color:#fff; font-size:0.82rem; font-weight:700; letter-spacing:0.06em; border:none; border-radius:4px; transition: transform 0.2s, background 0.2s, box-shadow 0.2s; display:inline-flex; align-items:center; gap:0.5rem; text-decoration:none; }
+  .btn-cv:hover { background:var(--blue); transform:translateY(-2px); box-shadow:0 8px 24px rgba(20,89,160,0.3); color:#fff; }
+  .result-kpi { color: var(--navy); background: var(--gold-bg); padding: 0.4rem 0.8rem; border-radius: 4px; border-left: 3px solid var(--gold); display: inline-block; margin-top: 0.5rem; font-size:0.85rem; }
+  .reco-grid { display:grid; grid-template-columns:repeat(auto-fit, minmax(300px, 1fr)); gap:2rem; margin-top:3rem; }
+  .reco-card { background:var(--white); padding:2rem; border-radius:8px; border:1px solid var(--border); position:relative; box-shadow: 0 4px 12px var(--shadow); }
+  .reco-quote { font-size:0.95rem; font-style:italic; color:var(--muted); line-height:1.7; margin-bottom:1.5rem; position:relative; z-index:1;}
+  .reco-quote::before { content:'"'; font-size:4rem; color:var(--blue-light); position:absolute; top:-20px; left:-10px; font-family:serif; line-height:1; z-index:-1; }
+  .reco-author { display:flex; align-items:center; gap:1rem; border-top:1px solid var(--border); padding-top:1rem;}
+  .reco-avatar { width:45px; height:45px; background:var(--navy); color:#fff; border-radius:50%; display:flex; align-items:center; justify-content:center; font-weight:bold; font-size:1.2rem; }
+  .reco-name { font-weight:600; font-size:0.9rem; color:var(--navy); }
+  .reco-role { font-size:0.75rem; color:var(--light); }
+ 
+  /* ── PROJETS CONCRETS — UNDER CONSTRUCTION ── */
+  .projets-wip-section { padding: 100px clamp(1.5rem,8vw,10rem); background: var(--navy); position: relative; overflow: hidden; }
+  .projets-wip-section::before { content:''; position:absolute; inset:0; background-image: linear-gradient(rgba(74,127,165,0.05) 1px, transparent 1px), linear-gradient(90deg, rgba(74,127,165,0.05) 1px, transparent 1px); background-size:40px 40px; pointer-events:none; }
+  .projets-wip-section .sec-label { color:#7AAECB; }
+  .projets-wip-section .sec-label::before { background:#7AAECB; }
+  .projets-wip-section .sec-title { color:#fff; }
+  .wip-badge { display:inline-flex; align-items:center; gap:0.6rem; background:rgba(184,136,46,0.2); border:1px solid rgba(232,192,106,0.35); color:#E8C06A; font-family:var(--font-m); font-size:0.7rem; letter-spacing:0.12em; text-transform:uppercase; padding:0.4rem 1.1rem; border-radius:100px; margin-bottom:2.5rem; }
+  .wip-dot { width:7px; height:7px; border-radius:50%; background:#E8C06A; animation: wipPulse 1.6s ease-in-out infinite; }
+  @keyframes wipPulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:0.4;transform:scale(0.7)} }
+ 
+  .projets-grid-wip { display:grid; grid-template-columns:repeat(3,1fr); gap:2px; margin-top:0; position:relative; }
+ 
+  .projet-wip-card { position:relative; min-height:420px; overflow:hidden; display:flex; flex-direction:column; }
+  .projet-wip-bg { position:absolute; inset:0; background-size:cover; background-position:center; filter:brightness(0.22) blur(1px); transition:filter 0.4s; }
+  .projet-wip-card:hover .projet-wip-bg { filter:brightness(0.18) blur(2px); }
+ 
+  .projet-wip-content { position:relative; z-index:2; padding:2rem; display:flex; flex-direction:column; height:100%; min-height:420px; }
+  .projet-wip-company { font-family:var(--font-m); font-size:0.65rem; letter-spacing:0.18em; text-transform:uppercase; color:rgba(255,255,255,0.45); margin-bottom:0.5rem; }
+  .projet-wip-title { font-family:var(--font-d); font-size:1.25rem; color:#fff; line-height:1.25; margin-bottom:0.75rem; }
+  .projet-wip-desc { font-size:0.82rem; color:rgba(255,255,255,0.55); line-height:1.65; flex:1; }
+  .projet-wip-tags { display:flex; flex-wrap:wrap; gap:0.4rem; margin-top:1.25rem; }
+  .projet-wip-tag { padding:0.22rem 0.65rem; background:rgba(255,255,255,0.07); border:1px solid rgba(255,255,255,0.12); font-size:0.68rem; color:rgba(255,255,255,0.55); border-radius:3px; }
+ 
+  .projet-wip-overlay { position:absolute; inset:0; z-index:3; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:0.75rem; background:rgba(5,13,26,0.55); backdrop-filter:blur(6px); opacity:0; transition:opacity 0.35s; }
+  .projet-wip-card:hover .projet-wip-overlay { opacity:1; }
+  .wip-lock { font-size:2rem; }
+  .wip-label { font-family:var(--font-m); font-size:0.72rem; letter-spacing:0.16em; text-transform:uppercase; color:#E8C06A; }
+  .wip-sublabel { font-size:0.75rem; color:rgba(255,255,255,0.5); }
+ 
+  .projet-wip-bottom { margin-top:3rem; display:flex; align-items:center; justify-content:center; gap:1rem; }
+  .wip-cta { display:inline-flex; align-items:center; gap:0.6rem; padding:0.8rem 1.75rem; background:transparent; color:rgba(255,255,255,0.6); border:1px solid rgba(255,255,255,0.15); font-size:0.8rem; font-family:var(--font-b); border-radius:4px; cursor:default; font-style:italic; }
+ 
+  @media (max-width:900px) { .projets-grid-wip { grid-template-columns:1fr; } }
+</style>
 </head>
 <body>
-
+ 
 <!-- NAV -->
 <nav id="navbar">
   <a href="#hero" class="nav-logo">Maxime <span>Mear</span></a>
   <ul class="nav-links">
-    <li><a href="#about">À propos</a></li>
-    <li><a href="#formations">Formations</a></li>
-    <li><a href="#competences">Compétences</a></li>
-    <li><a href="#experiences">Expériences</a></li>
-    <li><a href="#certifications">Certifications</a></li>
-    <li><a href="#loisirs">Loisirs</a></li>
+    <li><a href="#about" data-en="About">À propos</a></li>
+    <li><a href="#formations" data-en="Education">Formations</a></li>
+    <li><a href="#competences" data-en="Skills overview">Compétences</a></li>
+    <li><a href="#experiences" data-en="Experience">Expériences</a></li>
+    <li><a href="#projets" data-en="Projects">Projets</a></li>
+    <li><a href="#skills" data-en="Hard & Soft Skills">Skills</a></li>
+    <li><a href="#certifications" data-en="Certifications">Certifications</a></li>
+    <li><a href="#loisirs" data-en="Hobbies">Loisirs</a></li>
+    <li><a href="#recommandations" data-en="Testimonials">Témoignages</a></li>
   </ul>
-  <a href="#contact" class="nav-cta">Me contacter →</a>
+  <div style="display:flex; align-items:center;">
+    <div class="lang-toggle">
+      <a href="#" id="btn-fr" class="lang-btn active"><span class="lf">🇫🇷</span><span class="lc">FR</span></a>
+      <a href="#" id="btn-en" class="lang-btn"><span class="lf">🇬🇧</span><span class="lc">EN</span></a>
+    </div>
+    <a href="#contact" class="nav-cta" data-en="Contact me →">Me contacter →</a>
+  </div>
 </nav>
-
+ 
 <!-- HERO -->
 <section id="hero">
   <div class="hero-bg"></div>
   <div class="hero-overlay"></div>
   <div class="hero-content">
-    <div class="hero-badge"><span class="badge-dot"></span>Disponible pour CDI — Octobre 2026</div>
+    <div class="hero-badge"><span class="badge-dot"></span><span data-en="Available for permanent role — July 2026">Disponible pour CDI — Juillet 2026</span></div>
     <h1 class="hero-name">Maxime<br><em>Mear</em></h1>
     <div class="hero-line"></div>
-    <p class="hero-sub">Responsable Qualité · Aéronautique · Spatial · Défense</p>
-    <p class="hero-desc">Ingénieur Qualité et Amélioration Continue chez ArianeGroup, diplômé d'un Master ISMQ (Kedge). Expérience en gestion QHSE et optimisation des processus.</p>
+    <p class="hero-sub" data-en="Maxime MEAR · Aeronautics · Space · Defense">Maxime MEAR · Aéronautique · Spatial · Défense</p>
+    <p class="hero-desc" data-en="Quality and Continuous Improvement Engineer at ArianeGroup, with a Master's ISMQ (Kedge). Experience in QHSE management and process optimization.">Ingénieur Qualité et Amélioration Continue chez ArianeGroup, diplômé d'un Master ISMQ (Kedge). Expérience en gestion QHSE et optimisation des processus.</p>
     <div class="hero-btns">
-      <a href="#contact" class="btn-white">Prendre contact ↗</a>
-      <a href="#experiences" class="btn-ghost">Voir mes expériences</a>
+      <a href="#contact" class="btn-white" data-en="Get in touch ↗">Prendre contact ↗</a>
+      <a href="#experiences" class="btn-ghost" data-en="View my experience">Voir mes expériences</a>
+      <a href="images/CV Maxime MEAR 2026.pdf" target="_blank" class="btn-cv" data-en="📄 Download my Resume (PDF)">📄 Télécharger mon CV (PDF)</a>
     </div>
   </div>
   <div class="hero-stats">
-    <div class="hstat"><div class="hstat-n">3</div><div class="hstat-l">Expériences</div></div>
-    <div class="hstat"><div class="hstat-n">3</div><div class="hstat-l">Secteurs</div></div>
+    <div class="hstat"><div class="hstat-n">7</div><div class="hstat-l" data-en="Experiences">Expériences</div></div>
+    <div class="hstat"><div class="hstat-n">3</div><div class="hstat-l" data-en="Sectors">Secteurs</div></div>
     <div class="hstat"><div class="hstat-n">Bac+5</div><div class="hstat-l">Kedge</div></div>
-    <div class="hstat"><div class="hstat-n">3</div><div class="hstat-l">Certifications</div></div>
+    <div class="hstat"><div class="hstat-n">3</div><div class="hstat-l" data-en="Certifications">Certifications</div></div>
   </div>
   <div class="scroll-hint">
     <div class="scroll-anim"><div class="scroll-dot"></div></div>
-    <span>Scroll</span>
+    <span data-en="Scroll">Scroll</span>
   </div>
 </section>
-
+ 
 <!-- IMAGE BAND -->
 <div class="img-band">
   <div class="img-band-item">
-    <!-- ArianeGroup : fusée Ariane / propulsion spatiale -->
     <img src="images/ariane-group.jpg" alt="ArianeGroup — Lanceurs spatiaux">
     <div class="img-band-overlay">
       <div>
         <div style="font-size:0.62rem;letter-spacing:0.15em;text-transform:uppercase;color:rgba(255,255,255,0.55);margin-bottom:0.3rem">Saint-Médard en Jalles · Gironde</div>
-        <span class="img-band-label">ArianeGroup — Propulsion spatiale & Défense</span>
+        <span class="img-band-label" data-en="ArianeGroup — Space Propulsion & Defense">ArianeGroup — Propulsion spatiale & Défense</span>
       </div>
     </div>
   </div>
   <div class="img-band-item">
-    <!-- DAHER Aerospace : aérostructures composites / ligne d'assemblage -->
     <img src="images/daher-aerospace.jpg" alt="DAHER Aerospace — Assemblage aéronautique">
     <div class="img-band-overlay">
       <div>
         <div style="font-size:0.62rem;letter-spacing:0.15em;text-transform:uppercase;color:rgba(255,255,255,0.55);margin-bottom:0.3rem">Le Haillan · Gironde</div>
-        <span class="img-band-label">DAHER Aerospace — Aérostructures & Qualité industrielle</span>
+        <span class="img-band-label" data-en="DAHER Aerospace — Aerostructures & Industrial Quality">DAHER Aerospace — Aérostructures & Qualité industrielle</span>
       </div>
     </div>
   </div>
   <div class="img-band-item">
-    <!-- ID Logistics / QHSE : entrepôt logistique industriel -->
     <img src="images/id-logistics.jpg" alt="ID Logistics — Logistique QHSE">
     <div class="img-band-overlay">
       <div>
         <div style="font-size:0.62rem;letter-spacing:0.15em;text-transform:uppercase;color:rgba(255,255,255,0.55);margin-bottom:0.3rem">Derval · Loire-Atlantique</div>
-        <span class="img-band-label">ID Logistics — QHSE & Logistique industrielle</span>
+        <span class="img-band-label" data-en="ID Logistics — QHSE & Industrial Logistics">ID Logistics — QHSE & Logistique industrielle</span>
       </div>
     </div>
   </div>
 </div>
-
+ 
 <!-- À PROPOS -->
 <section id="about" class="section light">
-  <div class="sec-label">01 — À propos</div>
-  <h2 class="sec-title">Qui suis-je ?</h2>
-  <div class="about-grid">
-    <div class="about-img-wrap reveal">
-      <div class="about-img-placeholder">
-        <div style="text-align:center">
-          <div style="font-size:3rem;margin-bottom:0.5rem">👤</div>
-          <div style="font-weight:600;color:var(--navy)">Maxime Mear</div>
-          <div style="font-size:0.8rem;margin-top:0.25rem">En cours</div>
+  <div class="sec-label" data-en="01 — About me">01 — À propos</div>
+  <h2 class="sec-title" data-en="Who am I?">Qui suis-je ?</h2>
+  <div class="about-full reveal">
+ 
+    <!-- Ligne statuts -->
+    <div class="about-status-bar">
+      <div class="about-status-item">
+        <span class="asi-icon">✈️</span>
+        <div><span class="asi-label" data-en="Currently">En poste</span><span class="asi-val">ArianeGroup · Saint-Médard en Jalles</span></div>
+      </div>
+      <div class="about-status-sep"></div>
+      <div class="about-status-item">
+        <span class="asi-icon">🎓</span>
+        <div><span class="asi-label" data-en="Training">Formation</span><span class="asi-val">Master ISMQ · Kedge Business School</span></div>
+      </div>
+      <div class="about-status-sep"></div>
+      <div class="about-status-item">
+        <span class="asi-icon">📍</span>
+        <div><span class="asi-label" data-en="Location">Localisation</span><span class="asi-val" data-en="Bordeaux area · National mobility">Bordeaux / Mobilité nationale</span></div>
+      </div>
+      <div class="about-status-sep"></div>
+      <div class="about-status-item">
+        <span class="asi-icon asi-green">●</span>
+        <div><span class="asi-label" data-en="Availability">Disponibilité</span><span class="asi-val asi-gold" data-en="CDI from July 2026">CDI dès juillet 2026</span></div>
+      </div>
+    </div>
+ 
+    <!-- Corps principal -->
+    <div class="about-main">
+      <div class="about-bio">
+        <p class="about-bio-lead" data-en="Future <strong>Quality Manager / Quality Engineer</strong> with <strong>3.5+ years</strong> of cumulative professional experience in <strong>logistics, aeronautics and space</strong>, and 5 years of training in quality management.">Futur <strong>Responsable Qualité / Ingénieur Qualité</strong> avec <strong>3,5 ans</strong> d'expérience professionnelle cumulée en <strong>logistique, aéronautique et spatial</strong>, et 5 ans de formation en management de la qualité.</p>
+        <p class="about-bio-body" data-en="Currently a work-study student at <strong>ArianeGroup</strong>, I deploy quality management systems, automate quality tools VBA and lead internal audits to EN 9100 standards. Previously at <strong>DAHER Aerospace</strong> and <strong>ID Logistics</strong>, I built a solid QHSE culture, led Kaizen and implantation projects, and obtained the <strong>best quality practice award of the DAHER group</strong> in 2025.">Actuellement en alternance chez <strong>ArianeGroup</strong>, je déploie des systèmes de management qualité, automatise des outils qualité VBA et mène des audits internes EN 9100. Chez <strong>DAHER Aerospace</strong> et <strong>ID Logistics</strong>, j'ai développé une culture QHSE solide, piloté des projets Kaizen et d'implantation, et remporté le <strong>prix de la meilleure pratique qualité du groupe DAHER</strong> en 2025.</p>
+        <p class="about-bio-body" data-en="Rigorous, initiative-driven and passionate about digitalization, I am looking for an ambitious team where I can contribute to operational excellence.">Rigoureux, force de proposition et passionné de digitalisation, je cherche une équipe ambitieuse où contribuer à l'excellence opérationnelle.</p>
+      </div>
+ 
+      <!-- KPIs -->
+      <div class="about-kpis">
+        <div class="about-kpi">
+          <div class="ak-number">3,5</div>
+          <div class="ak-label" data-en="Years cumul. experience">Ans d'expérience cumulée</div>
+        </div>
+        <div class="about-kpi">
+          <div class="ak-number">5+</div>
+          <div class="ak-label" data-en="Years of training">Ans de formation</div>
+        </div>
+        <div class="about-kpi">
+          <div class="ak-number">7</div>
+          <div class="ak-label" data-en="Total experiences">Expériences totales</div>
+        </div>
+        <div class="about-kpi">
+          <div class="ak-number">3</div>
+          <div class="ak-label" data-en="Certifications">Certifications</div>
+        </div>
+        <div class="about-kpi">
+          <div class="ak-number">🏆</div>
+          <div class="ak-label" data-en="DAHER group award 2025">Prix DAHER 2025</div>
         </div>
       </div>
-      <div class="about-badge">
-        <div class="about-badge-item"><span>🎓</span> Master ISMQ — Kedge (en cours)</div>
-        <div class="about-badge-item"><span>✈️</span> ArianeGroup — Saint-Médard en Jalles</div>
-        <div class="about-badge-item"><span>🚗</span> Permis B — Véhiculé</div>
-        <div class="about-badge-item"><span>✅</span> CDI recherché — Oct. 2026</div>
+    </div>
+ 
+    <!-- Tags double rangée -->
+    <div class="about-tags-section">
+      <div class="about-tags-row">
+        <span class="at-label" data-en="Expertise">Expertise</span>
+        <span class="about-chip chip-blue">EN 9100 / AS9100</span>
+        <span class="about-chip chip-blue">ISO 9001</span>
+        <span class="about-chip chip-blue">Audit interne</span>
+        <span class="about-chip chip-blue">QHSE / HSE</span>
+        <span class="about-chip chip-blue">AMDEC / 8D</span>
+        <span class="about-chip chip-blue">Lean Green Belt</span>
+        <span class="about-chip chip-blue">Excel VBA</span>
+        <span class="about-chip chip-blue">Power Platform</span>
+      </div>
+      <div class="about-tags-row" style="margin-top:0.6rem">
+        <span class="at-label" data-en="Profile">Profil</span>
+        <span class="about-chip chip-gold" data-en="Rigorous">Rigoureux</span>
+        <span class="about-chip chip-gold" data-en="Initiative">Force de proposition</span>
+        <span class="about-chip chip-gold" data-en="Versatile">Polyvalent</span>
+        <span class="about-chip chip-gold" data-en="Change management">Conduite du changement</span>
+        <span class="about-chip chip-gold" data-en="English C1">Anglais C1</span>
+        <span class="about-chip chip-gold" data-en="Driver's license — Vehicle">Permis B — Véhiculé</span>
       </div>
     </div>
-    <div class="about-text reveal reveal-delay-2">
-      <p>Ingénieur Qualité et Amélioration Continue actuellement en alternance chez <strong>ArianeGroup</strong> à Saint-Médard en Jalles, je serai diplômé en octobre 2026 de mon <strong>Master ISMQ (Management par la qualité) à Kedge Business School</strong>.</p>
-      <p>Avec des expériences chez <strong>DAHER Aerospace</strong> et <strong>ID Logistics</strong>, j'ai développé une approche polyvalente de la qualité industrielle : déploiement de SMQ, audits internes EN9100, gestion QHSE, automatisation des outils qualité (VBA, Power Platform) et amélioration continue.</p>
-      <p>Rigoureux, analytique et orienté terrain, je cherche un poste de <strong>Responsable Qualité en CDI</strong> pour piloter des démarches qualité ambitieuses dans un environnement industriel exigeant.</p>
-      <div class="about-chips">
-        <span class="chip gold">CDI — Disponible oct. 2026</span>
-        <span class="chip blue">EN 9100</span>
-        <span class="chip blue">Amélioration Continue</span>
-        <span class="chip">QHSE</span>
-        <span class="chip">VBA / Excel Avancé</span>
-        <span class="chip">Power Platform</span>
-        <span class="chip">Lean Green Belt</span>
-        <span class="chip">Anglais C1</span>
-      </div>
-    </div>
+ 
   </div>
 </section>
-
+ 
 <!-- FORMATIONS -->
 <section id="formations" class="section tinted">
-  <div class="sec-label">02 — Formations</div>
-  <h2 class="sec-title">Parcours<br>Académique</h2>
-  <p class="sec-intro">Deux formations complémentaires — du terrain industriel au management stratégique de la qualité.</p>
-
-  <!-- ══ KEDGE ISMQ ══ -->
+  <div class="sec-label" data-en="02 — Education">02 — Formations</div>
+  <h2 class="sec-title" data-en="Academic<br>Background">Parcours<br>Académique</h2>
+  <p class="sec-intro" data-en="Two complementary degrees — from the industrial field to strategic quality management.">Deux formations complémentaires — du terrain industriel au management stratégique de la qualité.</p>
+ 
   <div class="school-block reveal" style="margin-top:4rem">
     <div class="school-hero">
       <img src="images/kedge-business-school.jpg" alt="Kedge Business School" class="school-hero-img">
       <div class="school-hero-overlay">
-        <div class="school-rank">🏆 N°1 national EdUniversal 2025 — Qualité</div>
+        <div class="school-rank" data-en="🏆 Ranked #1 in France EdUniversal 2025 — Quality">🏆 N°1 national EdUniversal 2025 — Qualité</div>
         <div class="school-hero-name">Kedge Business School</div>
-        <div class="school-hero-sub">Mastère Spécialisé® ISMQ — Management par la Qualité · Campus Bordeaux-Talence</div>
+        <div class="school-hero-sub" data-en="Master ISMQ — Quality Management · Bordeaux-Talence Campus">Master ISMQ — Management par la Qualité · Campus Bordeaux-Talence</div>
       </div>
     </div>
     <div class="school-meta-bar">
-      <div class="school-meta-item"><span class="smi-label">Niveau</span><span class="smi-val">Bac+6 (MS accrédité CGE)</span></div>
-      <div class="school-meta-item"><span class="smi-label">Durée</span><span class="smi-val">13 mois en rythme alterné</span></div>
-      <div class="school-meta-item"><span class="smi-label">Rythme</span><span class="smi-val">1 sem. école / 3 sem. entreprise</span></div>
+      <div class="school-meta-item"><span class="smi-label" data-en="Level">Niveau</span><span class="smi-val" data-en="Master's degree (Bac+5)">Bac+5 (Master — diplôme national)</span></div>
+      <div class="school-meta-item"><span class="smi-label" data-en="Duration">Durée</span><span class="smi-val" data-en="13 months (work-study)">13 mois en rythme alterné</span></div>
+      <div class="school-meta-item"><span class="smi-label" data-en="Schedule">Rythme</span><span class="smi-val" data-en="1 week school / 3 weeks company">1 sem. école / 3 sem. entreprise</span></div>
       <div class="school-meta-item"><span class="smi-label">Campus</span><span class="smi-val">680 cours de la Libération, Talence (33)</span></div>
-      <div class="school-meta-item"><span class="smi-label">Accréditations</span><span class="smi-val">AACSB · EQUIS · AMBA · CGE</span></div>
+      <div class="school-meta-item"><span class="smi-label" data-en="Accreditations">Accréditations</span><span class="smi-val">AACSB · EQUIS · AMBA · CGE</span></div>
     </div>
     <div class="school-body">
       <div class="school-content">
         <div class="school-left">
-          <div class="school-section-title">À propos du programme</div>
-          <p class="school-text">Le Mastère Spécialisé® ISMQ de KEDGE forme des cadres dirigeants capables de <strong>manager par la qualité</strong> et d'adopter des comportements alignés avec le développement durable. Classé <strong>N°1 national depuis 10 ans consécutifs</strong> (EdUniversal), ce programme offre un fort taux d'employabilité : <strong>près d'un étudiant sur deux trouve un poste avant même d'être diplômé</strong>.</p>
+          <div class="school-section-title" data-en="About the program">À propos du programme</div>
+          <p class="school-text" data-en="The Master ISMQ at KEDGE trains executive managers capable of <strong>managing through quality</strong> and adopting behaviors aligned with sustainable development. Ranked <strong>#1 nationally for 10 consecutive years</strong> (EdUniversal), this program offers a high employability rate: <strong>nearly one in two students finds a job before graduating</strong>.">Le Master ISMQ de KEDGE forme des cadres dirigeants capables de <strong>manager par la qualité</strong> et d'adopter des comportements alignés avec le développement durable. Classé <strong>N°1 national depuis 10 ans consécutifs</strong> (EdUniversal), ce programme offre un fort taux d'employabilité : <strong>près d'un étudiant sur deux trouve un poste avant même d'être diplômé</strong>.</p>
           <div style="margin-top:1.5rem">
-            <div class="school-section-title">Parcours — Aéronautique, Spatial & Défense</div>
-            <p class="school-text">Parmi les trois parcours disponibles, Maxime a intégré le <strong>parcours Aéronautique, Spatial & Défense</strong>, spécialisé dans les industries à haute criticité et aux référentiels exigeants (EN 9100, AQAP, réglementation DGA). Ce parcours est directement en lien avec son alternance chez ArianeGroup.</p>
+            <div class="school-section-title" data-en="Track — Aeronautics, Space & Defense">Parcours — Aéronautique, Spatial & Défense</div>
+            <p class="school-text" data-en="Among the three tracks available, Maxime joined the <strong>Aeronautics, Space & Defense track</strong>, specializing in highly critical industries and demanding standards (EN 9100, AQAP, DGA regulations). This track is directly linked to his work-study at ArianeGroup.">Parmi les trois parcours disponibles, Maxime a intégré le <strong>parcours Aéronautique, Spatial & Défense</strong>, spécialisé dans les industries à haute criticité et aux référentiels exigeants (EN 9100, AQAP, réglementation DGA). Ce parcours est directement en lien avec son alternance chez ArianeGroup.</p>
           </div>
           <div class="school-modules" style="margin-top:1.75rem">
             <div class="school-module-col">
-              <div class="sm-title">Fondamentaux QSE</div>
+              <div class="sm-title" data-en="QSE Fundamentals">Fondamentaux QSE</div>
               <ul class="sm-list">
-                <li>Systèmes de management qualité</li>
-                <li>Outils qualité (AMDEC, 8D, SPC)</li>
-                <li>Référentiels EN 9100 / ISO 9001</li>
-                <li>Audit interne & certification</li>
+                <li data-en="Quality management systems">Systèmes de management qualité</li>
+                <li data-en="Quality tools (FMEA, 8D, SPC)">Outils qualité (AMDEC, 8D, SPC)</li>
+                <li data-en="EN 9100 / ISO 9001 standards">Référentiels EN 9100 / ISO 9001</li>
+                <li data-en="Internal audit & certification">Audit interne & certification</li>
               </ul>
             </div>
             <div class="school-module-col">
-              <div class="sm-title">Management & Stratégie</div>
+              <div class="sm-title" data-en="Management & Strategy">Management & Stratégie</div>
               <ul class="sm-list">
-                <li>Management d'équipe & leadership</li>
-                <li>Qualité & stratégie d'entreprise</li>
-                <li>Gestion de projet par processus</li>
-                <li>RSE & développement durable</li>
+                <li data-en="Team management & leadership">Management d'équipe & leadership</li>
+                <li data-en="Quality & corporate strategy">Qualité & stratégie d'entreprise</li>
+                <li data-en="Process-based project management">Gestion de projet par processus</li>
+                <li data-en="CSR & sustainable development">RSE & développement durable</li>
               </ul>
             </div>
             <div class="school-module-col">
-              <div class="sm-title">Spécialité ASD</div>
+              <div class="sm-title" data-en="ASD Specialty">Spécialité ASD</div>
               <ul class="sm-list">
-                <li>Réglementation aérospatiale & DGA</li>
-                <li>Référentiels AQAP / EN 9100</li>
-                <li>Risques systèmes complexes</li>
-                <li>Mémoire professionnel en entreprise</li>
+                <li data-en="Aerospace regulations & DGA">Réglementation aérospatiale & DGA</li>
+                <li data-en="AQAP / EN 9100 standards">Référentiels AQAP / EN 9100</li>
+                <li data-en="Complex systems risks">Risques systèmes complexes</li>
+                <li data-en="Professional thesis in company">Mémoire professionnel en entreprise</li>
               </ul>
             </div>
           </div>
         </div>
         <div class="school-right">
           <div class="school-kpi-grid">
-            <div class="school-kpi"><div class="kpi-n">N°1</div><div class="kpi-l">Classement qualité France EdUniversal 2025</div></div>
-            <div class="school-kpi"><div class="kpi-n">~50%</div><div class="kpi-l">Trouvent un poste avant diplomation</div></div>
-            <div class="school-kpi"><div class="kpi-n">1 900+</div><div class="kpi-l">Diplômés dans le réseau ISMQ</div></div>
-            <div class="school-kpi"><div class="kpi-n">3</div><div class="kpi-l">Parcours spécialisés au choix</div></div>
+            <div class="school-kpi"><div class="kpi-n">N°1</div><div class="kpi-l" data-en="Quality ranking France EdUniversal 2025">Classement qualité France EdUniversal 2025</div></div>
+            <div class="school-kpi"><div class="kpi-n">~50%</div><div class="kpi-l" data-en="Find a job before graduation">Trouvent un poste avant diplomation</div></div>
+            <div class="school-kpi"><div class="kpi-n">1 900+</div><div class="kpi-l" data-en="Alumni in the ISMQ network">Diplômés dans le réseau ISMQ</div></div>
+            <div class="school-kpi"><div class="kpi-n">Bac+5</div><div class="kpi-l" data-en="National Master's degree">Diplôme national — niveau 7</div></div>
           </div>
           <div class="school-debouches">
-            <div class="school-section-title">Débouchés visés</div>
+            <div class="school-section-title" data-en="Targeted careers">Débouchés visés</div>
             <div class="debouche-chips">
-              <span class="debouche-chip">Responsable Qualité</span>
-              <span class="debouche-chip">Directeur Qualité</span>
-              <span class="debouche-chip">Auditeur Qualité</span>
-              <span class="debouche-chip">Responsable SMQ</span>
-              <span class="debouche-chip">Ingénieur Amélioration Continue</span>
-              <span class="debouche-chip">Consultant Qualité</span>
+              <span class="debouche-chip" data-en="Quality Manager">Responsable Qualité</span>
+              <span class="debouche-chip" data-en="Quality Director">Directeur Qualité</span>
+              <span class="debouche-chip" data-en="Quality Auditor">Auditeur Qualité</span>
+              <span class="debouche-chip" data-en="QMS Manager">Responsable SMQ</span>
+              <span class="debouche-chip" data-en="Continuous Improvement Eng.">Ingénieur Amélioration Continue</span>
+              <span class="debouche-chip" data-en="Quality Consultant">Consultant Qualité</span>
             </div>
           </div>
-          <a href="https://etudiant.kedge.edu/programmes/ismq-management-par-la-qualite/master-ismq" target="_blank" class="school-link">Programme officiel ISMQ →</a>
+          <a href="https://etudiant.kedge.edu/programmes/ismq-management-par-la-qualite/master-ismq" target="_blank" class="school-link" data-en="Official ISMQ Program →">Programme officiel ISMQ →</a>
         </div>
       </div>
     </div>
   </div>
-
-  <!-- ══ BUT QLIO ══ -->
+ 
   <div class="school-block reveal" style="margin-top:3px">
     <div class="school-hero">
       <img src="images/iut-nantes.jpg" alt="IUT Nantes Carquefou" class="school-hero-img">
       <div class="school-hero-overlay">
-        <div class="school-rank">🎓 Diplôme national de niveau 6 — Grade Licence</div>
+        <div class="school-rank" data-en="🎓 National Level 6 Diploma — Bachelor's Degree">🎓 Diplôme national de niveau 6 — Grade Licence</div>
         <div class="school-hero-name">IUT de Nantes — Campus La Fleuriaye</div>
-        <div class="school-hero-sub">BUT QLIO — Qualité, Logistique Industrielle et Organisation · Carquefou (44)</div>
+        <div class="school-hero-sub" data-en="BUT QLIO — Quality, Industrial Logistics and Organization · Carquefou (44)">BUT QLIO — Qualité, Logistique Industrielle et Organisation · Carquefou (44)</div>
       </div>
     </div>
     <div class="school-meta-bar">
-      <div class="school-meta-item"><span class="smi-label">Niveau</span><span class="smi-val">Bac+3 (RNCP niveau 6)</span></div>
-      <div class="school-meta-item"><span class="smi-label">Durée</span><span class="smi-val">3 ans — 6 semestres</span></div>
-      <div class="school-meta-item"><span class="smi-label">Modalité</span><span class="smi-val">Alternance (ID Logistics)</span></div>
+      <div class="school-meta-item"><span class="smi-label" data-en="Level">Niveau</span><span class="smi-val" data-en="Bachelor's Degree">Bac+3 (RNCP niveau 6)</span></div>
+      <div class="school-meta-item"><span class="smi-label" data-en="Duration">Durée</span><span class="smi-val" data-en="3 years — 6 semesters">3 ans — 6 semestres</span></div>
+      <div class="school-meta-item"><span class="smi-label" data-en="Format">Modalité</span><span class="smi-val" data-en="Work-study (ID Logistics)">Alternance (ID Logistics)</span></div>
       <div class="school-meta-item"><span class="smi-label">Campus</span><span class="smi-val">2 av. Pr Jean Rouxel, Carquefou (44)</span></div>
-      <div class="school-meta-item"><span class="smi-label">Parcours suivi</span><span class="smi-val">Qualité & Management Intégré</span></div>
+      <div class="school-meta-item"><span class="smi-label" data-en="Track followed">Parcours suivi</span><span class="smi-val" data-en="Quality & Integrated Management">Qualité & Management Intégré</span></div>
     </div>
     <div class="school-body">
       <div class="school-content">
         <div class="school-left">
-          <div class="school-section-title">À propos de la formation</div>
-          <p class="school-text">Le BUT QLIO est un diplôme national professionnalisant qui forme des <strong>techniciens supérieurs et cadres intermédiaires</strong> capables d'améliorer la performance des entreprises industrielles. La formation articule enseignements fondamentaux (mathématiques, statistiques, économie), technologiques et mises en situation professionnelles réelles.</p>
+          <div class="school-section-title" data-en="About the training">À propos de la formation</div>
+          <p class="school-text" data-en="The BUT QLIO is a professionalizing national diploma that trains <strong>senior technicians and middle managers</strong> capable of improving the performance of industrial companies.">Le BUT QLIO est un diplôme national professionnalisant qui forme des <strong>techniciens supérieurs et cadres intermédiaires</strong> capables d'améliorer la performance des entreprises industrielles. La formation articule enseignements fondamentaux (mathématiques, statistiques, économie), technologiques et mises en situation professionnelles réelles.</p>
           <div style="margin-top:1.5rem">
-            <div class="school-section-title">Parcours Qualité & Management Intégré (QMI)</div>
-            <p class="school-text">Ce parcours développe les compétences pour mettre en œuvre des <strong>systèmes de management QHSSEDD</strong> (Qualité, Hygiène, Santé, Sécurité, Environnement, Développement Durable) et piloter les processus garantissant la qualité industrielle. Il prépare directement aux métiers de la qualité dans des secteurs tels que <strong>l'aéronautique, la logistique, l'agroalimentaire et la chimie</strong>.</p>
+            <div class="school-section-title" data-en="Quality & Integrated Management (QMI) Track">Parcours Qualité & Management Intégré (QMI)</div>
+            <p class="school-text" data-en="This track develops the skills to implement <strong>QHSSEDD management systems</strong> and manage processes guaranteeing industrial quality.">Ce parcours développe les compétences pour mettre en œuvre des <strong>systèmes de management QHSSEDD</strong> (Qualité, Hygiène, Santé, Sécurité, Environnement, Développement Durable) et piloter les processus garantissant la qualité industrielle. Il prépare directement aux métiers de la qualité dans des secteurs tels que <strong>l'aéronautique, la logistique, l'agroalimentaire et la chimie</strong>.</p>
           </div>
           <div class="school-modules" style="margin-top:1.75rem">
             <div class="school-module-col">
-              <div class="sm-title">Organisation & Production</div>
+              <div class="sm-title" data-en="Organization & Production">Organisation & Production</div>
               <ul class="sm-list">
-                <li>Organisation des activités de production</li>
-                <li>Amélioration des postes de travail</li>
-                <li>Gestion des coûts industriels</li>
-                <li>Planification et pilotage</li>
+                <li data-en="Organization of production activities">Organisation des activités de production</li>
+                <li data-en="Workstation improvement">Amélioration des postes de travail</li>
+                <li data-en="Industrial cost management">Gestion des coûts industriels</li>
+                <li data-en="Planning and steering">Planification et pilotage</li>
               </ul>
             </div>
             <div class="school-module-col">
-              <div class="sm-title">Logistique & Flux</div>
+              <div class="sm-title" data-en="Logistics & Flows">Logistique & Flux</div>
               <ul class="sm-list">
-                <li>Gestion des stocks & approvisionnements</li>
-                <li>Supply chain & ERP/GPAO</li>
-                <li>Maîtrise statistique des procédés (SPC)</li>
-                <li>Métrologie industrielle</li>
+                <li data-en="Inventory & procurement management">Gestion des stocks & approvisionnements</li>
+                <li data-en="Supply chain & ERP/CMMS">Supply chain & ERP/GPAO</li>
+                <li data-en="Statistical Process Control (SPC)">Maîtrise statistique des procédés (SPC)</li>
+                <li data-en="Industrial metrology">Métrologie industrielle</li>
               </ul>
             </div>
             <div class="school-module-col">
-              <div class="sm-title">Qualité & QHSE</div>
+              <div class="sm-title" data-en="Quality & QHSE">Qualité & QHSE</div>
               <ul class="sm-list">
-                <li>Management qualité (ISO 9001)</li>
-                <li>AMDEC — Analyse des risques</li>
-                <li>Contrôle qualité & audits internes</li>
-                <li>Réglementation HSE & sécurité</li>
+                <li data-en="Quality management (ISO 9001)">Management qualité (ISO 9001)</li>
+                <li data-en="FMEA — Risk analysis">AMDEC — Analyse des risques</li>
+                <li data-en="Quality control & internal audits">Contrôle qualité & audits internes</li>
+                <li data-en="HSE regulations & safety">Réglementation HSE & sécurité</li>
               </ul>
             </div>
           </div>
         </div>
         <div class="school-right">
           <div class="school-kpi-grid">
-            <div class="school-kpi"><div class="kpi-n">3 ans</div><div class="kpi-l">Formation professionnalisante Bac+3</div></div>
-            <div class="school-kpi"><div class="kpi-n">100%</div><div class="kpi-l">CDI pour ceux en insertion directe</div></div>
-            <div class="school-kpi"><div class="kpi-n">80%</div><div class="kpi-l">Poursuivent leurs études en Bac+5</div></div>
-            <div class="school-kpi"><div class="kpi-n">4</div><div class="kpi-l">Parcours spécialisés dès la 2ème année</div></div>
+            <div class="school-kpi"><div class="kpi-n">3 ans</div><div class="kpi-l" data-en="3-year professional training">Formation professionnalisante Bac+3</div></div>
+            <div class="school-kpi"><div class="kpi-n">100%</div><div class="kpi-l" data-en="Permanent contract for direct employment">CDI pour ceux en insertion directe</div></div>
+            <div class="school-kpi"><div class="kpi-n">80%</div><div class="kpi-l" data-en="Continue to Master's degree">Poursuivent leurs études en Bac+5</div></div>
+            <div class="school-kpi"><div class="kpi-n">4</div><div class="kpi-l" data-en="Specialized tracks from 2nd year">Parcours spécialisés dès la 2ème année</div></div>
           </div>
           <div class="school-debouches">
-            <div class="school-section-title">Débouchés après BUT QLIO</div>
+            <div class="school-section-title" data-en="Careers after BUT QLIO">Débouchés après BUT QLIO</div>
             <div class="debouche-chips">
-              <span class="debouche-chip">Technicien QHSE</span>
-              <span class="debouche-chip">Assistant Qualité</span>
-              <span class="debouche-chip">Gestionnaire stocks</span>
-              <span class="debouche-chip">Technicien planification</span>
-              <span class="debouche-chip">Animateur Amélioration Continue</span>
-              <span class="debouche-chip">Responsable approvisionnements</span>
+              <span class="debouche-chip" data-en="QHSE Technician">Technicien QHSE</span>
+              <span class="debouche-chip" data-en="Quality Assistant">Assistant Qualité</span>
+              <span class="debouche-chip" data-en="Inventory Manager">Gestionnaire stocks</span>
+              <span class="debouche-chip" data-en="Planning Technician">Technicien planification</span>
+              <span class="debouche-chip" data-en="Cont. Improvement Facilitator">Animateur Amélioration Continue</span>
+              <span class="debouche-chip" data-en="Procurement Manager">Responsable approvisionnements</span>
             </div>
           </div>
-          <a href="https://iutnantes.univ-nantes.fr/fr/formations/but-qlio" target="_blank" class="school-link">Voir la formation officielle →</a>
+          <a href="https://iutnantes.univ-nantes.fr/fr/formations/but-qlio" target="_blank" class="school-link" data-en="View official program →">Voir la formation officielle →</a>
         </div>
       </div>
     </div>
   </div>
-
-  <!-- Timeline résumée -->
+ 
   <div style="margin-top:4rem">
-    <div class="sec-label" style="margin-bottom:2rem">Chronologie complète</div>
-    <div class="timeline reveal">
-      <div class="timeline-item current">
-        <div class="tl-dot"></div>
-        <div class="tl-year">09/2024 — 10/2026 (en cours)</div>
-        <div class="tl-title">Mastère Spécialisé® ISMQ — Management par la Qualité</div>
-        <div class="tl-school">Kedge Business School · Talence (33) — Parcours Aéronautique, Spatial & Défense</div>
-        <span class="tl-badge">En cours · Alternance ArianeGroup</span>
+    <div class="sec-label" style="margin-bottom:2rem" data-en="Complete timeline">Chronologie complète</div>
+    <div class="tl-modern reveal">
+ 
+      <div class="tlm-item current">
+        <div class="tlm-left"><div class="tlm-year">2025 <span class="tlm-arrow">→</span> 2026</div></div>
+        <div class="tlm-spine"><div class="tlm-dot current"></div><div class="tlm-line"></div></div>
+        <div class="tlm-right">
+          <div class="tlm-type-badge type-alt" data-en="Work-study">Alternance</div>
+          <div class="tlm-title" data-en="Quality & Continuous Improvement Engineer — ArianeGroup">Ingénieur Qualité & Amélioration Continue — ArianeGroup</div>
+          <div class="tlm-sub">Saint-Médard en Jalles (33) · Propulsion spatiale & Défense</div>
+          <div class="tlm-pills"><span class="tlm-pill">EN 9100</span><span class="tlm-pill">VBA</span><span class="tlm-pill" data-en="Internal audit">Audit interne</span><span class="tlm-pill" data-en="Quality culture">Culture qualité</span></div>
+        </div>
       </div>
-      <div class="timeline-item active">
-        <div class="tl-dot"></div>
-        <div class="tl-year">09/2021 — 08/2024</div>
-        <div class="tl-title">BUT QLIO — Qualité, Logistique Industrielle et Organisation</div>
-        <div class="tl-school">IUT de Nantes · Carquefou (44) — Parcours Qualité & Management Intégré</div>
-        <span class="tl-badge blue">Diplômé Bac+3</span>
+ 
+      <div class="tlm-item">
+        <div class="tlm-left"><div class="tlm-year">Jan <span class="tlm-arrow">→</span> Juin 2025</div></div>
+        <div class="tlm-spine"><div class="tlm-dot blue"></div><div class="tlm-line"></div></div>
+        <div class="tlm-right">
+          <div class="tlm-type-badge type-stage" data-en="Internship">Stage</div>
+          <div class="tlm-title" data-en="Quality Specialist — DAHER Aerospace">Spécialiste Qualité — DAHER Aerospace</div>
+          <div class="tlm-sub">Le Haillan (33) · Aérostructures & Qualité industrielle</div>
+          <div class="tlm-pills"><span class="tlm-pill">SMQ</span><span class="tlm-pill">Power Platform</span><span class="tlm-pill">CAPA</span><span class="tlm-pill" data-en="Visual management">Mgt visuel</span><span class="tlm-pill" data-en="Change management">Conduite du changement</span></div>
+          <div class="tlm-award" data-en="🏆 Best quality practice of the DAHER group — May 2025">🏆 Meilleure pratique qualité du groupe — Mai 2025</div>
+        </div>
       </div>
-      <div class="timeline-item active">
-        <div class="tl-dot"></div>
-        <div class="tl-year">2024</div>
-        <div class="tl-title">Lean Green Belt · TOSA Excel Avancé · MOOC ANSSI</div>
-        <div class="tl-school">Certifications professionnelles obtenues</div>
-        <span class="tl-badge blue">3 certifications</span>
+ 
+      <div class="tlm-item">
+        <div class="tlm-left"><div class="tlm-year">2024 <span class="tlm-arrow">→</span> 2026</div></div>
+        <div class="tlm-spine"><div class="tlm-dot gold"></div><div class="tlm-line"></div></div>
+        <div class="tlm-right">
+          <div class="tlm-type-badge type-edu" data-en="Education">Formation</div>
+          <div class="tlm-title" data-en="Master ISMQ — Kedge Business School">Master ISMQ — Kedge Business School</div>
+          <div class="tlm-sub">Talence (33) · Parcours Aéronautique, Spatial &amp; Défense · N°1 national EdUniversal</div>
+          <div class="tlm-pills"><span class="tlm-pill">Bac+5</span><span class="tlm-pill">AACSB · EQUIS</span><span class="tlm-pill">CGE</span></div>
+        </div>
       </div>
+ 
+      <div class="tlm-item">
+        <div class="tlm-left"><div class="tlm-year">2024</div></div>
+        <div class="tlm-spine"><div class="tlm-dot teal"></div><div class="tlm-line"></div></div>
+        <div class="tlm-right">
+          <div class="tlm-type-badge type-cert" data-en="Certifications">Certifications</div>
+          <div class="tlm-title" data-en="Lean Green Belt · TOSA Excel Advanced · MOOC ANSSI">Lean Green Belt · TOSA Excel Avancé · MOOC ANSSI</div>
+          <div class="tlm-sub" data-en="3 professional certifications obtained in the same year">3 certifications professionnelles obtenues la même année</div>
+          <div class="tlm-pills"><span class="tlm-pill" data-en="Certified">Certifié ×3</span></div>
+        </div>
+      </div>
+ 
+      <div class="tlm-item">
+        <div class="tlm-left"><div class="tlm-year">2022 <span class="tlm-arrow">→</span> 2024</div></div>
+        <div class="tlm-spine"><div class="tlm-dot blue"></div><div class="tlm-line"></div></div>
+        <div class="tlm-right">
+          <div class="tlm-type-badge type-alt" data-en="Work-study">Alternance</div>
+          <div class="tlm-title" data-en="QHSE Work-study — ID Logistics">Alternant QHSE — ID Logistics</div>
+          <div class="tlm-sub">Derval (44) · Logistique industrielle · 2 ans</div>
+          <div class="tlm-pills"><span class="tlm-pill">QHSE</span><span class="tlm-pill">Certification CID</span><span class="tlm-pill">Kaizen</span><span class="tlm-pill" data-en="Waste recovery">Revalorisation déchets</span><span class="tlm-pill">Lean Sigma</span><span class="tlm-pill">TRS</span><span class="tlm-pill">6S</span></div>
+        </div>
+      </div>
+ 
+      <div class="tlm-item">
+        <div class="tlm-left"><div class="tlm-year">Été 2022</div></div>
+        <div class="tlm-spine"><div class="tlm-dot gray"></div><div class="tlm-line"></div></div>
+        <div class="tlm-right">
+          <div class="tlm-type-badge type-job" data-en="Summer job">Job d'été</div>
+          <div class="tlm-title" data-en="Summer Auxiliary — Banque Populaire Grand Ouest">Auxiliaire Vacances — Banque Populaire Grand Ouest</div>
+          <div class="tlm-sub">Saint-Herblain (44) · Services bancaires</div>
+        </div>
+      </div>
+ 
+      <div class="tlm-item">
+        <div class="tlm-left"><div class="tlm-year">2021 <span class="tlm-arrow">→</span> 2024</div></div>
+        <div class="tlm-spine"><div class="tlm-dot gold"></div><div class="tlm-line"></div></div>
+        <div class="tlm-right">
+          <div class="tlm-type-badge type-edu" data-en="Education">Formation</div>
+          <div class="tlm-title" data-en="BUT QLIO — IUT de Nantes, Carquefou">BUT QLIO — IUT de Nantes, Carquefou</div>
+          <div class="tlm-sub" data-en="Quality, Industrial Logistics & Organization · Quality & Integrated Management track">Qualité, Logistique Industrielle & Organisation · Parcours QMI</div>
+          <div class="tlm-pills"><span class="tlm-pill">Bac+3</span><span class="tlm-pill">RNCP 6</span><span class="tlm-pill" data-en="Alternance ID Logistics">Alternance ID Logistics</span></div>
+        </div>
+      </div>
+ 
+      <div class="tlm-item">
+        <div class="tlm-left"><div class="tlm-year">Déc. 2021</div></div>
+        <div class="tlm-spine"><div class="tlm-dot gray"></div><div class="tlm-line"></div></div>
+        <div class="tlm-right">
+          <div class="tlm-type-badge type-stage" data-en="Internship">Stage</div>
+          <div class="tlm-title" data-en="Order Picker — Johnson Controls">Préparateur de commandes — Johnson Controls</div>
+          <div class="tlm-sub">Carquefou (44) · Logistique industrielle · SAP</div>
+        </div>
+      </div>
+ 
+      <div class="tlm-item">
+        <div class="tlm-left"><div class="tlm-year">Juil. 2021</div></div>
+        <div class="tlm-spine"><div class="tlm-dot gray"></div></div>
+        <div class="tlm-right">
+          <div class="tlm-type-badge type-job" data-en="Summer job">Job d'été</div>
+          <div class="tlm-title" data-en="Fleet Management Auxiliary — Banque Populaire Grand Ouest">Auxiliaire Gestion des Parcs — Banque Populaire Grand Ouest</div>
+          <div class="tlm-sub">Saint-Herblain (44) · Gestion stocks & logistique interne</div>
+        </div>
+      </div>
+ 
     </div>
   </div>
 </section>
-
+ 
 <!-- COMPÉTENCES -->
 <section id="competences" class="section light">
-  <div class="sec-label">03 — Compétences</div>
-  <h2 class="sec-title">Expertise<br>& Outils</h2>
-
+  <div class="sec-label" data-en="03 — Skills">03 — Compétences</div>
+  <h2 class="sec-title" data-en="Expertise<br>& Tools">Expertise<br>& Outils</h2>
+ 
   <div class="skills-mosaic reveal">
-
-    <!-- Tile 1 — large : Qualité & Normes -->
     <div class="skill-tile wide">
       <img src="images/qualite-industrielle.jpg" alt="Qualité industrielle">
       <div class="skill-tile-overlay">
-        <div class="skill-tile-cat">Référentiels</div>
-        <div class="skill-tile-title">Qualité & Normes</div>
+        <div class="skill-tile-cat" data-en="Standards">Référentiels</div>
+        <div class="skill-tile-title" data-en="Quality & Standards">Qualité & Normes</div>
         <div class="skill-pills">
           <span class="skill-pill gold">EN 9100 / AS9100</span>
           <span class="skill-pill">ISO 9001:2015</span>
-          <span class="skill-pill">Audit interne</span>
-          <span class="skill-pill">Plan de surveillance</span>
+          <span class="skill-pill" data-en="Internal audit">Audit interne</span>
+          <span class="skill-pill" data-en="Control plan">Plan de surveillance</span>
           <span class="skill-pill">CAPA</span>
         </div>
       </div>
     </div>
-
-    <!-- Tile 2 — Lean & QHSE -->
     <div class="skill-tile">
       <img src="images/lean-qhse.jpg" alt="Lean QHSE">
       <div class="skill-tile-overlay">
-        <div class="skill-tile-cat">Amélioration continue</div>
+        <div class="skill-tile-cat" data-en="Continuous improvement">Amélioration continue</div>
         <div class="skill-tile-title">Lean & QHSE</div>
         <div class="skill-pills">
           <span class="skill-pill gold">Lean Green Belt</span>
@@ -354,13 +539,11 @@
         </div>
       </div>
     </div>
-
-    <!-- Tile 3 — Méthodes -->
     <div class="skill-tile">
       <img src="images/methodes-qualite.jpg" alt="Méthodes qualité">
       <div class="skill-tile-overlay">
-        <div class="skill-tile-cat">Outils qualité</div>
-        <div class="skill-tile-title">Méthodes</div>
+        <div class="skill-tile-cat" data-en="Quality tools">Outils qualité</div>
+        <div class="skill-tile-title" data-en="Methods">Méthodes</div>
         <div class="skill-pills">
           <span class="skill-pill">AMDEC / FMEA</span>
           <span class="skill-pill">8D</span>
@@ -369,145 +552,175 @@
         </div>
       </div>
     </div>
-
-    <!-- Tile 4 — Outils numériques -->
     <div class="skill-tile">
       <img src="images/outils-numeriques.jpg" alt="Excel VBA Power Platform">
       <div class="skill-tile-overlay">
-        <div class="skill-tile-cat">Logiciels</div>
-        <div class="skill-tile-title">Outils numériques</div>
+        <div class="skill-tile-cat" data-en="Software">Logiciels</div>
+        <div class="skill-tile-title" data-en="Digital tools">Outils numériques</div>
         <div class="skill-pills">
           <span class="skill-pill gold">Excel + VBA</span>
           <span class="skill-pill">Power Platform</span>
-          <span class="skill-pill">Pack Office</span>
-          <span class="skill-pill">TOSA Avancé</span>
+          <span class="skill-pill" data-en="Office Pack">Pack Office</span>
+          <span class="skill-pill" data-en="Advanced Excel TOSA">TOSA Avancé</span>
         </div>
       </div>
     </div>
-
-    <!-- Tile 5 — large : Management & Gestion projet -->
     <div class="skill-tile wide">
       <img src="images/management-projet.jpg" alt="Management projet">
       <div class="skill-tile-overlay">
-        <div class="skill-tile-cat">Transversal</div>
-        <div class="skill-tile-title">Management & Gestion de projet</div>
+        <div class="skill-tile-cat" data-en="Transversal">Transversal</div>
+        <div class="skill-tile-title" data-en="Management & Project Management">Management & Gestion de projet</div>
         <div class="skill-pills">
-          <span class="skill-pill">Gestion de projet</span>
-          <span class="skill-pill">Analyse & Reporting</span>
-          <span class="skill-pill">Polyvalence</span>
-          <span class="skill-pill">Gestion documentaire</span>
-          <span class="skill-pill">Communication</span>
+          <span class="skill-pill" data-en="Project management">Gestion de projet</span>
+          <span class="skill-pill" data-en="Analysis & Reporting">Analyse & Reporting</span>
+          <span class="skill-pill" data-en="Versatility">Polyvalence</span>
+          <span class="skill-pill" data-en="Document management">Gestion documentaire</span>
+          <span class="skill-pill" data-en="Communication">Communication</span>
         </div>
       </div>
     </div>
-
-    <!-- Tile 6 — Cybersécurité / ANSSI -->
     <div class="skill-tile">
       <img src="images/cybersecurite.jpg" alt="Cybersécurité ANSSI">
       <div class="skill-tile-overlay">
-        <div class="skill-tile-cat">Certification</div>
-        <div class="skill-tile-title">Cybersécurité</div>
+        <div class="skill-tile-cat" data-en="Certification">Certification</div>
+        <div class="skill-tile-title" data-en="Cybersecurity">Cybersécurité</div>
         <div class="skill-pills">
           <span class="skill-pill gold">MOOC ANSSI</span>
-          <span class="skill-pill">Bonnes pratiques SI</span>
+          <span class="skill-pill" data-en="IT Best practices">Bonnes pratiques SI</span>
         </div>
       </div>
     </div>
-
   </div>
-
-  <!-- Langues -->
+ 
   <div class="skills-langs" style="margin-top:3px">
     <div class="lang-card reveal">
       <div class="lang-flag">🇫🇷</div>
       <div>
-        <div class="lang-name">Français</div>
-        <div class="lang-level">Natif</div>
+        <div class="lang-name" data-en="French">Français</div>
+        <div class="lang-level" data-en="Native">Natif</div>
         <div class="lang-bar"><div class="lang-fill" style="width:100%"></div></div>
       </div>
     </div>
     <div class="lang-card reveal reveal-delay-1">
       <div class="lang-flag">🇬🇧</div>
       <div>
-        <div class="lang-name">Anglais</div>
-        <div class="lang-level">C1 — Courant</div>
+        <div class="lang-name" data-en="English">Anglais</div>
+        <div class="lang-level" data-en="C1 — Fluent">C1 — Courant</div>
         <div class="lang-bar"><div class="lang-fill" style="width:85%"></div></div>
       </div>
     </div>
     <div class="lang-card reveal reveal-delay-2">
       <div class="lang-flag">🇩🇪</div>
       <div>
-        <div class="lang-name">Allemand</div>
-        <div class="lang-level">A2 — Notions</div>
+        <div class="lang-name" data-en="German">Allemand</div>
+        <div class="lang-level" data-en="A2 — Basic">A2 — Notions</div>
         <div class="lang-bar"><div class="lang-fill" style="width:30%"></div></div>
       </div>
     </div>
   </div>
-
 </section>
-
+ 
 <!-- EXPÉRIENCES -->
 <section id="experiences" class="section tinted">
-  <div class="sec-label">04 — Expériences</div>
-  <h2 class="sec-title">Parcours<br>Professionnel</h2>
+  <div class="sec-label" data-en="04 — Experience">04 — Expériences</div>
+  <h2 class="sec-title" data-en="Professional<br>Background">Parcours<br>Professionnel</h2>
+ 
+  <!-- FILTRE DESIGN -->
+  <div class="modern-filter-wrap reveal">
+    <div class="filter-instructions" data-en="Filter by type:">Filtrer par type :</div>
+    <div class="modern-filter-container">
+      <button class="m-filter-btn active" data-filter="alternance">
+        <span class="filter-dot"></span>
+        <span data-en="Work-study">Alternance</span>
+      </button>
+      <button class="m-filter-btn active" data-filter="stage">
+        <span class="filter-dot"></span>
+        <span data-en="Internships">Stages</span>
+      </button>
+      <button class="m-filter-btn active" data-filter="job">
+        <span class="filter-dot"></span>
+        <span data-en="Summer jobs">Jobs d'été</span>
+      </button>
+    </div>
+    <span class="filter-count" id="filter-count">7 expériences affichées</span>
+  </div>
+ 
   <div class="exp-list">
-
+ 
     <!-- ArianeGroup -->
-    <div class="exp-card reveal">
+    <div class="exp-card alternance reveal">
       <div>
         <div class="exp-top">
           <span class="exp-period">09/2025 — 10/2026</span>
-          <span class="exp-type alt">Alternance</span>
+          <span class="exp-type alt" data-en="Work-study">Alternance</span>
         </div>
-        <h3 class="exp-title">Ingénieur Qualité & Amélioration Continue</h3>
+        <h3 class="exp-title" data-en="Quality & Continuous Improvement Engineer">Ingénieur Qualité & Amélioration Continue</h3>
         <div class="exp-company">ArianeGroup</div>
-        <div class="exp-location">📍 Saint-Médard en Jalles (33) — Aéronautique & Spatial</div>
+        <div class="exp-location" data-en="📍 Saint-Médard en Jalles (33) — Aeronautics & Space">📍 Saint-Médard en Jalles (33) — Aéronautique & Spatial</div>
         <ul class="exp-tasks">
-          <li>Automatiser les outils de la qualité pour fiabiliser les processus de contrôle</li>
-          <li>Développer une application sous Excel (VBA) pour la gestion qualité</li>
-          <li>Gestion documentaire et amélioration visuelle des documents qualité</li>
-          <li>Améliorer la culture qualité à tous les niveaux de l'organisation</li>
-          <li>Mener des audits de poste et audits internes EN9100</li>
+          <li data-en="Automate quality tools to make control processes more reliable">Automatiser les outils de la qualité pour fiabiliser les processus de contrôle</li>
+          <li data-en="Develop an application in Excel (VBA) for quality management">Développer une application sous Excel (VBA) pour la gestion qualité</li>
+          <li data-en="Document management and visual improvement of quality documents">Gestion documentaire et amélioration visuelle des documents qualité</li>
+          <li data-en="Improve the quality culture at all levels of the organization">Améliorer la culture qualité à tous les niveaux de l'organisation</li>
+          <li data-en="Conduct workstation audits and EN9100 internal audits">Mener des audits de poste et audits internes EN9100</li>
         </ul>
         <div class="exp-chips">
           <span class="exp-chip">EN 9100</span>
           <span class="exp-chip">VBA / Excel</span>
-          <span class="exp-chip">Audit interne</span>
-          <span class="exp-chip">Gestion documentaire</span>
-          <span class="exp-chip">Culture Qualité</span>
+          <span class="exp-chip" data-en="Internal audit">Audit interne</span>
+          <span class="exp-chip" data-en="Document management">Gestion documentaire</span>
+          <span class="exp-chip" data-en="Quality Culture">Culture Qualité</span>
         </div>
       </div>
       <div class="exp-logo-wrap">
-        <img src="images/arianegroup-logo.png" alt="ArianeGroup" class="exp-logo" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" >
+        <img src="images/arianegroup-logo.png" alt="ArianeGroup" class="exp-logo" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
         <div style="display:none;width:120px;height:60px;background:var(--blue-light);border-radius:6px;align-items:center;justify-content:center;font-size:0.75rem;font-weight:700;color:var(--blue);text-align:center">Ariane<br>Group</div>
       </div>
     </div>
-
+ 
     <!-- DAHER AEROSPACE -->
-    <div class="exp-card reveal">
+    <div class="exp-card stage reveal">
       <div>
         <div class="exp-top">
           <span class="exp-period">01/2025 — 06/2025</span>
-          <span class="exp-type stage">Stage</span>
+          <span class="exp-type stage" data-en="Internship">Stage</span>
         </div>
-        <h3 class="exp-title">Spécialiste Qualité</h3>
+        <h3 class="exp-title" data-en="Quality Specialist">Spécialiste Qualité</h3>
         <div class="exp-company">DAHER Aerospace</div>
-        <div class="exp-location">📍 Le Haillan (33) — Aéronautique</div>
+        <div class="exp-location" data-en="📍 Le Haillan (33) — Aeronautics">📍 Le Haillan (33) — Aéronautique</div>
+        <div style="display:inline-flex;align-items:center;gap:0.5rem;margin-bottom:1.25rem;margin-top:-0.5rem;background:var(--bg);border:1px solid var(--border2);border-left:3px solid var(--blue);border-radius:0 4px 4px 0;padding:0.3rem 0.9rem;">
+          <span style="font-size:0.65rem;color:var(--blue);font-weight:700;letter-spacing:0.06em;text-transform:uppercase;font-family:var(--font-m)">Site client</span>
+          <span style="color:var(--border2);font-size:0.7rem">·</span>
+          <span style="font-size:0.8rem;font-weight:600;color:var(--navy)" data-en="Dassault Aviation — Martignas-sur-Jalle base">Base Dassault Aviation — Martignas-sur-Jalle</span>
+        </div>
         <ul class="exp-tasks">
-          <li>Déployer le système de management de la qualité (SMQ)</li>
-          <li>Maîtriser le management visuel et les logigrammes — création du livret HSE</li>
-          <li>Automatiser les outils qualité pour améliorer la productivité</li>
-          <li>Suivre l'efficacité des actions correctives et préventives (CAPA)</li>
-          <li>Développer une application métier avec Power Platform</li>
-          <li>Mise à jour et structuration de la base documentaire</li>
+          <li data-en="Collect data and update perimeter documents to ensure traceability">Recueillir les données et mettre à jour les documents du périmètre pour assurer la traçabilité</li>
+          <li data-en="Create or standardize procedures and operating methods to ensure process consistency">Créer ou uniformiser les procédures et modes opératoires pour garantir la cohérence des processus</li>
+          <li data-en="Participate in the deployment of the QMS and support process owners">Participer au déploiement du système de management de la qualité et accompagner les pilotes de processus</li>
+        </ul>
+        <div class="exp-mission-group" data-en="Expertise & Compliance">Expertise & Conformité</div>
+        <ul class="exp-tasks">
+          <li data-en="Ensure compliance of the quality system with applicable standards and regulations (EN 9100)">Assurer la conformité du système qualité aux normes et réglementations applicables (EN 9100)</li>
+          <li data-en="Respond to operational teams' requests and provide quality support">Répondre aux demandes des équipes opérationnelles et assurer le support qualité terrain</li>
+          <li data-en="Manage visual management tools and create flowcharts and process maps">Maîtriser les outils de management visuel et créer les logigrammes et cartographies de processus</li>
+        </ul>
+        <div class="exp-mission-group" data-en="Control & Continuous Improvement">Contrôle & Amélioration Continue</div>
+        <ul class="exp-tasks">
+          <li data-en="Automate quality tools and monitor in-process controls at workstations">Automatiser les outils qualité et surveiller les contrôles des processus au poste</li>
+          <li data-en="Monitor corrective and preventive action plans and assess their effectiveness to drive continuous improvement">Suivre les plans d'actions correctives et préventives et évaluer leur efficacité pour garantir l'amélioration continue</li>
+          <li class="result-kpi" data-en="<strong>🏆 Best practice award:</strong> Elected best quality practice of the group in May 2025 for a process guide created in card format."><strong>🏆 Meilleure pratique qualité :</strong> Élu meilleure pratique qualité du groupe en mai 2025 pour un guide créé sous format card.</li>
+          <li class="result-kpi" data-en="<strong>📊 Result:</strong> 100% structuring of the documentary base + standardized procedures deployed on the entire perimeter."><strong>📊 Résultat :</strong> Base documentaire structurée à 100% + procédures uniformisées déployées sur l'ensemble du périmètre.</li>
         </ul>
         <div class="exp-chips">
+          <span class="exp-chip">EN 9100</span>
           <span class="exp-chip">SMQ</span>
           <span class="exp-chip">Power Platform</span>
-          <span class="exp-chip">Management visuel</span>
+          <span class="exp-chip" data-en="Visual management">Management visuel</span>
           <span class="exp-chip">CAPA</span>
           <span class="exp-chip">HSE</span>
-          <span class="exp-chip">Base documentaire</span>
+          <span class="exp-chip" data-en="Logigrammes">Logigrammes</span>
+          <span class="exp-chip" data-en="Document base">Base documentaire</span>
+          <span class="exp-chip" data-en="Change management">Conduite du changement</span>
         </div>
       </div>
       <div class="exp-logo-wrap">
@@ -515,30 +728,60 @@
         <div style="display:none;width:120px;height:60px;background:#FFF3E0;border-radius:6px;align-items:center;justify-content:center;font-size:0.75rem;font-weight:700;color:#E65100;text-align:center">DAHER<br>Aerospace</div>
       </div>
     </div>
-
+ 
     <!-- ID LOGISTICS -->
-    <div class="exp-card reveal">
+    <div class="exp-card alternance reveal">
       <div>
         <div class="exp-top">
           <span class="exp-period">09/2022 — 09/2024</span>
-          <span class="exp-type alt">Alternance</span>
+          <span class="exp-type alt" data-en="Work-study">Alternance</span>
         </div>
-        <h3 class="exp-title">Alternant QHSE</h3>
+        <h3 class="exp-title" data-en="QHSE Work-study Student">Alternant QHSE</h3>
         <div class="exp-company">ID Logistics</div>
-        <div class="exp-location">📍 Derval (44) — Logistique & Industrie</div>
+        <div class="exp-location" data-en="📍 Derval (44) — Logistics & Industry">📍 Derval (44) — Logistique & Industrie</div>
+        <div class="exp-mission-group" data-en="Waste Recovery & Site Implantation Project">Projet revalorisation des déchets & implantation</div>
         <ul class="exp-tasks">
-          <li>Assurer la conformité réglementaire des sites et processus logistiques</li>
-          <li>Maintenir la certification interne (CID) — référentiel propre à l'entreprise</li>
-          <li>Sensibilisation aux risques — formation et animation du personnel</li>
-          <li>Amélioration des procédures QHSE sur le périmètre du site</li>
-          <li>Pilotage d'un projet Kaizen pour l'optimisation des flux et la réduction des non-conformités</li>
+          <li data-en="Led a waste recovery project: identification, sorting and valorization of waste streams to improve the site's environmental performance">Pilotage d'un projet de revalorisation des déchets : identification, tri et valorisation des flux de déchets pour améliorer la performance environnementale du site</li>
+          <li data-en="Complete redesign of the site layout to optimize flows and reduce waste generation at source">Refonte complète de l'implantation du site pour optimiser les flux et réduire la production de déchets à la source</li>
+          <li data-en="Creation of a scaled site map under Excel, integrating workstations, traffic flows and risk zones">Création d'une cartographie du site à l'échelle sous Excel, intégrant les postes de travail, les flux de circulation et les zones à risque</li>
+          <li class="result-kpi" data-en="<strong>📊 Result:</strong> Significant reduction in waste generated + improved recovery rate after implantation redesign."><strong>📊 Résultat :</strong> Réduction significative des déchets générés + taux de revalorisation amélioré après refonte de l'implantation.</li>
+        </ul>
+        <div class="exp-mission-group" data-en="Maintaining CID Certification">Maintien de la certification interne CID</div>
+        <ul class="exp-tasks">
+          <li data-en="Ensure compliance with applicable standards and regulations in the logistics sector">Assurer la conformité aux normes et réglementations en vigueur dans le secteur logistique</li>
+          <li data-en="Conduct internal audits to evaluate and continuously improve site processes">Réaliser des audits internes pour évaluer et améliorer en continu les processus du site</li>
+          <li data-en="Train and raise team awareness of certification requirements and quality standards">Former et sensibiliser les équipes aux exigences de la certification et aux standards qualité</li>
+          <li data-en="Drive the internal site certification to guarantee its compliance and safety">Piloter la certification interne du site pour garantir sa conformité et sa sécurité</li>
+        </ul>
+        <div class="exp-mission-group" data-en="Project Management & Deployment">Mise en place et pilotage de projets</div>
+        <ul class="exp-tasks">
+          <li data-en="Lead the initialization and deployment of new improvement projects from A to Z">Piloter l'initialisation et le déploiement de nouveaux projets d'amélioration de A à Z</li>
+          <li data-en="Develop detailed project plans including objectives, milestones and required resources">Élaborer des plans de projet détaillés incluant les objectifs, jalons et ressources nécessaires</li>
+          <li data-en="Coordinate all stakeholders to ensure effective cross-functional collaboration">Coordonner les différentes parties prenantes pour assurer une collaboration transversale efficace</li>
+        </ul>
+        <div class="exp-mission-group" data-en="Risk Awareness & HSE Improvement">Sensibilisation aux risques & amélioration HSE</div>
+        <ul class="exp-tasks">
+          <li data-en="Identify and assess potential risks in processes and projects, then develop mitigation strategies">Identifier et évaluer les risques potentiels dans les processus, puis développer des stratégies de mitigation</li>
+          <li data-en="Train teams in risk management best practices and HSE procedures">Former les équipes aux bonnes pratiques de gestion des risques et aux procédures HSE</li>
+          <li data-en="Conduct HSE inspections and audits, then implement corrective actions to improve workplace safety">Réaliser des inspections et audits HSE, puis mettre en œuvre les actions correctives pour améliorer la sécurité</li>
+          <li class="result-kpi" data-en="<strong>🏆 Result:</strong> Zero major non-conformity during the CID internal certification audit — certification maintained over 2 years of work-study."><strong>🏆 Résultat :</strong> Zéro non-conformité majeure lors de l'audit de certification interne CID — certification maintenue sur 2 ans d'alternance.</li>
+          <li class="result-kpi" data-en="<strong>📊 Result:</strong> Reduction in incident rate on site following deployment of HSE actions and staff training."><strong>📊 Résultat :</strong> Réduction du taux d'incidents sur le site suite au déploiement des actions HSE et à la formation du personnel.</li>
         </ul>
         <div class="exp-chips">
           <span class="exp-chip">QHSE</span>
-          <span class="exp-chip">Conformité réglementaire</span>
+          <span class="exp-chip" data-en="Internal audit">Audit interne</span>
+          <span class="exp-chip" data-en="Regulatory compliance">Conformité réglementaire</span>
           <span class="exp-chip">Kaizen</span>
-          <span class="exp-chip">Certification CID</span>
-          <span class="exp-chip">Sensibilisation risques</span>
+          <span class="exp-chip" data-en="CID Certification">Certification CID</span>
+          <span class="exp-chip" data-en="Risk management">Gestion des risques</span>
+          <span class="exp-chip" data-en="HSE Procedures">Procédures HSE</span>
+          <span class="exp-chip" data-en="Team training">Formation équipes</span>
+          <span class="exp-chip">Lean Sigma</span>
+          <span class="exp-chip" data-en="Operational excellence">Excellence opérationnelle</span>
+          <span class="exp-chip">Obeya</span>
+          <span class="exp-chip" data-en="Change management">Conduite du changement</span>
+          <span class="exp-chip">TRS</span>
+          <span class="exp-chip">6S</span>
         </div>
       </div>
       <div class="exp-logo-wrap">
@@ -546,152 +789,509 @@
         <div style="display:none;width:120px;height:60px;background:#E8F5E9;border-radius:6px;align-items:center;justify-content:center;font-size:0.75rem;font-weight:700;color:#2E7D32;text-align:center">ID<br>Logistics</div>
       </div>
     </div>
-
+ 
+    <!-- BPGO 2022 -->
+    <div class="exp-card job reveal">
+      <div>
+        <div class="exp-top">
+          <span class="exp-period">Juil. 2022 — Août 2022</span>
+          <span class="exp-type job" data-en="Summer Job">Job d'été</span>
+        </div>
+        <h3 class="exp-title" data-en="Summer Auxiliary">Auxiliaire Vacances</h3>
+        <div class="exp-company">Banque Populaire Grand Ouest</div>
+        <div class="exp-location" data-en="📍 Saint-Herblain (44) — Banking services">📍 Saint-Herblain (44) — Services bancaires</div>
+        <ul class="exp-tasks">
+          <li data-en="Welcoming and informing customers (orientation, telephone, various requests)">Accueil et renseignement de la clientèle (orientation, téléphone, demandes diverses)</li>
+          <li data-en="Commercial offer: account opening, loyalty cards, and tax-free service">Offre commerciale : ouverture de comptes, cartes de fidélisation et service détaxe</li>
+          <li data-en="Handling complaints, managing the queue, and issuing invoices">Traitement des réclamations, gestion de la file d'attente et édition des factures</li>
+        </ul>
+        <div class="exp-chips">
+          <span class="exp-chip" data-en="Organizational skills">Sens de l'organisation</span>
+          <span class="exp-chip" data-en="Listening skills">Sens de l'écoute</span>
+          <span class="exp-chip" data-en="Office automation">Bureautique</span>
+        </div>
+      </div>
+      <div class="exp-logo-wrap">
+        <img src="images/logo-BP-scaled-1.png" alt="Banque Populaire Grand Ouest" class="exp-logo" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+        <div style="display:none;width:120px;height:60px;background:#E3F2FD;border-radius:6px;align-items:center;justify-content:center;font-size:0.75rem;font-weight:700;color:#1565C0;text-align:center;line-height:1.2">Banque<br>Populaire</div>
+      </div>
+    </div>
+ 
+    <!-- JOHNSON CONTROLS -->
+    <div class="exp-card stage reveal">
+      <div>
+        <div class="exp-top">
+          <span class="exp-period">Nov. 2021 — Déc. 2021</span>
+          <span class="exp-type stage" data-en="Internship">Stage</span>
+        </div>
+        <h3 class="exp-title" data-en="Order Picker">Préparateur de commandes</h3>
+        <div class="exp-company">Johnson Controls</div>
+        <div class="exp-location" data-en="📍 Carquefou (44) — Logistics & Industry">📍 Carquefou (44) — Logistique & Industrie</div>
+        <ul class="exp-tasks">
+          <li data-en="Rigorous management of customer demand and inventory management">Gestion rigoureuse de la demande client et gestion des stocks</li>
+          <li data-en="Active participation in projects to optimize order preparation">Participation active à des projets d'optimisation de la préparation des commandes</li>
+        </ul>
+        <div class="exp-chips">
+          <span class="exp-chip" data-en="Order management">Gestion des commandes</span>
+          <span class="exp-chip" data-en="Project management">Management de projet</span>
+          <span class="exp-chip" data-en="Organization">Organisation</span>
+        </div>
+      </div>
+      <div class="exp-logo-wrap">
+        <img src="images/johnson.png" alt="Johnson Controls" class="exp-logo" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+        <div style="display:none;width:120px;height:60px;background:#E0F2F1;border-radius:6px;align-items:center;justify-content:center;font-size:0.75rem;font-weight:700;color:#00695C;text-align:center;line-height:1.2">Johnson<br>Controls</div>
+      </div>
+    </div>
+ 
+    <!-- BPGO 2021 -->
+    <div class="exp-card job reveal">
+      <div>
+        <div class="exp-top">
+          <span class="exp-period">Juil. 2021 — Juil. 2021</span>
+          <span class="exp-type job" data-en="Summer Job">Job d'été</span>
+        </div>
+        <h3 class="exp-title" data-en="Summer Auxiliary Fleet Management Services">Auxiliaire vacances Services Gestion des Parcs</h3>
+        <div class="exp-company">Banque Populaire Grand Ouest</div>
+        <div class="exp-location" data-en="📍 Saint-Herblain (44) — Internal support">📍 Saint-Herblain (44) — Support interne</div>
+        <ul class="exp-tasks">
+          <li data-en="Handling and efficiently processing internal employee requests">Prise en charge et traitement efficace des demandes internes des collaborateurs</li>
+          <li data-en="Commissary management: inventory status and order placement">Gestion de l'économat : état des stocks et passation de commandes</li>
+          <li data-en="Logistical processing of returned equipment (iPad, professional phones...)">Traitement logistique des retours de matériels (iPad, téléphone professionnels...)</li>
+        </ul>
+        <div class="exp-chips">
+          <span class="exp-chip" data-en="Communication">Communication</span>
+          <span class="exp-chip" data-en="Inventory management">Gestion de stock</span>
+          <span class="exp-chip" data-en="Office automation">Bureautique</span>
+        </div>
+      </div>
+      <div class="exp-logo-wrap">
+        <img src="images/logo-BP-scaled-1.png" alt="Banque Populaire Grand Ouest" class="exp-logo" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+        <div style="display:none;width:120px;height:60px;background:#E3F2FD;border-radius:6px;align-items:center;justify-content:center;font-size:0.75rem;font-weight:700;color:#1565C0;text-align:center;line-height:1.2">Banque<br>Populaire</div>
+      </div>
+    </div>
+ 
+    <!-- CASTEL VIANDES -->
+    <div class="exp-card stage reveal">
+      <div>
+        <div class="exp-top">
+          <span class="exp-period">Janv. 2021 — Janv. 2021</span>
+          <span class="exp-type stage" data-en="Internship">Stage</span>
+        </div>
+        <h3 class="exp-title" data-en="Order Picker">Préparateur de commande</h3>
+        <div class="exp-company">Castel Viandes</div>
+        <div class="exp-location" data-en="📍 Châteaubriant (44) — Food industry">📍 Châteaubriant (44) — Agroalimentaire</div>
+        <ul class="exp-tasks">
+          <li data-en="Preparation of customer orders and completion of full orders autonomously">Préparation des commandes clients et réalisation de commandes complètes en autonomie</li>
+          <li data-en="Use of the company's SAP software to process orders and inventory">Utilisation du logiciel SAP de l'entreprise pour traiter les commandes et les stocks</li>
+          <li data-en="Teamwork to achieve collectively set goals">Travail en équipe pour atteindre les objectifs fixés collectivement</li>
+        </ul>
+        <div class="exp-chips">
+          <span class="exp-chip">SAP</span>
+          <span class="exp-chip" data-en="Autonomy">Autonomie</span>
+          <span class="exp-chip" data-en="Teamwork">Travail d'équipe</span>
+        </div>
+      </div>
+      <div class="exp-logo-wrap">
+        <img src="images/CASTEL-VIANDE.jpg" alt="Castel Viandes" class="exp-logo" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+        <div style="display:none;width:120px;height:60px;background:#FFEBEE;border-radius:6px;align-items:center;justify-content:center;font-size:0.75rem;font-weight:700;color:#C62828;text-align:center;line-height:1.2">Castel<br>Viandes</div>
+      </div>
+    </div>
+ 
   </div>
 </section>
-
+ 
+<!-- PROJETS CONCRETS — UNDER CONSTRUCTION -->
+<section id="projets" class="projets-wip-section">
+  <div class="sec-label" data-en="04.5 — Concrete Projects">04.5 — Projets concrets</div>
+  <h2 class="sec-title" data-en="Key<br>Achievements">Réalisations<br>Clés</h2>
+  <div class="wip-badge"><span class="wip-dot"></span> <span data-en="Section under construction — coming soon">Section en cours de construction — bientôt disponible</span></div>
+ 
+  <div class="projets-grid-wip">
+ 
+    <!-- ID Logistics -->
+    <div class="projet-wip-card reveal">
+      <div class="projet-wip-bg" style="background-image:url('https://images.unsplash.com/photo-1553413077-190dd305871c?w=800&q=80')"></div>
+      <div class="projet-wip-content">
+        <div class="projet-wip-company">ID Logistics · Derval (44)</div>
+        <div class="projet-wip-title" data-en="Waste Recovery & Site Implantation">Revalorisation des déchets & refonte de l'implantation</div>
+        <div class="projet-wip-desc" data-en="Led the complete waste recovery project: identification of waste streams, redesign of site layout, creation of a scaled Excel map. Significant reduction in waste generated and improved recovery rate.">Pilotage du projet de revalorisation des déchets, refonte complète de l'implantation du site et création d'une cartographie à l'échelle sous Excel. Réduction significative des déchets et amélioration du taux de revalorisation.</div>
+        <div class="projet-wip-tags">
+          <span class="projet-wip-tag">Lean Sigma</span>
+          <span class="projet-wip-tag">6S</span>
+          <span class="projet-wip-tag">Obeya</span>
+          <span class="projet-wip-tag">TRS</span>
+          <span class="projet-wip-tag" data-en="Excel mapping">Cartographie Excel</span>
+          <span class="projet-wip-tag" data-en="Waste recovery">Revalorisation</span>
+        </div>
+      </div>
+      <div class="projet-wip-overlay">
+        <span class="wip-lock">🔒</span>
+        <span class="wip-label" data-en="Under construction">En construction</span>
+        <span class="wip-sublabel" data-en="Detailed case study coming soon">Étude de cas détaillée à venir</span>
+      </div>
+    </div>
+ 
+    <!-- DAHER Aerospace -->
+    <div class="projet-wip-card reveal">
+      <div class="projet-wip-bg" style="background-image:url('https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=800&q=80')"></div>
+      <div class="projet-wip-content">
+        <div class="projet-wip-company">DAHER Aerospace · Le Haillan (33)</div>
+        <div class="projet-wip-title" data-en="Quality Guide — Best Group Practice 2025">Guide Qualité — Meilleure pratique du groupe 2025</div>
+        <div class="projet-wip-desc" data-en="Creation of a process guide in card format that won the best quality practice award of the DAHER group in May 2025. Deployment of the guide across the entire group. 100% structuring of the documentary base.">Création d'un guide de processus sous format card élu meilleure pratique qualité du groupe DAHER en mai 2025. Déploiement sur l'ensemble du groupe. Base documentaire structurée à 100%.</div>
+        <div class="projet-wip-tags">
+          <span class="projet-wip-tag">EN 9100</span>
+          <span class="projet-wip-tag">SMQ</span>
+          <span class="projet-wip-tag" data-en="Change management">Conduite du changement</span>
+          <span class="projet-wip-tag">PowerApps</span>
+          <span class="projet-wip-tag" data-en="Visual management">Mgt visuel</span>
+          <span class="projet-wip-tag">🏆 Prix groupe</span>
+        </div>
+      </div>
+      <div class="projet-wip-overlay">
+        <span class="wip-lock">🔒</span>
+        <span class="wip-label" data-en="Under construction">En construction</span>
+        <span class="wip-sublabel" data-en="Detailed case study coming soon">Étude de cas détaillée à venir</span>
+      </div>
+    </div>
+ 
+    <!-- ArianeGroup -->
+    <div class="projet-wip-card reveal">
+      <div class="projet-wip-bg" style="background-image:url('https://images.unsplash.com/photo-1517976487492-5750f3195933?w=800&q=80')"></div>
+      <div class="projet-wip-content">
+        <div class="projet-wip-company">ArianeGroup · Saint-Médard en Jalles (33)</div>
+        <div class="projet-wip-title" data-en="VBA Non-Conformity Management Application">Application VBA — Gestion des non-conformités</div>
+        <div class="projet-wip-desc" data-en="End-to-end creation of an Excel VBA application for automated tracking of non-conformities, generating analytical reports in one click. 30% reduction in processing time. EN 9100 internal audits conducted.">Création intégrale d'une application Excel VBA pour le suivi automatisé des non-conformités, génération de rapports analytiques en un clic. Réduction de 30% du temps de traitement. Audits internes EN 9100 conduits.</div>
+        <div class="projet-wip-tags">
+          <span class="projet-wip-tag">Excel VBA</span>
+          <span class="projet-wip-tag">EN 9100</span>
+          <span class="projet-wip-tag" data-en="Internal audit">Audit interne</span>
+          <span class="projet-wip-tag" data-en="Automation">Automatisation</span>
+          <span class="projet-wip-tag" data-en="Quality culture">Culture qualité</span>
+        </div>
+      </div>
+      <div class="projet-wip-overlay">
+        <span class="wip-lock">🔒</span>
+        <span class="wip-label" data-en="Under construction">En construction</span>
+        <span class="wip-sublabel" data-en="Detailed case study coming soon">Étude de cas détaillée à venir</span>
+      </div>
+    </div>
+ 
+  </div>
+ 
+  <div class="projet-wip-bottom">
+    <span class="wip-cta" data-en="📋 Detailed project sheets in preparation — contact me for more information">📋 Fiches projets détaillées en préparation — contactez-moi pour plus d'informations</span>
+  </div>
+</section>
+ 
+<!-- HARD & SOFT SKILLS -->
+<section id="skills" class="skills-page">
+  <div class="sec-label">05 — Hard &amp; Soft Skills</div>
+  <h2 class="sec-title" data-en="My<br>Skills">Mes<br>Compétences</h2>
+  <p class="sec-intro" data-en="A synthesis of technical expertise and behavioral qualities developed through 3 professional experiences and 5 years of training.">Synthèse des expertises techniques et des qualités comportementales développées au fil de 3 expériences professionnelles et 5 ans de formation.</p>
+ 
+  <div class="skills-two-col">
+ 
+    <!-- ── HARD SKILLS ── -->
+    <div class="reveal">
+      <div class="hs-col-title" data-en="Hard Skills — Technical Expertise">Hard Skills — Expertise technique</div>
+ 
+      <div class="hs-group blue">
+        <div class="hs-group-label" data-en="Quality Standards & Compliance">Référentiels Qualité & Conformité</div>
+        <div class="hs-tags">
+          <span class="hs-pill">EN 9100 / AS9100</span>
+          <span class="hs-pill">ISO 9001:2015</span>
+          <span class="hs-pill" data-en="Internal audit">Audit interne</span>
+          <span class="hs-pill">QHSE / HSE</span>
+          <span class="hs-pill" data-en="Control plan">Plan de surveillance</span>
+          <span class="hs-pill">CAPA</span>
+          <span class="hs-pill" data-en="Regulatory compliance">Conformité réglementaire</span>
+          <span class="hs-pill" data-en="CID Certification">Certification CID</span>
+          <span class="hs-pill" data-en="Documentary management">Gestion documentaire</span>
+          <span class="hs-pill" data-en="Process mapping">Cartographie des processus</span>
+        </div>
+      </div>
+ 
+      <div class="hs-group gold">
+        <div class="hs-group-label" data-en="Methods & Continuous Improvement">Méthodes & Amélioration Continue</div>
+        <div class="hs-tags">
+          <span class="hs-pill">AMDEC / FMEA</span>
+          <span class="hs-pill">8D / QRQC</span>
+          <span class="hs-pill">Ishikawa / 5 Pourquoi</span>
+          <span class="hs-pill">MSP / SPC</span>
+          <span class="hs-pill">Lean Green Belt</span>
+          <span class="hs-pill">Lean Sigma</span>
+          <span class="hs-pill">Kaizen</span>
+          <span class="hs-pill">5S / 6S</span>
+          <span class="hs-pill" data-en="Visual management">Management visuel</span>
+          <span class="hs-pill" data-en="Flowcharts / Process mapping">Logigrammes / Processus</span>
+          <span class="hs-pill" data-en="Risk management">Gestion des risques</span>
+          <span class="hs-pill" data-en="Waste recovery">Revalorisation des déchets</span>
+          <span class="hs-pill" data-en="Site layout / Implantation">Implantation / Layout</span>
+          <span class="hs-pill">TRS</span>
+          <span class="hs-pill">Obeya</span>
+          <span class="hs-pill" data-en="Operational excellence">Excellence opérationnelle</span>
+          <span class="hs-pill" data-en="Change management">Conduite du changement</span>
+        </div>
+      </div>
+ 
+      <div class="hs-group teal">
+        <div class="hs-group-label" data-en="Digital Tools & Software">Outils Numériques & Logiciels</div>
+        <div class="hs-tags">
+          <span class="hs-pill">Excel Avancé + VBA</span>
+          <span class="hs-pill">Power Platform</span>
+          <span class="hs-pill">PowerApps</span>
+          <span class="hs-pill">Pack Office</span>
+          <span class="hs-pill">SAP</span>
+          <span class="hs-pill" data-en="Excel mapping (scaled)">Cartographie Excel à l'échelle</span>
+          <span class="hs-pill" data-en="Dashboards / KPIs">Tableaux de bord / KPIs</span>
+          <span class="hs-pill" data-en="Quality tools automation">Automatisation outils qualité</span>
+          <span class="hs-pill" data-en="Cybersecurity (ANSSI)">Cybersécurité (ANSSI)</span>
+          <span class="hs-pill" data-en="Web Development">Développement web</span>
+        </div>
+      </div>
+    </div>
+ 
+    <!-- ── SOFT SKILLS ── -->
+    <div class="reveal reveal-delay-2">
+      <div class="ss-col-title" data-en="Soft Skills — Behavioral Qualities">Soft Skills — Qualités comportementales</div>
+      <div class="ss-grid">
+ 
+        <div class="ss-card" style="--ss-color:#E8C06A">
+          <span class="ss-icon">🎯</span>
+          <div class="ss-name" data-en="Analytical Rigor">Rigueur analytique</div>
+          <div class="ss-desc" data-en="Structured, precise approach to data, documents, and processes — developed through 3 quality missions.">Approche structurée et précise des données, documents et processus — développée sur 3 missions qualité.</div>
+        </div>
+ 
+        <div class="ss-card" style="--ss-color:#4B8EBF">
+          <span class="ss-icon">🔄</span>
+          <div class="ss-name" data-en="Change management">Conduite du changement</div>
+          <div class="ss-desc" data-en="Led QMS deployment and quality culture transformation across teams at DAHER and ID Logistics.">Accompagnement du déploiement SMQ et transformation de la culture qualité chez DAHER et ID Logistics.</div>
+        </div>
+ 
+        <div class="ss-card" style="--ss-color:#1D9E75">
+          <span class="ss-icon">🏫</span>
+          <div class="ss-name" data-en="Pedagogy & Training">Pédagogie & Formation</div>
+          <div class="ss-desc" data-en="Trained and raised teams' awareness of HSE, certifications and risk management good practices.">Formation et sensibilisation des équipes aux exigences HSE, certification et bonnes pratiques risques.</div>
+        </div>
+ 
+        <div class="ss-card" style="--ss-color:#E8C06A">
+          <span class="ss-icon">🤝</span>
+          <div class="ss-name" data-en="Cross-functional leadership">Leadership transversal</div>
+          <div class="ss-desc" data-en="Coordination of multiple stakeholders across operational, quality, and management teams.">Coordination de plusieurs parties prenantes : équipes opérationnelles, qualité et direction.</div>
+        </div>
+ 
+        <div class="ss-card" style="--ss-color:#4B8EBF">
+          <span class="ss-icon">💡</span>
+          <div class="ss-name" data-en="Initiative & Creativity">Initiative & Créativité</div>
+          <div class="ss-desc" data-en="Created the best quality practice of the DAHER group in May 2025 — a card-format process guide.">Création de la meilleure pratique qualité du groupe DAHER en mai 2025 — guide sous format card.</div>
+        </div>
+ 
+        <div class="ss-card" style="--ss-color:#1D9E75">
+          <span class="ss-icon">🔧</span>
+          <div class="ss-name" data-en="Problem Solving">Résolution de problèmes</div>
+          <div class="ss-desc" data-en="Structured approach using 8D, QRQC, Ishikawa — applied to non-conformities at ArianeGroup and DAHER.">Approche 8D, QRQC, Ishikawa appliquée aux non-conformités chez ArianeGroup et DAHER.</div>
+        </div>
+ 
+        <div class="ss-card" style="--ss-color:#E8C06A">
+          <span class="ss-icon">📢</span>
+          <div class="ss-name" data-en="Communication">Communication</div>
+          <div class="ss-desc" data-en="Adapted reporting to all levels: operators, managers, and group directors. Good level of English (C1).">Reporting adapté à tous les niveaux : opérateurs, managers, direction groupe. Bon niveau d'anglais (C1).</div>
+        </div>
+ 
+        <div class="ss-card" style="--ss-color:#4B8EBF">
+          <span class="ss-icon">⚡</span>
+          <div class="ss-name" data-en="Adaptability">Adaptabilité</div>
+          <div class="ss-desc" data-en="3 different industrial environments (aerospace, logistics, food industry) — quickly operational in each.">3 environnements industriels différents (aérospatiale, logistique, agroalimentaire) — rapidement opérationnel dans chaque contexte.</div>
+        </div>
+ 
+      </div>
+    </div>
+  </div>
+</section>
+ 
 <!-- CERTIFICATIONS -->
 <section id="certifications" class="section tinted">
-  <div class="sec-label">05 — Certifications</div>
-  <h2 class="sec-title">Diplômes &<br>Certifications</h2>
+  <div class="sec-label" data-en="06 — Certifications">06 — Certifications</div>
+  <h2 class="sec-title" data-en="Diplomas &<br>Certifications">Diplômes &<br>Certifications</h2>
   <div class="certs-grid">
     <div class="cert-card reveal">
       <span class="cert-icon">🎓</span>
       <div class="cert-org">Kedge Business School — Talence</div>
-      <div class="cert-name">Master ISMQ — Management par la qualité</div>
+      <div class="cert-name" data-en="Master ISMQ — Quality Management">Master ISMQ — Management par la qualité</div>
       <div class="cert-year">09/2024 — 10/2026</div>
-      <span class="cert-obtained">En cours</span>
+      <span class="cert-obtained" data-en="In progress">En cours</span>
     </div>
     <div class="cert-card reveal reveal-delay-1">
       <span class="cert-icon">🏭</span>
       <div class="cert-org">IUT de Nantes — Carquefou</div>
-      <div class="cert-name">Bachelor QLIO — Qualité, Logistique, Industrielle, Organisation</div>
+      <div class="cert-name" data-en="Bachelor QLIO — Quality, Industrial Logistics, Organization">Bachelor QLIO — Qualité, Logistique, Industrielle, Organisation</div>
       <div class="cert-year">09/2021 — 08/2024</div>
-      <span class="cert-obtained">Diplômé</span>
+      <span class="cert-obtained" data-en="Graduated">Diplômé</span>
     </div>
     <div class="cert-card gold-line reveal reveal-delay-2">
       <span class="cert-icon">🟢</span>
       <div class="cert-org">Lean Management</div>
       <div class="cert-name">Lean Green Belt</div>
-      <div class="cert-year">Certification obtenue</div>
-      <span class="cert-obtained">Certifié</span>
+      <div class="cert-year" data-en="Certification obtained">Certification obtenue</div>
+      <span class="cert-obtained" data-en="Certified">Certifié</span>
     </div>
     <div class="cert-card gold-line reveal reveal-delay-3">
       <span class="cert-icon">📊</span>
-      <div class="cert-org">TOSA — Certification Bureautique</div>
-      <div class="cert-name">Excel Avancé (TOSA)</div>
-      <div class="cert-year">Certification obtenue</div>
-      <span class="cert-obtained">Certifié</span>
+      <div class="cert-org" data-en="TOSA — IT Certification">TOSA — Certification Bureautique</div>
+      <div class="cert-name" data-en="Advanced Excel (TOSA)">Excel Avancé (TOSA)</div>
+      <div class="cert-year" data-en="Certification obtained">Certification obtenue</div>
+      <span class="cert-obtained" data-en="Certified">Certifié</span>
     </div>
     <div class="cert-card reveal reveal-delay-1">
       <span class="cert-icon">🔒</span>
       <div class="cert-org">ANSSI</div>
-      <div class="cert-name">MOOC Cybersécurité — Bonnes pratiques</div>
-      <div class="cert-year">Certification obtenue</div>
-      <span class="cert-obtained">Certifié</span>
+      <div class="cert-name" data-en="Cybersecurity MOOC — Best practices">MOOC Cybersécurité — Bonnes pratiques</div>
+      <div class="cert-year" data-en="Certification obtained">Certification obtenue</div>
+      <span class="cert-obtained" data-en="Certified">Certifié</span>
     </div>
     <div class="cert-card reveal reveal-delay-2">
       <span class="cert-icon">🚗</span>
-      <div class="cert-org">Mobilité</div>
-      <div class="cert-name">Permis B — Véhiculé</div>
-      <div class="cert-year">Mobilité nationale</div>
+      <div class="cert-org" data-en="Mobility">Mobilité</div>
+      <div class="cert-name" data-en="Driver's License — Vehicle owner">Permis B — Véhiculé</div>
+      <div class="cert-year" data-en="National mobility">Mobilité nationale</div>
     </div>
   </div>
 </section>
-
+ 
 <!-- LOISIRS -->
 <section id="loisirs" class="section light">
-  <div class="sec-label">06 — Loisirs</div>
-  <h2 class="sec-title">Centres<br>d'intérêt</h2>
+  <div class="sec-label" data-en="07 — Hobbies">07 — Loisirs</div>
+  <h2 class="sec-title" data-en="Areas of<br>Interest">Centres<br>d'intérêt</h2>
   <div class="loisirs-grid">
     <div class="loisir-card reveal">
-      <img src="images/football.jpg" alt="Football" class="loisir-img">
+      <img src="images/football.jpg" alt="Football" class="loisir-img" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1517466787929-bc90951d0974?w=400&q=80'">
       <div class="loisir-title">Football</div>
-      <p class="loisir-desc">Pratique régulière, esprit d'équipe et dépassement de soi. La cohésion en équipe, une valeur clé également en entreprise.</p>
+      <p class="loisir-desc" data-en="Practicing football for 13 years, in a team and as a Sunday player. I've developed my ability to communicate under pressure, to coordinate within a group with different profiles, and to stay calm in high-stakes situations.">Je pratique le football depuis 13 ans, en équipe et en amateur. J'y ai développé ma capacité à communiquer sous pression, à me coordonner au sein d'un groupe aux profils variés et à garder mon sang-froid dans les moments décisifs.</p>
     </div>
     <div class="loisir-card reveal reveal-delay-1">
-      <div class="loisir-img-ph">🎵</div>
-      <div class="loisir-title">Musique</div>
-      <p class="loisir-desc">Passion musicale — écoute et pratique. La musique développe la concentration et la créativité.</p>
+      <img src="https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?w=400&q=80" alt="Musique" class="loisir-img">
+      <div class="loisir-title" data-en="Music & Piano">Musique & Piano</div>
+      <p class="loisir-desc" data-en="Passionate about music and piano player for 1 year. Learning an instrument without a teacher has strengthened my autonomy, my patience for slow progress and my ability to break down complex problems into small achievable steps.">Passionné de musique et joueur de piano depuis 1 an. Apprendre un instrument sans professeur a renforcé mon autonomie, ma patience face à la progression lente et ma capacité à décomposer un problème complexe en petites étapes maîtrisables.</p>
     </div>
     <div class="loisir-card reveal reveal-delay-2">
-      <div class="loisir-img-ph">🏸</div>
+      <img src="https://images.unsplash.com/photo-1554068865-24cecd4e34b8?w=400&q=80" alt="Tennis Badminton" class="loisir-img">
       <div class="loisir-title">Tennis / Badminton</div>
-      <p class="loisir-desc">Sports de raquette, précision et réactivité. Des qualités transposables à l'analyse qualité industrielle.</p>
+      <p class="loisir-desc" data-en="Racket sports practitioner in leisure and friendly competition. These sports sharpened my reflexes, my reading of situations in real time and my capacity to quickly adapt my strategy to an evolving opponent.">Pratique des sports de raquette en loisir et compétition amicale. Ces sports ont aiguisé mes réflexes, ma lecture des situations en temps réel et ma capacité à adapter rapidement ma stratégie face à un adversaire qui évolue.</p>
     </div>
     <div class="loisir-card reveal reveal-delay-3">
-      <img src="images/lecture.jpg" alt="Lecture" class="loisir-img">
-      <div class="loisir-title">Voyages & Lecture</div>
-      <p class="loisir-desc">Ouverture internationale, curiosité culturelle, veille technique et sectorielle sur l'aérospatiale et la qualité.</p>
+      <img src="images/lecture.jpg" alt="Voyages" class="loisir-img" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?w=400&q=80'">
+      <div class="loisir-title" data-en="Travel & Reading">Voyages & Lecture</div>
+      <p class="loisir-desc" data-en="I travel when the opportunity arises and read regularly — fiction, technical works, sector news. These habits developed my curiosity, my ability to quickly assimilate new information and my openness to different ways of thinking.">Je voyage dès que l'occasion se présente et lis régulièrement — fiction, ouvrages techniques, actualité sectorielle. Ces habitudes ont développé ma curiosité, ma capacité à assimiler rapidement de nouvelles informations et mon ouverture à différentes façons de penser.</p>
+    </div>
+    <div class="loisir-card reveal reveal-delay-1">
+      <img src="https://images.unsplash.com/photo-1461749280684-dccba630e2f6?w=400&q=80" alt="Développement web et code" class="loisir-img">
+      <div class="loisir-title" data-en="Coding & Dev">Développement & Code</div>
+      <p class="loisir-desc" data-en="Passionate about programming since discovering VBA, I code personal projects — tools, scripts and small web applications. This has given me a logical and structured approach to problem-solving, and a real taste for automation.">Passionné de code depuis la découverte du VBA, je développe des projets personnels — outils, scripts et petites applications web. Cela m'a donné une approche logique et structurée de la résolution de problèmes, et un vrai goût pour l'automatisation.</p>
+    </div>
+    <div class="loisir-card reveal reveal-delay-2">
+      <img src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?w=400&q=80" alt="Cybersécurité" class="loisir-img">
+      <div class="loisir-title" data-en="Cybersecurity">Cybersécurité</div>
+      <p class="loisir-desc" data-en="Genuinely attracted to the world of cybersecurity, I completed the ANSSI MOOC and follow sector news regularly. This curiosity has sharpened my critical thinking, my attention to invisible details and my awareness of digital risks.">Véritablement attiré par l'univers de la cybersécurité, j'ai réalisé le MOOC ANSSI et suis l'actualité du domaine régulièrement. Cette curiosité a affiné mon esprit critique, mon attention aux détails invisibles et ma conscience des risques numériques.</p>
     </div>
   </div>
 </section>
-
+ 
+<!-- RECOMMANDATIONS -->
+<section id="recommandations" class="section tinted">
+  <div class="sec-label" data-en="08 — Testimonials">08 — Témoignages</div>
+  <h2 class="sec-title" data-en="What they<br>say about me">Ce qu'ils<br>disent de moi</h2>
+  <p class="sec-intro" data-en="Feedback from my tutors and colleagues.">Retours d'expérience de mes tuteurs et collaborateurs en entreprise.</p>
+  <div class="reco-grid reveal">
+    <div class="reco-card">
+      <p class="reco-quote" data-en="Maxime not only demonstrated a strong ability to combine theory and practice, but he also showed rigor and initiative in proposing innovative solutions. He notably set up a tool for reporting and tracking non-conformities. Thanks to his technical skills and analytical mind, he quickly brought real added value.">Maxime a non seulement démontré une forte capacité à allier théorie et pratique, mais il a aussi fait preuve de rigueur et d'initiative en proposant des solutions novatrices. Il a notamment mis en place un outil de remontée et suivi des non-conformités. Grâce à ses compétences techniques et son esprit d'analyse, il a rapidement apporté une réelle valeur ajoutée.</p>
+      <div class="reco-author">
+        <div class="reco-avatar" style="background: #E65100;">T</div>
+        <div>
+          <div class="reco-name">Théa Blatzheim</div>
+          <div class="reco-role" data-en="Quality Engineer — DAHER Aerospace">Ingénieure Qualité — DAHER Aerospace</div>
+        </div>
+      </div>
+    </div>
+    <div class="reco-card">
+      <p class="reco-quote" data-en="Maxime demonstrated an exceptional ability to integrate and collaborate effectively with the QHSE department. He successfully managed our internal certification process and set up dashboards (forklift tracking, accidentology). His dynamism, enthusiasm, and sense of efficiency will be a valuable asset.">Maxime a démontré une capacité exceptionnelle à s'intégrer et à collaborer efficacement avec le service QHSE. Il a assuré avec succès l'animation de notre processus de certification interne et a mis en place des tableaux de bord (suivi chariots, accidentologie). Son dynamisme, son enthousiasme et son sens de l'efficacité seront un atout précieux.</p>
+      <div class="reco-author">
+        <div class="reco-avatar" style="background: #2E7D32;">L</div>
+        <div>
+          <div class="reco-name">Laurent Garnier</div>
+          <div class="reco-role" data-en="Site Manager — ID Logistics">Responsable de Site — ID Logistics</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+ 
 <!-- CONTACT -->
 <section id="contact" style="padding:0">
   <div class="contact-wrap">
     <div class="contact-left">
-      <p class="contact-tagline">Recrutons<br><em>ensemble</em> ?</p>
-      <p class="contact-sub">Disponible pour un CDI à partir de juillet 2026. N'hésitez pas à me contacter pour échanger autour de votre besoin.</p>
+      <p class="contact-tagline" data-en="Let's Recruit<br><em>Together</em>?">Recrutez<br><em>Ensemble</em> ?</p>
+      <p class="contact-sub" data-en="Available for a permanent contract from July 2026. Feel free to contact me to discuss your needs.">Disponible pour un CDI à partir de juillet 2026. N'hésitez pas à me contacter pour échanger autour de votre besoin.</p>
       <div class="contact-item">
         <div class="ci-icon">✉</div>
         <div>
           <div class="ci-label">Email</div>
-          <div class="ci-value"><a href="mailto:votre@gmail.com">maximemearpro@gmail.com</a></div>
+          <div class="ci-value"><a href="mailto:maximemearpro@gmail.com">maximemearpro@gmail.com</a></div>
         </div>
       </div>
       <div class="contact-item">
         <div class="ci-icon" style="font-size:0.75rem;font-weight:700">in</div>
         <div>
           <div class="ci-label">LinkedIn</div>
-          <div class="ci-value"><a href="https://www.linkedin.com/in/maxime-mear" target="_blank">linkedin.com/in/maxime-mear</a></div>
+          <div class="ci-value"><a href="https://www.linkedin.com/in/maxime-méar" target="_blank">Maxime MEAR</a></div>
         </div>
       </div>
       <div class="contact-item">
         <div class="ci-icon">☎</div>
         <div>
-          <div class="ci-label">Téléphone</div>
+          <div class="ci-label" data-en="Phone">Téléphone</div>
           <div class="ci-value">+33 7 83 16 84 86</div>
         </div>
       </div>
       <div class="contact-item">
         <div class="ci-icon">📍</div>
         <div>
-          <div class="ci-label">Localisation</div>
-          <div class="ci-value">Bordeaux / Saint-Médard en Jalles — Mobilité nationale</div>
+          <div class="ci-label" data-en="Location">Localisation</div>
+          <div class="ci-value" data-en="Bordeaux / Saint-Médard en Jalles — National mobility">Bordeaux / Saint-Médard en Jalles — Mobilité nationale</div>
         </div>
       </div>
     </div>
     <div class="contact-right">
-      <div class="form-title">Envoyez un message</div>
-      <p class="form-sub">Je vous réponds dans les 48h.</p>
-      <form onsubmit="return false;">
-        <label class="form-label">Nom / Société</label>
-        <input type="text" class="form-input" placeholder="Votre nom ou société">
+      <div class="form-title" data-en="Send a message">Envoyez un message</div>
+      <p class="form-sub" data-en="Fill in the form — clicking Send opens your mail app with everything pre-filled.">Remplissez le formulaire — cliquer sur Envoyer ouvre votre application mail avec tout pré-rempli.</p>
+      <form id="contact-form" onsubmit="return false;">
+        <label class="form-label" data-en="Name / Company">Nom / Société</label>
+        <input type="text" id="cf-name" class="form-input" placeholder="Votre nom ou société" data-en-ph="Your name or company">
         <label class="form-label">Email</label>
-        <input type="email" class="form-input" placeholder="votre@email.com">
-        <label class="form-label">Objet</label>
-        <input type="text" class="form-input" placeholder="Proposition CDI, échange, etc.">
-        <label class="form-label">Message</label>
-        <textarea class="form-textarea" placeholder="Votre message..."></textarea>
-        <button type="submit" class="btn-submit">Envoyer →</button>
+        <input type="email" id="cf-email" class="form-input" placeholder="votre@email.com" data-en-ph="your@email.com">
+        <label class="form-label" data-en="Subject">Objet</label>
+        <input type="text" id="cf-subject" class="form-input" placeholder="Proposition CDI, échange, etc." data-en-ph="Job offer, discussion, etc.">
+        <label class="form-label" data-en="Message">Message</label>
+        <textarea id="cf-message" class="form-textarea" placeholder="Votre message..." data-en-ph="Your message..."></textarea>
+        <button type="button" class="btn-submit" id="btn-send-mail" data-en="Send via email →">Envoyer via ma messagerie →</button>
+        <p style="font-size:0.75rem;color:var(--light);margin-top:0.75rem;text-align:center;" data-en="Opens your mail app (Outlook, Gmail…) with the message pre-filled.">Ouvre votre application mail (Outlook, Gmail…) avec le message pré-rempli.</p>
+      </form>
       </form>
     </div>
   </div>
 </section>
-
+ 
 <!-- FOOTER -->
 <footer>
   <div class="ft-logo">Maxime Mear</div>
-  <div class="ft-text">Responsable Qualité — Aérospatiale & Défense · Portfolio 2025</div>
+  <div class="ft-text" data-en="Quality Manager · Quality Engineer — Aeronautics, Space & Defense">Responsable Qualité · Ingénieur Qualité — Aéronautique, Spatial & Défense</div>
   <div class="ft-links">
-    <a href="#about">À propos</a>
-    <a href="#formations">Formations</a>
-    <a href="#experiences">Expériences</a>
+    <a href="#about" data-en="About">À propos</a>
+    <a href="#experiences" data-en="Experience">Expériences</a>
+    <a href="#skills">Skills</a>
     <a href="#contact">Contact</a>
   </div>
 </footer>
-
+ 
 <script>
 window.addEventListener('scroll', () => {
   document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 20);
@@ -699,11 +1299,121 @@ window.addEventListener('scroll', () => {
   document.querySelectorAll('section[id]').forEach(s => { if (window.scrollY >= s.offsetTop - 80) cur = s.id; });
   document.querySelectorAll('.nav-links a').forEach(a => { a.classList.toggle('active', a.getAttribute('href') === '#' + cur); });
 });
-
+ 
 const observer = new IntersectionObserver(entries => {
   entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
 }, { threshold: 0.1 });
 document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+ 
+const filterBtns = document.querySelectorAll('.m-filter-btn');
+const expCards = document.querySelectorAll('.exp-card');
+const filterCount = document.getElementById('filter-count');
+ 
+function updateCount() {
+  const visible = document.querySelectorAll('.exp-card:not(.hidden)').length;
+  if (filterCount) filterCount.textContent = visible + ' expérience' + (visible > 1 ? 's' : '') + ' affichée' + (visible > 1 ? 's' : '');
+}
+ 
+filterBtns.forEach(btn => {
+  btn.addEventListener('click', () => {
+    btn.classList.toggle('active');
+    const activeFilters = Array.from(filterBtns)
+      .filter(b => b.classList.contains('active'))
+      .map(b => b.getAttribute('data-filter'));
+    expCards.forEach(card => {
+      card.style.animation = 'none';
+      const cardMatches = activeFilters.some(filter => card.classList.contains(filter));
+      if (activeFilters.length === 0) {
+        card.classList.add('hidden');
+      } else if (cardMatches) {
+        card.classList.remove('hidden');
+        void card.offsetWidth;
+        card.style.animation = 'fadeIn 0.4s ease forwards';
+      } else {
+        card.classList.add('hidden');
+      }
+    });
+    updateCount();
+  });
+});
+ 
+const btnFr = document.getElementById('btn-fr');
+const btnEn = document.getElementById('btn-en');
+const translatableElements = document.querySelectorAll('[data-en]');
+const pageTitle = document.getElementById('page-title');
+ 
+translatableElements.forEach(el => { el.setAttribute('data-fr', el.innerHTML); });
+ 
+btnEn.addEventListener('click', (e) => {
+  e.preventDefault();
+  if (btnEn.classList.contains('active')) return;
+  btnFr.classList.remove('active'); btnEn.classList.add('active');
+  translatableElements.forEach(el => { el.innerHTML = el.getAttribute('data-en'); });
+  document.querySelectorAll('input[placeholder], textarea[placeholder]').forEach(el => {
+    if (!el.getAttribute('data-fr-ph')) el.setAttribute('data-fr-ph', el.getAttribute('placeholder'));
+    if (el.getAttribute('data-en-ph')) el.setAttribute('placeholder', el.getAttribute('data-en-ph'));
+  });
+  if (filterCount) filterCount.textContent = filterCount.textContent.replace('expériences affichées', 'experiences shown').replace('expérience affichée', 'experience shown');
+  if (pageTitle) document.title = pageTitle.getAttribute('data-en');
+});
+ 
+btnFr.addEventListener('click', (e) => {
+  e.preventDefault();
+  if (btnFr.classList.contains('active')) return;
+  btnEn.classList.remove('active'); btnFr.classList.add('active');
+  translatableElements.forEach(el => { el.innerHTML = el.getAttribute('data-fr'); });
+  document.querySelectorAll('input[placeholder], textarea[placeholder]').forEach(el => {
+    if (el.getAttribute('data-fr-ph')) el.setAttribute('placeholder', el.getAttribute('data-fr-ph'));
+  });
+  updateCount();
+  if (pageTitle) document.title = pageTitle.getAttribute('data-fr');
+});
+// MAILTO — formulaire de contact dynamique
+document.getElementById('btn-send-mail').addEventListener('click', () => {
+  const name    = document.getElementById('cf-name').value.trim();
+  const email   = document.getElementById('cf-email').value.trim();
+  const subject = document.getElementById('cf-subject').value.trim();
+  const message = document.getElementById('cf-message').value.trim();
+ 
+  if (!subject && !message) {
+    document.getElementById('cf-subject').focus();
+    return;
+  }
+ 
+  const finalSubject = subject || 'Prise de contact — Portfolio Maxime Méar';
+  const bodyLines = [];
+  if (name)    bodyLines.push('De : ' + name);
+  if (email)   bodyLines.push('Email : ' + email);
+  if (name || email) bodyLines.push('');
+  if (message) bodyLines.push(message);
+  bodyLines.push('');
+  bodyLines.push('---');
+  bodyLines.push('Message envoyé depuis le portfolio de Maxime Méar');
+ 
+  const mailto = 'mailto:maximemearpro@gmail.com'
+    + '?subject=' + encodeURIComponent(finalSubject)
+    + '&body='    + encodeURIComponent(bodyLines.join('\n'));
+ 
+  window.location.href = mailto;
+ 
+  // Vider les champs après le clic
+  setTimeout(() => {
+    document.getElementById('cf-name').value    = '';
+    document.getElementById('cf-email').value   = '';
+    document.getElementById('cf-subject').value = '';
+    document.getElementById('cf-message').value = '';
+ 
+    // Afficher un message de confirmation temporaire
+    const btn = document.getElementById('btn-send-mail');
+    const original = btn.textContent;
+    btn.textContent = '✓ Application mail ouverte !';
+    btn.style.background = '#1D9E75';
+    setTimeout(() => {
+      btn.textContent = original;
+      btn.style.background = '';
+    }, 3000);
+  }, 500);
+});
 </script>
 </body>
 </html>
