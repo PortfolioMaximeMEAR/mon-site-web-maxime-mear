@@ -141,6 +141,9 @@
  
     /* Section padding reduce */
     section { padding-left:clamp(1rem, 4vw, 2rem) !important; padding-right:clamp(1rem, 4vw, 2rem) !important; }
+ 
+    /* Scroll hint — smaller on mobile */
+    .scroll-hint { bottom:1rem; }
   }
  
   @media (max-width:400px) {
@@ -151,6 +154,38 @@
     .loisirs-grid { grid-template-columns:1fr !important; }
   }
  
+  /* ═══ STAGGER REVEAL ANIMATIONS ═══ */
+  .reveal { opacity:0; transform:translateY(30px); transition:opacity 0.7s ease, transform 0.7s ease; }
+  .reveal.visible { opacity:1; transform:translateY(0); }
+  .reveal.stagger-1 { transition-delay:0.1s; }
+  .reveal.stagger-2 { transition-delay:0.2s; }
+  .reveal.stagger-3 { transition-delay:0.3s; }
+  .reveal.stagger-4 { transition-delay:0.4s; }
+  .reveal.stagger-5 { transition-delay:0.5s; }
+  .reveal.stagger-6 { transition-delay:0.6s; }
+  .reveal.stagger-7 { transition-delay:0.7s; }
+ 
+  /* ═══ SCROLL INDICATOR — Hero bottom ═══ */
+  #hero { position:relative; }
+  .scroll-hint {
+    position:absolute; bottom:2rem; left:50%; transform:translateX(-50%);
+    display:flex; flex-direction:column; align-items:center; gap:0.5rem;
+    opacity:0.6; transition:opacity 0.3s;
+    animation: scrollFadeIn 1.5s ease 2s both;
+  }
+  .scroll-hint:hover { opacity:1; }
+  .scroll-hint span { font-family:var(--font-m); font-size:0.6rem; letter-spacing:0.18em; text-transform:uppercase; color:rgba(255,255,255,0.5); }
+  .scroll-anim {
+    width:20px; height:32px; border:2px solid rgba(255,255,255,0.3); border-radius:12px;
+    position:relative; display:flex; justify-content:center;
+  }
+  .scroll-dot {
+    width:3px; height:6px; background:rgba(255,255,255,0.7); border-radius:3px;
+    margin-top:5px; animation:scrollBounce 1.8s ease-in-out infinite;
+  }
+  @keyframes scrollBounce { 0%,100%{transform:translateY(0);opacity:1} 50%{transform:translateY(12px);opacity:0.3} }
+  @keyframes scrollFadeIn { from{opacity:0;transform:translateX(-50%) translateY(10px)} to{opacity:0.6;transform:translateX(-50%) translateY(0)} }
+ 
   .result-kpi { color: var(--navy); background: var(--gold-bg); padding: 0.4rem 0.8rem; border-radius: 4px; border-left: 3px solid var(--gold); display: inline-block; margin-top: 0.5rem; font-size:0.85rem; }
   .reco-grid { display:grid; grid-template-columns:repeat(auto-fit, minmax(300px, 1fr)); gap:2rem; margin-top:3rem; }
   .reco-card { background:var(--white); padding:2rem; border-radius:8px; border:1px solid var(--border); position:relative; box-shadow: 0 4px 12px var(--shadow); }
@@ -160,6 +195,76 @@
   .reco-avatar { width:45px; height:45px; background:var(--navy); color:#fff; border-radius:50%; display:flex; align-items:center; justify-content:center; font-weight:bold; font-size:1.2rem; }
   .reco-name { font-weight:600; font-size:0.9rem; color:var(--navy); }
   .reco-role { font-size:0.75rem; color:var(--light); }
+ 
+  /* ═══ 1. PROGRESS BAR — Top of page ═══ */
+  .progress-bar {
+    position:fixed; top:0; left:0; height:3px; z-index:10001;
+    background:#B8882E;
+    width:0%; transition:width 0.08s linear;
+  }
+  .progress-bar::after {
+    content:''; position:absolute; right:0; top:-2px;
+    width:7px; height:7px; border-radius:50%;
+    background:#E8C06A;
+    box-shadow:0 0 10px rgba(232,192,106,0.6), 0 0 20px rgba(232,192,106,0.3);
+  }
+ 
+  /* ═══ 2. HOVER GLOW — Skill tags ═══ */
+  .hs-pill {
+    transition:all 0.25s ease;
+    cursor:default;
+  }
+  .hs-pill:hover {
+    background:rgba(20,89,160,0.15);
+    box-shadow:0 0 12px rgba(20,89,160,0.25), 0 0 4px rgba(20,89,160,0.15);
+    transform:translateY(-1px);
+    color:var(--blue);
+  }
+  .hs-group.gold .hs-pill:hover {
+    background:rgba(184,136,46,0.15);
+    box-shadow:0 0 12px rgba(184,136,46,0.3), 0 0 4px rgba(184,136,46,0.15);
+    color:var(--gold);
+  }
+  .hs-group.teal .hs-pill:hover {
+    background:rgba(29,158,117,0.15);
+    box-shadow:0 0 12px rgba(29,158,117,0.25), 0 0 4px rgba(29,158,117,0.15);
+    color:#1D9E75;
+  }
+  .about-chip:hover {
+    transform:translateY(-1px);
+    box-shadow:0 0 10px rgba(20,89,160,0.2);
+  }
+ 
+  /* ═══ 3. SECTION SEPARATORS ═══ */
+  .section-sep {
+    width:100%; height:1px; position:relative; overflow:visible;
+  }
+  .section-sep::after {
+    content:''; position:absolute; left:10%; right:10%; top:0; height:1px;
+    background:linear-gradient(90deg, transparent 0%, var(--border) 20%, var(--gold) 50%, var(--border) 80%, transparent 100%);
+    opacity:0.5;
+  }
+  .section-sep.dark-sep::after {
+    background:linear-gradient(90deg, transparent 0%, rgba(255,255,255,0.05) 20%, rgba(232,192,106,0.3) 50%, rgba(255,255,255,0.05) 80%, transparent 100%);
+  }
+ 
+  /* ═══ 4. BACK TO TOP ═══ */
+  .back-to-top {
+    position:fixed; bottom:1.5rem; right:1.5rem; z-index:999;
+    width:42px; height:42px; border-radius:50%;
+    background:var(--navy); border:none;
+    color:rgba(255,255,255,0.7); font-size:1rem; cursor:pointer;
+    display:flex; align-items:center; justify-content:center;
+    box-shadow:0 4px 16px rgba(0,0,0,0.15);
+    opacity:0; transform:translateY(10px);
+    transition:all 0.35s ease;
+    pointer-events:none;
+  }
+  .back-to-top.show { opacity:1; transform:translateY(0); pointer-events:auto; }
+  .back-to-top:hover { background:var(--blue); color:#fff; transform:translateY(-2px); box-shadow:0 6px 24px rgba(20,89,160,0.3); }
+  @media (max-width:768px) {
+    .back-to-top { width:36px; height:36px; font-size:0.85rem; bottom:1rem; right:1rem; }
+  }
  
   /* ── PROJETS CONCRETS — UNDER CONSTRUCTION ── */
   .projets-wip-section { padding: 60px clamp(1.5rem,8vw,10rem); background: var(--navy); position: relative; overflow: hidden; }
@@ -435,6 +540,7 @@
     </button>
   </div>
 </nav>
+<div class="progress-bar" id="progress-bar"></div>
  
 <!-- HERO -->
 <section id="hero">
@@ -495,6 +601,7 @@
   </div>
 </div>
  
+<div class="section-sep"></div>
 <!-- À PROPOS -->
 <section id="about" class="section light">
   <div class="sec-label" data-en="01 — About me">01 — À propos</div>
@@ -584,6 +691,7 @@
   </div>
 </section>
  
+<div class="section-sep"></div>
 <!-- FORMATIONS -->
 <section id="formations" class="section tinted">
   <div class="sec-label" data-en="02 — Education">02 — Formations</div>
@@ -592,7 +700,7 @@
  
   <div class="school-block reveal" style="margin-top:4rem">
     <div class="school-hero">
-      <img src="images/kedge-business-school.jpg" alt="Kedge Business School" class="school-hero-img">
+      <img loading="lazy" src="images/kedge-business-school.jpg" alt="Kedge Business School" class="school-hero-img">
       <div class="school-hero-overlay">
         <div class="school-rank" data-en="🏆 Ranked #1 in France EdUniversal 2025 — Quality">🏆 N°1 national EdUniversal 2025 — Qualité</div>
         <div class="school-hero-name">Kedge Business School</div>
@@ -642,7 +750,7 @@
  
   <div class="school-block reveal" style="margin-top:3px">
     <div class="school-hero">
-      <img src="images/iut-nantes.jpg" alt="IUT Nantes Carquefou" class="school-hero-img">
+      <img loading="lazy" src="images/iut-nantes.jpg" alt="IUT Nantes Carquefou" class="school-hero-img">
       <div class="school-hero-overlay">
         <div class="school-rank" data-en="🎓 National Level 6 Diploma — Bachelor's Degree">🎓 Diplôme national de niveau 6 — Grade Licence</div>
         <div class="school-hero-name">IUT de Nantes — Campus La Fleuriaye</div>
@@ -785,6 +893,7 @@
   </div>
 </section>
  
+<div class="section-sep"></div>
 <!-- EXPÉRIENCES -->
 <section id="experiences" class="section tinted">
   <div class="sec-label" data-en="03 — Experience">03 — Expériences</div>
@@ -815,7 +924,7 @@
         </ul>
         <div class="exp-chips"><span class="exp-chip">EN 9100</span><span class="exp-chip">VBA / Excel</span><span class="exp-chip" data-en="Internal audit">Audit interne</span><span class="exp-chip" data-en="Document management">Gestion documentaire</span><span class="exp-chip" data-en="Quality Culture">Culture Qualité</span></div>
       </div>
-      <div class="exp-logo-wrap"><img src="images/arianegroup-logo.png" alt="ArianeGroup" class="exp-logo" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><div style="display:none;width:120px;height:60px;background:var(--blue-light);border-radius:6px;align-items:center;justify-content:center;font-size:0.75rem;font-weight:700;color:var(--blue);text-align:center">Ariane<br>Group</div></div>
+      <div class="exp-logo-wrap"><img loading="lazy" src="images/arianegroup-logo.png" alt="ArianeGroup" class="exp-logo" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><div style="display:none;width:120px;height:60px;background:var(--blue-light);border-radius:6px;align-items:center;justify-content:center;font-size:0.75rem;font-weight:700;color:var(--blue);text-align:center">Ariane<br>Group</div></div>
     </div>
     <!-- DAHER AEROSPACE -->
     <div class="exp-card stage reveal">
@@ -845,7 +954,7 @@
         </ul>
         <div class="exp-chips"><span class="exp-chip">EN 9100</span><span class="exp-chip">SMQ</span><span class="exp-chip">Power Platform</span><span class="exp-chip" data-en="Visual management">Management visuel</span><span class="exp-chip">CAPA</span><span class="exp-chip">HSE</span><span class="exp-chip" data-en="Logigrammes">Logigrammes</span><span class="exp-chip" data-en="Document base">Base documentaire</span><span class="exp-chip" data-en="Change management">Conduite du changement</span></div>
       </div>
-      <div class="exp-logo-wrap"><img src="images/daher-logo.png" alt="DAHER Aerospace" class="exp-logo" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><div style="display:none;width:120px;height:60px;background:#FFF3E0;border-radius:6px;align-items:center;justify-content:center;font-size:0.75rem;font-weight:700;color:#E65100;text-align:center">DAHER<br>Aerospace</div></div>
+      <div class="exp-logo-wrap"><img loading="lazy" src="images/daher-logo.png" alt="DAHER Aerospace" class="exp-logo" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><div style="display:none;width:120px;height:60px;background:#FFF3E0;border-radius:6px;align-items:center;justify-content:center;font-size:0.75rem;font-weight:700;color:#E65100;text-align:center">DAHER<br>Aerospace</div></div>
     </div>
     <!-- ID LOGISTICS -->
     <div class="exp-card alternance reveal">
@@ -884,7 +993,7 @@
         </ul>
         <div class="exp-chips"><span class="exp-chip">QHSE</span><span class="exp-chip" data-en="Internal audit">Audit interne</span><span class="exp-chip" data-en="Regulatory compliance">Conformité réglementaire</span><span class="exp-chip">Kaizen</span><span class="exp-chip" data-en="CID Certification">Certification CID</span><span class="exp-chip" data-en="Risk management">Gestion des risques</span><span class="exp-chip" data-en="HSE Procedures">Procédures HSE</span><span class="exp-chip" data-en="Team training">Formation équipes</span><span class="exp-chip">Lean Sigma</span><span class="exp-chip" data-en="Operational excellence">Excellence opérationnelle</span><span class="exp-chip">Obeya</span><span class="exp-chip" data-en="Change management">Conduite du changement</span><span class="exp-chip">TRS</span><span class="exp-chip">6S</span></div>
       </div>
-      <div class="exp-logo-wrap"><img src="images/id-logistics-logo.png" alt="ID Logistics" class="exp-logo" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><div style="display:none;width:120px;height:60px;background:#E8F5E9;border-radius:6px;align-items:center;justify-content:center;font-size:0.75rem;font-weight:700;color:#2E7D32;text-align:center">ID<br>Logistics</div></div>
+      <div class="exp-logo-wrap"><img loading="lazy" src="images/id-logistics-logo.png" alt="ID Logistics" class="exp-logo" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><div style="display:none;width:120px;height:60px;background:#E8F5E9;border-radius:6px;align-items:center;justify-content:center;font-size:0.75rem;font-weight:700;color:#2E7D32;text-align:center">ID<br>Logistics</div></div>
     </div>
     <!-- BPGO 2022 -->
     <div class="exp-card job reveal">
@@ -900,7 +1009,7 @@
         </ul>
         <div class="exp-chips"><span class="exp-chip" data-en="Organizational skills">Sens de l'organisation</span><span class="exp-chip" data-en="Listening skills">Sens de l'écoute</span><span class="exp-chip" data-en="Office automation">Bureautique</span></div>
       </div>
-      <div class="exp-logo-wrap"><img src="images/logo-BP-scaled-1.png" alt="Banque Populaire Grand Ouest" class="exp-logo" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><div style="display:none;width:120px;height:60px;background:#E3F2FD;border-radius:6px;align-items:center;justify-content:center;font-size:0.75rem;font-weight:700;color:#1565C0;text-align:center;line-height:1.2">Banque<br>Populaire</div></div>
+      <div class="exp-logo-wrap"><img loading="lazy" src="images/logo-BP-scaled-1.png" alt="Banque Populaire Grand Ouest" class="exp-logo" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><div style="display:none;width:120px;height:60px;background:#E3F2FD;border-radius:6px;align-items:center;justify-content:center;font-size:0.75rem;font-weight:700;color:#1565C0;text-align:center;line-height:1.2">Banque<br>Populaire</div></div>
     </div>
     <!-- JOHNSON CONTROLS -->
     <div class="exp-card stage reveal">
@@ -915,7 +1024,7 @@
         </ul>
         <div class="exp-chips"><span class="exp-chip" data-en="Order management">Gestion des commandes</span><span class="exp-chip" data-en="Project management">Management de projet</span><span class="exp-chip" data-en="Organization">Organisation</span></div>
       </div>
-      <div class="exp-logo-wrap"><img src="images/johnson.png" alt="Johnson Controls" class="exp-logo" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><div style="display:none;width:120px;height:60px;background:#E0F2F1;border-radius:6px;align-items:center;justify-content:center;font-size:0.75rem;font-weight:700;color:#00695C;text-align:center;line-height:1.2">Johnson<br>Controls</div></div>
+      <div class="exp-logo-wrap"><img loading="lazy" src="images/johnson.png" alt="Johnson Controls" class="exp-logo" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><div style="display:none;width:120px;height:60px;background:#E0F2F1;border-radius:6px;align-items:center;justify-content:center;font-size:0.75rem;font-weight:700;color:#00695C;text-align:center;line-height:1.2">Johnson<br>Controls</div></div>
     </div>
     <!-- BPGO 2021 -->
     <div class="exp-card job reveal">
@@ -931,7 +1040,7 @@
         </ul>
         <div class="exp-chips"><span class="exp-chip" data-en="Communication">Communication</span><span class="exp-chip" data-en="Inventory management">Gestion de stock</span><span class="exp-chip" data-en="Office automation">Bureautique</span></div>
       </div>
-      <div class="exp-logo-wrap"><img src="images/logo-BP-scaled-1.png" alt="Banque Populaire Grand Ouest" class="exp-logo" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><div style="display:none;width:120px;height:60px;background:#E3F2FD;border-radius:6px;align-items:center;justify-content:center;font-size:0.75rem;font-weight:700;color:#1565C0;text-align:center;line-height:1.2">Banque<br>Populaire</div></div>
+      <div class="exp-logo-wrap"><img loading="lazy" src="images/logo-BP-scaled-1.png" alt="Banque Populaire Grand Ouest" class="exp-logo" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><div style="display:none;width:120px;height:60px;background:#E3F2FD;border-radius:6px;align-items:center;justify-content:center;font-size:0.75rem;font-weight:700;color:#1565C0;text-align:center;line-height:1.2">Banque<br>Populaire</div></div>
     </div>
     <!-- CASTEL VIANDES -->
     <div class="exp-card stage reveal">
@@ -947,11 +1056,12 @@
         </ul>
         <div class="exp-chips"><span class="exp-chip">SAP</span><span class="exp-chip" data-en="Autonomy">Autonomie</span><span class="exp-chip" data-en="Teamwork">Travail d'équipe</span></div>
       </div>
-      <div class="exp-logo-wrap"><img src="images/CASTEL-VIANDE.jpg" alt="Castel Viandes" class="exp-logo" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><div style="display:none;width:120px;height:60px;background:#FFEBEE;border-radius:6px;align-items:center;justify-content:center;font-size:0.75rem;font-weight:700;color:#C62828;text-align:center;line-height:1.2">Castel<br>Viandes</div></div>
+      <div class="exp-logo-wrap"><img loading="lazy" src="images/CASTEL-VIANDE.jpg" alt="Castel Viandes" class="exp-logo" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><div style="display:none;width:120px;height:60px;background:#FFEBEE;border-radius:6px;align-items:center;justify-content:center;font-size:0.75rem;font-weight:700;color:#C62828;text-align:center;line-height:1.2">Castel<br>Viandes</div></div>
     </div>
   </div>
 </section>
  
+<div class="section-sep"></div>
 <!-- PROJETS CONCRETS — 7 PROJETS (4 études de cas + 3 en construction) -->
 <section id="projets" class="projets-wip-section">
   <div class="sec-label" data-en="04 — Concrete Projects">04 — Projets concrets</div>
@@ -1107,6 +1217,7 @@
   </div>
 </section>
  
+<div class="section-sep"></div>
 <!-- HARD & SOFT SKILLS -->
 <section id="skills" class="skills-page">
   <div class="sec-label">05 — Hard &amp; Soft Skills</div>
@@ -1170,6 +1281,7 @@
   </div>
 </section>
  
+<div class="section-sep"></div>
 <!-- CERTIFICATIONS -->
 <section id="certifications" class="section tinted">
   <div class="sec-label" data-en="06 — Certifications">06 — Certifications</div>
@@ -1184,17 +1296,18 @@
   </div>
 </section>
  
+<div class="section-sep"></div>
 <!-- LOISIRS -->
 <section id="loisirs" class="section light">
   <div class="sec-label" data-en="07 — Hobbies">07 — Loisirs</div>
   <h2 class="sec-title" data-en="Areas of<br>Interest">Centres<br>d'intérêt</h2>
   <div class="loisirs-grid">
-    <div class="loisir-card reveal"><img src="images/football.jpg" alt="Football" class="loisir-img" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1517466787929-bc90951d0974?w=400&q=80'"><div class="loisir-title">Football</div><p class="loisir-desc" data-en="13 years of practice, team and recreational player.">13 ans de pratique, en club et en loisir.</p></div>
-    <div class="loisir-card reveal reveal-delay-1"><img src="https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?w=400&q=80" alt="Musique" class="loisir-img"><div class="loisir-title" data-en="Music & Piano">Musique & Piano</div><p class="loisir-desc" data-en="Self-taught piano player for 1 year, music lover.">Piano en autodidacte depuis 1 an, passionné de musique.</p></div>
-    <div class="loisir-card reveal reveal-delay-2"><img src="https://images.unsplash.com/photo-1554068865-24cecd4e34b8?w=400&q=80" alt="Tennis Badminton" class="loisir-img"><div class="loisir-title">Tennis / Badminton</div><p class="loisir-desc" data-en="Racket sports, leisure and friendly competition.">Sports de raquette en loisir et compétition amicale.</p></div>
-    <div class="loisir-card reveal reveal-delay-3"><img src="images/lecture.jpg" alt="Voyages" class="loisir-img" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?w=400&q=80'"><div class="loisir-title" data-en="Travel & Reading">Voyages & Lecture</div><p class="loisir-desc" data-en="Travel, fiction, technical reading, aerospace sector watch.">Voyages, fiction, lecture technique, veille aérospatiale.</p></div>
-    <div class="loisir-card reveal reveal-delay-1"><img src="https://images.unsplash.com/photo-1461749280684-dccba630e2f6?w=400&q=80" alt="Développement web et code" class="loisir-img"><div class="loisir-title" data-en="Coding & Dev">Développement & Code</div><p class="loisir-desc" data-en="Personal projects: tools, scripts, web apps, automation.">Projets perso : outils, scripts, applis web, automatisation.</p></div>
-    <div class="loisir-card reveal reveal-delay-2"><img src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?w=400&q=80" alt="Cybersécurité" class="loisir-img"><div class="loisir-title" data-en="Cybersecurity">Cybersécurité</div><p class="loisir-desc" data-en="ANSSI certified, sector news monitoring, best practices.">Certifié ANSSI, veille sectorielle, bonnes pratiques.</p></div>
+    <div class="loisir-card reveal"><img loading="lazy" src="images/football.jpg" alt="Football" class="loisir-img" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1517466787929-bc90951d0974?w=400&q=80'"><div class="loisir-title">Football</div><p class="loisir-desc" data-en="13 years of practice, team and recreational player.">13 ans de pratique, en club et en loisir.</p></div>
+    <div class="loisir-card reveal reveal-delay-1"><img loading="lazy" src="https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?w=400&q=80" alt="Musique" class="loisir-img"><div class="loisir-title" data-en="Music & Piano">Musique & Piano</div><p class="loisir-desc" data-en="Self-taught piano player for 1 year, music lover.">Piano en autodidacte depuis 1 an, passionné de musique.</p></div>
+    <div class="loisir-card reveal reveal-delay-2"><img loading="lazy" src="https://images.unsplash.com/photo-1554068865-24cecd4e34b8?w=400&q=80" alt="Tennis Badminton" class="loisir-img"><div class="loisir-title">Tennis / Badminton</div><p class="loisir-desc" data-en="Racket sports, leisure and friendly competition.">Sports de raquette en loisir et compétition amicale.</p></div>
+    <div class="loisir-card reveal reveal-delay-3"><img loading="lazy" src="images/lecture.jpg" alt="Voyages" class="loisir-img" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?w=400&q=80'"><div class="loisir-title" data-en="Travel & Reading">Voyages & Lecture</div><p class="loisir-desc" data-en="Travel, fiction, technical reading, aerospace sector watch.">Voyages, fiction, lecture technique, veille aérospatiale.</p></div>
+    <div class="loisir-card reveal reveal-delay-1"><img loading="lazy" src="https://images.unsplash.com/photo-1461749280684-dccba630e2f6?w=400&q=80" alt="Développement web et code" class="loisir-img"><div class="loisir-title" data-en="Coding & Dev">Développement & Code</div><p class="loisir-desc" data-en="Personal projects: tools, scripts, web apps, automation.">Projets perso : outils, scripts, applis web, automatisation.</p></div>
+    <div class="loisir-card reveal reveal-delay-2"><img loading="lazy" src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?w=400&q=80" alt="Cybersécurité" class="loisir-img"><div class="loisir-title" data-en="Cybersecurity">Cybersécurité</div><p class="loisir-desc" data-en="ANSSI certified, sector news monitoring, best practices.">Certifié ANSSI, veille sectorielle, bonnes pratiques.</p></div>
   </div>
 </section>
  
@@ -1215,6 +1328,7 @@
   </div>
 </section>
  
+<div class="section-sep"></div>
 <!-- CONTACT -->
 <section id="contact" style="padding:0">
   <div class="contact-wrap">
@@ -1250,7 +1364,7 @@
   <div class="pm-modal">
     <button class="pm-close" onclick="closeProjectModal()">&times;</button>
     <div class="pm-hero">
-      <img src="https://images.unsplash.com/photo-1553413077-190dd305871c?w=1200&q=80" alt="Waste management">
+      <img loading="lazy" src="https://images.unsplash.com/photo-1553413077-190dd305871c?w=1200&q=80" alt="Waste management">
       <div class="pm-hero-overlay">
         <div class="pm-hero-company">ID Logistics · Derval (44) · Site 36 000 m² · 170 collaborateurs</div>
         <div class="pm-hero-title" data-en="Waste Recovery & Site Layout Redesign">Revalorisation des déchets & refonte de l'implantation</div>
@@ -1301,7 +1415,7 @@
   <div class="pm-modal">
     <button class="pm-close" onclick="closeProjectModal()">&times;</button>
     <div class="pm-hero">
-      <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=1200&q=80" alt="Audit dashboard">
+      <img loading="lazy" src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=1200&q=80" alt="Audit dashboard">
       <div class="pm-hero-overlay">
         <div class="pm-hero-company">ID Logistics · Derval (44) · Certification EuraCRP · 2 ans</div>
         <div class="pm-hero-title" data-en="CID Certification, Internal Audits & Fleet Management">Certification CID, Audits internes & Gestion de parc</div>
@@ -1350,7 +1464,7 @@
   <div class="pm-modal">
     <button class="pm-close" onclick="closeProjectModal()">&times;</button>
     <div class="pm-hero">
-      <img src="https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=1200&q=80" alt="DAHER Aerospace">
+      <img loading="lazy" src="https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=1200&q=80" alt="DAHER Aerospace">
       <div class="pm-hero-overlay">
         <div class="pm-hero-company">DAHER Aerospace · Le Haillan (33) · Service Qualité · Site Dassault Aviation Martignas</div>
         <div class="pm-hero-title" data-en="Quality Guide, Digitalisation & Field Expertise">Guide Qualité, Digitalisation & Expertise terrain</div>
@@ -1405,7 +1519,7 @@
   <div class="pm-modal">
     <button class="pm-close" onclick="closeProjectModal()">&times;</button>
     <div class="pm-hero">
-      <img src="images/Smartlocker.jpg" alt="Smart Lockers">
+      <img loading="lazy" src="images/Smartlocker.jpg" alt="Smart Lockers">
       <div class="pm-hero-overlay">
         <div class="pm-hero-company">ID Logistics · Derval (44) · Site 44 000 m² · 150 collaborateurs</div>
         <div class="pm-hero-title" data-en="SMARTLOCKER — Smart Locker Deployment & Equipment Management">SMARTLOCKER — Déploiement casiers intelligents & Gestion du matériel</div>
@@ -1449,6 +1563,9 @@
   </div>
 </div>
  
+<!-- BACK TO TOP -->
+<button class="back-to-top" id="back-to-top" aria-label="Back to top">↑</button>
+ 
 <!-- FOOTER -->
 <footer>
   <div class="ft-logo">Maxime Mear</div>
@@ -1462,12 +1579,56 @@
 </footer>
  
 <script>
+// ── PROGRESS BAR + PARALLAX + BACK TO TOP + NAVBAR ──
+var progressBar = document.getElementById('progress-bar');
+var backToTop = document.getElementById('back-to-top');
+ 
 window.addEventListener('scroll', () => {
-  document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 20);
+  var scrollY = window.scrollY;
+  
+  // Navbar scroll state
+  document.getElementById('navbar').classList.toggle('scrolled', scrollY > 20);
+  
+  // Hide scroll hint
+  var hint = document.querySelector('.scroll-hint');
+  if (hint) hint.style.opacity = scrollY > 80 ? '0' : '';
+  
+  // Active nav link
   let cur = '';
-  document.querySelectorAll('section[id]').forEach(s => { if (window.scrollY >= s.offsetTop - 80) cur = s.id; });
+  document.querySelectorAll('section[id]').forEach(s => { if (scrollY >= s.offsetTop - 80) cur = s.id; });
   document.querySelectorAll('.nav-links a').forEach(a => { a.classList.toggle('active', a.getAttribute('href') === '#' + cur); });
+  
+  // Progress bar
+  if (progressBar) {
+    var docH = document.documentElement.scrollHeight - window.innerHeight;
+    var pct = docH > 0 ? (scrollY / docH) * 100 : 0;
+    progressBar.style.width = pct + '%';
+  }
+  
+  // Back to top button
+  if (backToTop) backToTop.classList.toggle('show', scrollY > 500);
 });
+ 
+// Back to top click
+if (backToTop) {
+  backToTop.addEventListener('click', function() {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+}
+ 
+// ── STAGGER REVEAL — auto-assign stagger classes to siblings ──
+(function() {
+  var containers = ['.exp-list', '.projets-grid-wip', '.certs-grid', '.loisirs-grid', '.reco-grid', '.ss-grid', '.about-kpis'];
+  containers.forEach(function(sel) {
+    var container = document.querySelector(sel);
+    if (!container) return;
+    var children = container.querySelectorAll('.reveal, .projet-wip-card, .cert-card, .loisir-card, .reco-card, .ss-card, .about-kpi, .exp-card');
+    children.forEach(function(child, i) {
+      child.classList.add('reveal');
+      child.classList.add('stagger-' + Math.min(i + 1, 7));
+    });
+  });
+})();
  
 const observer = new IntersectionObserver(entries => {
   entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
