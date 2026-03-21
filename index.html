@@ -3,10 +3,27 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Maxime Mear — Ingénieur Qualité & Amélioration Continue | Master ISMQ Kedge Bac+5 | Aérospatiale & Défense | ArianeGroup, DAHER, ID Logistics | Disponible CDI Sept. 2026">
+<meta name="author" content="Maxime Mear">
+<meta property="og:title" content="Maxime Mear — Responsable Qualité | Aérospatiale & Défense">
+<meta property="og:description" content="Portfolio de Maxime Mear — Ingénieur Qualité & Amélioration Continue. Master ISMQ Kedge. Expériences : ArianeGroup, DAHER Aerospace, ID Logistics. Disponible en CDI dès septembre 2026.">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="fr_FR">
+<meta property="og:locale:alternate" content="en_US">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Maxime Mear — Quality & Continuous Improvement Engineer">
+<meta name="twitter:description" content="Portfolio — Master ISMQ Kedge | ArianeGroup, DAHER Aerospace, ID Logistics | Available for permanent contract Sept. 2026">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='6' fill='%230A1F3D'/><text x='16' y='21.5' font-family='system-ui' font-size='14' font-weight='700' fill='%23E8C06A' text-anchor='middle'>MM</text></svg>">
 <title id="page-title" data-en="Maxime Mear — Quality Manager | Aerospace & Defense">Maxime Mear — Responsable Qualité | Aérospatiale & Défense</title>
 <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Outfit:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
 <style>
+  /* ═══ FONT OVERRIDE — Use Google Fonts instead of system fallbacks ═══ */
+  :root {
+    --font-d: 'DM Serif Display', Georgia, 'Times New Roman', serif !important;
+    --font-b: 'Outfit', -apple-system, Arial, sans-serif !important;
+    --font-m: 'DM Mono', 'Courier New', monospace !important;
+  }
   .nav-links { display:flex; gap:1.25rem; list-style:none; flex-wrap:nowrap; overflow-x:auto; scrollbar-width:none; }
   .nav-links::-webkit-scrollbar { display:none; }
   .nav-links a { font-size:0.78rem; font-weight:500; letter-spacing:0.04em; color:var(--muted); transition:color 0.2s; white-space:nowrap; }
@@ -19,6 +36,121 @@
   .lang-btn:not(.active):hover { color:var(--navy); background:var(--border); }
   .btn-cv { padding:0.85rem 2rem; background:var(--sky); color:#fff; font-size:0.82rem; font-weight:700; letter-spacing:0.06em; border:none; border-radius:4px; transition: transform 0.2s, background 0.2s, box-shadow 0.2s; display:inline-flex; align-items:center; gap:0.5rem; text-decoration:none; }
   .btn-cv:hover { background:var(--blue); transform:translateY(-2px); box-shadow:0 8px 24px rgba(20,89,160,0.3); color:#fff; }
+  /* ═══ HAMBURGER MENU — Mobile ═══ */
+  .nav-hamburger {
+    display:none; background:none; border:none; cursor:pointer;
+    width:36px; height:36px; position:relative; z-index:101;
+    flex-direction:column; align-items:center; justify-content:center; gap:5px;
+    padding:0;
+  }
+  .nav-hamburger span {
+    display:block; width:22px; height:2px; background:var(--navy);
+    border-radius:2px; transition:all 0.3s ease;
+  }
+  .nav-hamburger.open span:nth-child(1) { transform:rotate(45deg) translate(5px,5px); }
+  .nav-hamburger.open span:nth-child(2) { opacity:0; }
+  .nav-hamburger.open span:nth-child(3) { transform:rotate(-45deg) translate(5px,-5px); }
+ 
+  @media (max-width:768px) {
+    .nav-hamburger { display:flex; }
+    #navbar { flex-wrap:wrap; }
+ 
+    /* Hide desktop nav-links, show mobile panel */
+    .nav-links {
+      display:none !important; position:fixed; top:0; left:0; right:0; bottom:0;
+      z-index:100; background:var(--white);
+      flex-direction:column !important; align-items:center; justify-content:center;
+      gap:2rem; padding:2rem;
+    }
+    .nav-links.mobile-open {
+      display:flex !important;
+    }
+    .nav-links li { list-style:none; }
+    .nav-links a {
+      font-size:1.2rem !important; font-weight:600 !important;
+      color:var(--navy) !important; letter-spacing:0.02em !important;
+    }
+    .nav-links a:hover, .nav-links a.active { color:var(--blue) !important; }
+ 
+    /* Nav CTA — smaller on mobile */
+    .nav-cta {
+      font-size:0.7rem !important; padding:0.5rem 1rem !important;
+      white-space:nowrap;
+    }
+ 
+    /* Lang toggle — compact */
+    .lang-toggle { margin-right:0.5rem !important; }
+    .lang-btn { padding:0.25rem 0.5rem !important; font-size:0.7rem !important; }
+    .lang-btn .lf { font-size:0.85rem !important; }
+    .lang-btn .lc { display:none; }
+ 
+    /* Hero adjustments */
+    .hero-name { font-size:clamp(2rem, 10vw, 3.5rem) !important; }
+    .hero-sub { font-size:0.85rem !important; }
+    .hero-desc { font-size:0.82rem !important; }
+    .hero-stats { flex-direction:column; gap:1rem; }
+ 
+    /* Section titles */
+    .sec-title { font-size:clamp(1.8rem, 6vw, 2.8rem) !important; }
+ 
+    /* About section */
+    .about-full { flex-direction:column !important; }
+    .about-main { width:100% !important; }
+    .about-kpis { grid-template-columns:repeat(2, 1fr) !important; }
+ 
+    /* Experience cards */
+    .exp-list { grid-template-columns:1fr !important; }
+ 
+    /* Certifications */
+    .certs-grid { grid-template-columns:1fr !important; }
+ 
+    /* Hobbies */
+    .loisirs-grid { grid-template-columns:1fr 1fr !important; }
+ 
+    /* Reco grid */
+    .reco-grid { grid-template-columns:1fr !important; }
+ 
+    /* Contact */
+    .contact-wrap { flex-direction:column !important; }
+    .contact-left, .contact-right { width:100% !important; }
+ 
+    /* Image band */
+    .img-band { flex-direction:column; height:auto !important; }
+    .img-band > div { height:200px !important; }
+ 
+    /* Footer */
+    footer { text-align:center; padding:2rem 1rem !important; }
+    .ft-links { flex-wrap:wrap; justify-content:center; gap:0.75rem; }
+ 
+    /* Modals */
+    .pm-body { padding:1.25rem !important; }
+    .pm-hero-title { font-size:1.3rem !important; }
+    .pm-kpis { grid-template-columns:repeat(2, 1fr) !important; }
+    .pm-step { grid-template-columns:32px 1fr !important; }
+ 
+    /* Skills section */
+    .skills-two-col { grid-template-columns:1fr !important; }
+    .ss-grid { grid-template-columns:1fr 1fr !important; }
+ 
+    /* Formations */
+    .school-content { flex-direction:column !important; }
+    .school-left, .school-right { width:100% !important; max-width:none !important; }
+ 
+    /* CV button */
+    .btn-cv { font-size:0.75rem !important; padding:0.7rem 1.5rem !important; }
+ 
+    /* Section padding reduce */
+    section { padding-left:clamp(1rem, 4vw, 2rem) !important; padding-right:clamp(1rem, 4vw, 2rem) !important; }
+  }
+ 
+  @media (max-width:400px) {
+    .nav-cta { font-size:0.62rem !important; padding:0.4rem 0.75rem !important; }
+    .lang-toggle { margin-right:0.25rem !important; }
+    .about-kpis { grid-template-columns:1fr !important; }
+    .ss-grid { grid-template-columns:1fr !important; }
+    .loisirs-grid { grid-template-columns:1fr !important; }
+  }
+ 
   .result-kpi { color: var(--navy); background: var(--gold-bg); padding: 0.4rem 0.8rem; border-radius: 4px; border-left: 3px solid var(--gold); display: inline-block; margin-top: 0.5rem; font-size:0.85rem; }
   .reco-grid { display:grid; grid-template-columns:repeat(auto-fit, minmax(300px, 1fr)); gap:2rem; margin-top:3rem; }
   .reco-card { background:var(--white); padding:2rem; border-radius:8px; border:1px solid var(--border); position:relative; box-shadow: 0 4px 12px var(--shadow); }
@@ -30,27 +162,28 @@
   .reco-role { font-size:0.75rem; color:var(--light); }
  
   /* ── PROJETS CONCRETS — UNDER CONSTRUCTION ── */
-  .projets-wip-section { padding: 100px clamp(1.5rem,8vw,10rem); background: var(--navy); position: relative; overflow: hidden; }
+  .projets-wip-section { padding: 60px clamp(1.5rem,8vw,10rem); background: var(--navy); position: relative; overflow: hidden; }
   .projets-wip-section::before { content:''; position:absolute; inset:0; background-image: linear-gradient(rgba(74,127,165,0.05) 1px, transparent 1px), linear-gradient(90deg, rgba(74,127,165,0.05) 1px, transparent 1px); background-size:40px 40px; pointer-events:none; }
   .projets-wip-section .sec-label { color:#7AAECB; }
   .projets-wip-section .sec-label::before { background:#7AAECB; }
   .projets-wip-section .sec-title { color:#fff; }
-  .wip-badge { display:inline-flex; align-items:center; gap:0.6rem; background:rgba(184,136,46,0.2); border:1px solid rgba(232,192,106,0.35); color:#E8C06A; font-family:var(--font-m); font-size:0.7rem; letter-spacing:0.12em; text-transform:uppercase; padding:0.4rem 1.1rem; border-radius:100px; margin-bottom:2.5rem; }
+  .wip-badge { display:inline-flex; align-items:center; gap:0.6rem; background:rgba(184,136,46,0.2); border:1px solid rgba(232,192,106,0.35); color:#E8C06A; font-family:var(--font-m); font-size:0.7rem; letter-spacing:0.12em; text-transform:uppercase; padding:0.4rem 1.1rem; border-radius:100px; margin-bottom:1.5rem; }
   .wip-dot { width:7px; height:7px; border-radius:50%; background:#E8C06A; animation: wipPulse 1.6s ease-in-out infinite; }
   @keyframes wipPulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:0.4;transform:scale(0.7)} }
  
   .projets-grid-wip { display:grid; grid-template-columns:repeat(3,1fr); gap:2px; margin-top:0; position:relative; }
+  @media (min-width:901px) { .projets-grid-wip > :last-child:nth-child(3n+1) { grid-column: 2; } }
  
-  .projet-wip-card { position:relative; min-height:420px; overflow:hidden; display:flex; flex-direction:column; }
+  .projet-wip-card { position:relative; min-height:300px; overflow:hidden; display:flex; flex-direction:column; }
   .projet-wip-bg { position:absolute; inset:0; background-size:cover; background-position:center; filter:brightness(0.22) blur(1px); transition:filter 0.4s; }
   .projet-wip-card:hover .projet-wip-bg { filter:brightness(0.18) blur(2px); }
  
-  .projet-wip-content { position:relative; z-index:2; padding:2rem; display:flex; flex-direction:column; height:100%; min-height:420px; }
-  .projet-wip-company { font-family:var(--font-m); font-size:0.65rem; letter-spacing:0.18em; text-transform:uppercase; color:rgba(255,255,255,0.45); margin-bottom:0.5rem; }
-  .projet-wip-title { font-family:var(--font-d); font-size:1.25rem; color:#fff; line-height:1.25; margin-bottom:0.75rem; }
-  .projet-wip-desc { font-size:0.82rem; color:rgba(255,255,255,0.55); line-height:1.65; flex:1; }
-  .projet-wip-tags { display:flex; flex-wrap:wrap; gap:0.4rem; margin-top:1.25rem; }
-  .projet-wip-tag { padding:0.22rem 0.65rem; background:rgba(255,255,255,0.07); border:1px solid rgba(255,255,255,0.12); font-size:0.68rem; color:rgba(255,255,255,0.55); border-radius:3px; }
+  .projet-wip-content { position:relative; z-index:2; padding:1.5rem 1.75rem; display:flex; flex-direction:column; height:100%; min-height:300px; }
+  .projet-wip-company { font-family:var(--font-m); font-size:0.6rem; letter-spacing:0.18em; text-transform:uppercase; color:rgba(255,255,255,0.45); margin-bottom:0.4rem; }
+  .projet-wip-title { font-family:var(--font-d); font-size:1.1rem; color:#fff; line-height:1.25; margin-bottom:0.5rem; }
+  .projet-wip-desc { font-size:0.78rem; color:rgba(255,255,255,0.55); line-height:1.6; flex:1; }
+  .projet-wip-tags { display:flex; flex-wrap:wrap; gap:0.35rem; margin-top:0.75rem; }
+  .projet-wip-tag { padding:0.2rem 0.55rem; background:rgba(255,255,255,0.07); border:1px solid rgba(255,255,255,0.12); font-size:0.62rem; color:rgba(255,255,255,0.55); border-radius:3px; }
  
   .projet-wip-overlay { position:absolute; inset:0; z-index:3; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:0.75rem; background:rgba(5,13,26,0.55); backdrop-filter:blur(6px); opacity:0; transition:opacity 0.35s; }
   .projet-wip-card:hover .projet-wip-overlay { opacity:1; }
@@ -58,10 +191,225 @@
   .wip-label { font-family:var(--font-m); font-size:0.72rem; letter-spacing:0.16em; text-transform:uppercase; color:#E8C06A; }
   .wip-sublabel { font-size:0.75rem; color:rgba(255,255,255,0.5); }
  
-  .projet-wip-bottom { margin-top:3rem; display:flex; align-items:center; justify-content:center; gap:1rem; }
+  .projet-wip-bottom { margin-top:1.5rem; display:flex; align-items:center; justify-content:center; gap:1rem; }
   .wip-cta { display:inline-flex; align-items:center; gap:0.6rem; padding:0.8rem 1.75rem; background:transparent; color:rgba(255,255,255,0.6); border:1px solid rgba(255,255,255,0.15); font-size:0.8rem; font-family:var(--font-b); border-radius:4px; cursor:default; font-style:italic; }
  
-  @media (max-width:900px) { .projets-grid-wip { grid-template-columns:1fr; } }
+  @media (max-width:900px) { .projets-grid-wip { grid-template-columns:1fr 1fr; } .projet-wip-card { min-height:260px; } .projet-wip-content { min-height:260px; } }
+  @media (max-width:600px) { .projets-grid-wip { grid-template-columns:1fr; } }
+ 
+  /* ═══ TYPING CURSOR sur le hero ═══ */
+  .hero-sub::after {
+    content: '|';
+    animation: blink 0.8s step-end infinite;
+    color: #E8C06A;
+    font-weight: 300;
+    margin-left: 2px;
+  }
+  @keyframes blink { 0%,100%{opacity:1} 50%{opacity:0} }
+  .hero-sub.typing-done::after { display: none; }
+ 
+  /* ═══ PROJECT CARDS — floating animation ═══ */
+  .projet-wip-card {
+    animation: floatCard 6s ease-in-out infinite;
+  }
+  .projet-wip-card:nth-child(2) { animation-delay: -2s; }
+  .projet-wip-card:nth-child(3) { animation-delay: -4s; }
+  .projet-wip-card:nth-child(4) { animation-delay: -1s; }
+  .projet-wip-card:nth-child(5) { animation-delay: -3s; }
+  .projet-wip-card:nth-child(6) { animation-delay: -5s; }
+  .projet-wip-card:nth-child(7) { animation-delay: -2.5s; }
+ 
+  @keyframes floatCard {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-6px); }
+  }
+ 
+  /* ═══ PROJECT GRID — 7 cards (3+3+1) ═══ */
+  .projets-grid-wip {
+    grid-template-rows: auto auto auto;
+  }
+ 
+  /* ═══ WIP overlay — animation rebond cadenas ═══ */
+  .projet-wip-card:hover .wip-lock {
+    animation: lockBounce 0.5s ease;
+  }
+  @keyframes lockBounce {
+    0%, 100% { transform: scale(1); }
+    40% { transform: scale(1.25) rotate(-5deg); }
+    70% { transform: scale(0.95) rotate(3deg); }
+  }
+ 
+  /* ═══ Glowing border au hover ═══ */
+  .projet-wip-card::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: 4;
+    border: 2px solid transparent;
+    pointer-events: none;
+    transition: border-color 0.4s;
+  }
+  .projet-wip-card:hover::after {
+    border-color: rgba(232, 192, 106, 0.3);
+  }
+ 
+  /* ═══ Hero stats — hover interactif ═══ */
+  .hstat {
+    transition: background 0.2s, transform 0.2s;
+    cursor: default;
+  }
+  .hstat:hover {
+    background: rgba(255,255,255,1);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(10,31,61,0.12);
+  }
+  .hstat-n { transition: color 0.2s; }
+  .hstat:hover .hstat-n { color: var(--blue); }
+ 
+  /* ═══ Badge point vert — glow renforcé ═══ */
+  .badge-dot {
+    box-shadow: 0 0 8px rgba(74, 222, 128, 0.5);
+  }
+ 
+  /* ═══ Hero content — stagger animation entrée ═══ */
+  .hero-badge { animation: heroFadeIn 0.8s ease 0.2s both; }
+  .hero-name  { animation: heroFadeIn 0.8s ease 0.4s both; }
+  .hero-line  { animation: heroFadeIn 0.8s ease 0.6s both; }
+  .hero-sub   { animation: heroFadeIn 0.8s ease 0.8s both; }
+  .hero-desc  { animation: heroFadeIn 0.8s ease 1.0s both; }
+  .hero-btns  { animation: heroFadeIn 0.8s ease 1.2s both; }
+ 
+  @keyframes heroFadeIn {
+    from { opacity: 0; transform: translateY(25px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+ 
+  /* ═══ About KPI — pulse sur hover ═══ */
+  .about-kpi {
+    transition: background 0.2s, transform 0.2s;
+  }
+  .about-kpi:hover {
+    transform: scale(1.03);
+    z-index: 1;
+  }
+ 
+  /* ═══ Certification cards — shimmer effect ═══ */
+  .cert-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: -100%;
+    width: 50%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+    transition: left 0.6s;
+  }
+  .cert-card:hover::before {
+    left: 100%;
+  }
+ 
+  /* ═══ Soft skill cards — glow de la barre latérale au hover ═══ */
+  .ss-card::before {
+    transition: opacity 0.3s, width 0.3s;
+  }
+  .ss-card:hover::before {
+    width: 5px;
+    opacity: 1;
+  }
+ 
+  /* ═══ Responsive 6 project cards ═══ */
+  @media (min-width: 901px) and (max-width: 1200px) {
+    .projets-grid-wip {
+      grid-template-columns: repeat(2, 1fr) !important;
+    }
+  }
+  @media (max-width: 900px) {
+    .skills-langs-dark { grid-template-columns: 1fr !important; }
+  }
+ 
+  /* ═══ LIVE PROJECT CARDS (no overlay) ═══ */
+  .projet-live { cursor:pointer; border:2px solid rgba(232,192,106,0.35); }
+  .projet-live .projet-wip-bg { filter:brightness(0.3) blur(0px); }
+  .projet-live:hover .projet-wip-bg { filter:brightness(0.2) blur(1px); }
+  .projet-live-cta {
+    position:absolute; bottom:0; left:0; right:0; z-index:5;
+    padding:0.75rem 1.5rem;
+    background:linear-gradient(to top, rgba(232,192,106,0.25) 0%, transparent 100%);
+    font-size:0.72rem; font-weight:600; color:#E8C06A; letter-spacing:0.06em;
+    opacity:0; transform:translateY(8px);
+    transition:opacity 0.3s, transform 0.3s;
+  }
+  .projet-live:hover .projet-live-cta { opacity:1; transform:translateY(0); }
+  .projet-live::after { border-color: rgba(232,192,106,0.2) !important; }
+  .projet-live:hover::after { border-color: rgba(232,192,106,0.5) !important; }
+  /* Badge "Étude de cas" on live cards */
+  .projet-live::before {
+    content:'ÉTUDE DE CAS';
+    position:absolute; top:1rem; right:1rem; z-index:6;
+    padding:0.3rem 0.8rem;
+    background:rgba(232,192,106,0.9); color:var(--navy);
+    font-family:var(--font-m); font-size:0.58rem; font-weight:700;
+    letter-spacing:0.12em; text-transform:uppercase;
+    border-radius:3px;
+  }
+  body.lang-en .projet-live::before { content:'CASE STUDY'; }
+ 
+  /* ═══ PROJECT MODAL ═══ */
+  .pm-overlay {
+    position:fixed; inset:0; z-index:1000;
+    background:rgba(5,13,26,0.85); backdrop-filter:blur(12px);
+    display:none; align-items:flex-start; justify-content:center;
+    overflow-y:auto; padding:3rem 1.5rem;
+  }
+  .pm-overlay.open { display:flex; animation: pmFadeIn 0.35s ease; }
+  @keyframes pmFadeIn { from{opacity:0} to{opacity:1} }
+  .pm-modal {
+    background:var(--white); max-width:900px; width:100%;
+    border-radius:12px; overflow:hidden; position:relative;
+    box-shadow:0 32px 80px rgba(0,0,0,0.4);
+    animation: pmSlideUp 0.4s ease;
+  }
+  @keyframes pmSlideUp { from{opacity:0;transform:translateY(40px)} to{opacity:1;transform:translateY(0)} }
+  .pm-close {
+    position:absolute; top:1.25rem; right:1.25rem; z-index:10;
+    width:40px; height:40px; border-radius:50%;
+    background:rgba(10,31,61,0.7); border:none; color:#fff;
+    font-size:1.2rem; cursor:pointer; display:flex; align-items:center; justify-content:center;
+    transition:background 0.2s;
+  }
+  .pm-close:hover { background:var(--navy); }
+  .pm-hero { position:relative; height:220px; overflow:hidden; }
+  .pm-hero img { width:100%; height:100%; object-fit:cover; filter:brightness(0.4); }
+  .pm-hero-overlay { position:absolute; inset:0; display:flex; flex-direction:column; justify-content:flex-end; padding:2rem 2.5rem; background:linear-gradient(to top, rgba(10,31,61,0.9) 0%, transparent 60%); }
+  .pm-hero-company { font-family:var(--font-m); font-size:0.65rem; letter-spacing:0.15em; text-transform:uppercase; color:rgba(255,255,255,0.5); margin-bottom:0.4rem; }
+  .pm-hero-title { font-family:var(--font-d); font-size:1.8rem; color:#fff; line-height:1.15; }
+  .pm-body { padding:2.5rem; }
+  .pm-section-title { font-weight:700; font-size:0.72rem; letter-spacing:0.12em; text-transform:uppercase; color:var(--blue); margin:2rem 0 1rem; padding-bottom:0.5rem; border-bottom:2px solid var(--blue); display:inline-block; }
+  .pm-section-title:first-child { margin-top:0; }
+  .pm-text { font-size:0.92rem; color:var(--muted); line-height:1.8; margin-bottom:1rem; }
+  .pm-kpis { display:grid; grid-template-columns:repeat(auto-fit, minmax(140px,1fr)); gap:1px; background:var(--border); border:1px solid var(--border); border-radius:8px; overflow:hidden; margin:1.5rem 0; }
+  .pm-kpi { background:var(--white); padding:1.25rem; text-align:center; }
+  .pm-kpi-n { font-family:var(--font-d); font-size:1.6rem; color:var(--navy); line-height:1; margin-bottom:0.25rem; }
+  .pm-kpi-l { font-size:0.65rem; color:var(--muted); letter-spacing:0.06em; text-transform:uppercase; }
+  .pm-pills { display:flex; flex-wrap:wrap; gap:0.4rem; margin:1rem 0; }
+  .pm-pill { padding:0.3rem 0.8rem; background:var(--blue-light); border:1px solid var(--border2); font-size:0.75rem; color:var(--blue); font-weight:500; border-radius:100px; }
+  .pm-pill.gold { background:var(--gold-bg); border-color:rgba(184,136,46,0.3); color:var(--gold); }
+  .pm-steps { display:flex; flex-direction:column; gap:0; margin:1.5rem 0; }
+  .pm-step { display:grid; grid-template-columns:40px 1fr; gap:1rem; padding:1rem 0; border-bottom:1px solid var(--border); }
+  .pm-step:last-child { border-bottom:none; }
+  .pm-step-num { width:32px; height:32px; background:var(--navy); color:#fff; border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:0.75rem; font-weight:700; flex-shrink:0; }
+  .pm-step-title { font-weight:600; font-size:0.88rem; color:var(--navy); margin-bottom:0.2rem; }
+  .pm-step-desc { font-size:0.82rem; color:var(--muted); line-height:1.6; }
+  .pm-results { background:var(--gold-bg); border:1px solid rgba(184,136,46,0.2); border-radius:8px; padding:1.5rem 2rem; margin:1.5rem 0; }
+  .pm-results-title { font-weight:700; font-size:0.75rem; letter-spacing:0.1em; text-transform:uppercase; color:var(--gold); margin-bottom:0.75rem; }
+  .pm-result-item { font-size:0.88rem; color:var(--text); line-height:1.7; display:flex; align-items:flex-start; gap:0.6rem; margin-bottom:0.3rem; }
+  .pm-result-item::before { content:'✓'; color:var(--gold); font-weight:700; flex-shrink:0; }
+  @media (max-width:700px) {
+    .pm-modal { border-radius:0; }
+    .pm-overlay { padding:0; }
+    .pm-hero { height:160px; }
+    .pm-body { padding:1.5rem; }
+    .pm-kpis { grid-template-columns:1fr 1fr; }
+  }
 </style>
 </head>
 <body>
@@ -69,16 +417,12 @@
 <!-- NAV -->
 <nav id="navbar">
   <a href="#hero" class="nav-logo">Maxime <span>Mear</span></a>
-  <ul class="nav-links">
+  <ul class="nav-links" id="nav-links-menu">
     <li><a href="#about" data-en="About">À propos</a></li>
-    <li><a href="#formations" data-en="Education">Formations</a></li>
-    <li><a href="#competences" data-en="Skills overview">Compétences</a></li>
+    <li><a href="#formations" data-en="Education">Parcours</a></li>
     <li><a href="#experiences" data-en="Experience">Expériences</a></li>
     <li><a href="#projets" data-en="Projects">Projets</a></li>
-    <li><a href="#skills" data-en="Hard & Soft Skills">Skills</a></li>
-    <li><a href="#certifications" data-en="Certifications">Certifications</a></li>
-    <li><a href="#loisirs" data-en="Hobbies">Loisirs</a></li>
-    <li><a href="#recommandations" data-en="Testimonials">Témoignages</a></li>
+    <li><a href="#skills" data-en="Skills">Compétences</a></li>
   </ul>
   <div style="display:flex; align-items:center;">
     <div class="lang-toggle">
@@ -86,6 +430,9 @@
       <a href="#" id="btn-en" class="lang-btn"><span class="lf">🇬🇧</span><span class="lc">EN</span></a>
     </div>
     <a href="#contact" class="nav-cta" data-en="Contact me →">Me contacter →</a>
+    <button class="nav-hamburger" id="nav-hamburger" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
   </div>
 </nav>
  
@@ -94,7 +441,7 @@
   <div class="hero-bg"></div>
   <div class="hero-overlay"></div>
   <div class="hero-content">
-    <div class="hero-badge"><span class="badge-dot"></span><span data-en="Available for permanent role — July 2026">Disponible pour CDI — Juillet 2026</span></div>
+    <div class="hero-badge"><span class="badge-dot"></span><span data-en="Available for permanent role — September 2026">Disponible pour CDI — Septembre 2026</span></div>
     <h1 class="hero-name">Maxime<br><em>Mear</em></h1>
     <div class="hero-line"></div>
     <p class="hero-sub" data-en="Maxime MEAR · Aeronautics · Space · Defense">Maxime MEAR · Aéronautique · Spatial · Défense</p>
@@ -173,7 +520,7 @@
       <div class="about-status-sep"></div>
       <div class="about-status-item">
         <span class="asi-icon asi-green">●</span>
-        <div><span class="asi-label" data-en="Availability">Disponibilité</span><span class="asi-val asi-gold" data-en="CDI from July 2026">CDI dès juillet 2026</span></div>
+        <div><span class="asi-label" data-en="Availability">Disponibilité</span><span class="asi-val asi-gold" data-en="CDI from September 2026">CDI dès septembre 2026</span></div>
       </div>
     </div>
  
@@ -268,35 +615,6 @@
             <div class="school-section-title" data-en="Track — Aeronautics, Space & Defense">Parcours — Aéronautique, Spatial & Défense</div>
             <p class="school-text" data-en="Among the three tracks available, Maxime joined the <strong>Aeronautics, Space & Defense track</strong>, specializing in highly critical industries and demanding standards (EN 9100, AQAP, DGA regulations). This track is directly linked to his work-study at ArianeGroup.">Parmi les trois parcours disponibles, Maxime a intégré le <strong>parcours Aéronautique, Spatial & Défense</strong>, spécialisé dans les industries à haute criticité et aux référentiels exigeants (EN 9100, AQAP, réglementation DGA). Ce parcours est directement en lien avec son alternance chez ArianeGroup.</p>
           </div>
-          <div class="school-modules" style="margin-top:1.75rem">
-            <div class="school-module-col">
-              <div class="sm-title" data-en="QSE Fundamentals">Fondamentaux QSE</div>
-              <ul class="sm-list">
-                <li data-en="Quality management systems">Systèmes de management qualité</li>
-                <li data-en="Quality tools (FMEA, 8D, SPC)">Outils qualité (AMDEC, 8D, SPC)</li>
-                <li data-en="EN 9100 / ISO 9001 standards">Référentiels EN 9100 / ISO 9001</li>
-                <li data-en="Internal audit & certification">Audit interne & certification</li>
-              </ul>
-            </div>
-            <div class="school-module-col">
-              <div class="sm-title" data-en="Management & Strategy">Management & Stratégie</div>
-              <ul class="sm-list">
-                <li data-en="Team management & leadership">Management d'équipe & leadership</li>
-                <li data-en="Quality & corporate strategy">Qualité & stratégie d'entreprise</li>
-                <li data-en="Process-based project management">Gestion de projet par processus</li>
-                <li data-en="CSR & sustainable development">RSE & développement durable</li>
-              </ul>
-            </div>
-            <div class="school-module-col">
-              <div class="sm-title" data-en="ASD Specialty">Spécialité ASD</div>
-              <ul class="sm-list">
-                <li data-en="Aerospace regulations & DGA">Réglementation aérospatiale & DGA</li>
-                <li data-en="AQAP / EN 9100 standards">Référentiels AQAP / EN 9100</li>
-                <li data-en="Complex systems risks">Risques systèmes complexes</li>
-                <li data-en="Professional thesis in company">Mémoire professionnel en entreprise</li>
-              </ul>
-            </div>
-          </div>
         </div>
         <div class="school-right">
           <div class="school-kpi-grid">
@@ -347,35 +665,6 @@
             <div class="school-section-title" data-en="Quality & Integrated Management (QMI) Track">Parcours Qualité & Management Intégré (QMI)</div>
             <p class="school-text" data-en="This track develops the skills to implement <strong>QHSSEDD management systems</strong> and manage processes guaranteeing industrial quality.">Ce parcours développe les compétences pour mettre en œuvre des <strong>systèmes de management QHSSEDD</strong> (Qualité, Hygiène, Santé, Sécurité, Environnement, Développement Durable) et piloter les processus garantissant la qualité industrielle. Il prépare directement aux métiers de la qualité dans des secteurs tels que <strong>l'aéronautique, la logistique, l'agroalimentaire et la chimie</strong>.</p>
           </div>
-          <div class="school-modules" style="margin-top:1.75rem">
-            <div class="school-module-col">
-              <div class="sm-title" data-en="Organization & Production">Organisation & Production</div>
-              <ul class="sm-list">
-                <li data-en="Organization of production activities">Organisation des activités de production</li>
-                <li data-en="Workstation improvement">Amélioration des postes de travail</li>
-                <li data-en="Industrial cost management">Gestion des coûts industriels</li>
-                <li data-en="Planning and steering">Planification et pilotage</li>
-              </ul>
-            </div>
-            <div class="school-module-col">
-              <div class="sm-title" data-en="Logistics & Flows">Logistique & Flux</div>
-              <ul class="sm-list">
-                <li data-en="Inventory & procurement management">Gestion des stocks & approvisionnements</li>
-                <li data-en="Supply chain & ERP/CMMS">Supply chain & ERP/GPAO</li>
-                <li data-en="Statistical Process Control (SPC)">Maîtrise statistique des procédés (SPC)</li>
-                <li data-en="Industrial metrology">Métrologie industrielle</li>
-              </ul>
-            </div>
-            <div class="school-module-col">
-              <div class="sm-title" data-en="Quality & QHSE">Qualité & QHSE</div>
-              <ul class="sm-list">
-                <li data-en="Quality management (ISO 9001)">Management qualité (ISO 9001)</li>
-                <li data-en="FMEA — Risk analysis">AMDEC — Analyse des risques</li>
-                <li data-en="Quality control & internal audits">Contrôle qualité & audits internes</li>
-                <li data-en="HSE regulations & safety">Réglementation HSE & sécurité</li>
-              </ul>
-            </div>
-          </div>
         </div>
         <div class="school-right">
           <div class="school-kpi-grid">
@@ -404,7 +693,6 @@
   <div style="margin-top:4rem">
     <div class="sec-label" style="margin-bottom:2rem" data-en="Complete timeline">Chronologie complète</div>
     <div class="tl-modern reveal">
- 
       <div class="tlm-item current">
         <div class="tlm-left"><div class="tlm-year">2025 <span class="tlm-arrow">→</span> 2026</div></div>
         <div class="tlm-spine"><div class="tlm-dot current"></div><div class="tlm-line"></div></div>
@@ -415,7 +703,6 @@
           <div class="tlm-pills"><span class="tlm-pill">EN 9100</span><span class="tlm-pill">VBA</span><span class="tlm-pill" data-en="Internal audit">Audit interne</span><span class="tlm-pill" data-en="Quality culture">Culture qualité</span></div>
         </div>
       </div>
- 
       <div class="tlm-item">
         <div class="tlm-left"><div class="tlm-year">Jan <span class="tlm-arrow">→</span> Juin 2025</div></div>
         <div class="tlm-spine"><div class="tlm-dot blue"></div><div class="tlm-line"></div></div>
@@ -427,7 +714,6 @@
           <div class="tlm-award" data-en="🏆 Best quality practice of the DAHER group — May 2025">🏆 Meilleure pratique qualité du groupe — Mai 2025</div>
         </div>
       </div>
- 
       <div class="tlm-item">
         <div class="tlm-left"><div class="tlm-year">2024 <span class="tlm-arrow">→</span> 2026</div></div>
         <div class="tlm-spine"><div class="tlm-dot gold"></div><div class="tlm-line"></div></div>
@@ -438,7 +724,6 @@
           <div class="tlm-pills"><span class="tlm-pill">Bac+5</span><span class="tlm-pill">AACSB · EQUIS</span><span class="tlm-pill">CGE</span></div>
         </div>
       </div>
- 
       <div class="tlm-item">
         <div class="tlm-left"><div class="tlm-year">2024</div></div>
         <div class="tlm-spine"><div class="tlm-dot teal"></div><div class="tlm-line"></div></div>
@@ -449,7 +734,6 @@
           <div class="tlm-pills"><span class="tlm-pill" data-en="Certified">Certifié ×3</span></div>
         </div>
       </div>
- 
       <div class="tlm-item">
         <div class="tlm-left"><div class="tlm-year">2022 <span class="tlm-arrow">→</span> 2024</div></div>
         <div class="tlm-spine"><div class="tlm-dot blue"></div><div class="tlm-line"></div></div>
@@ -460,7 +744,6 @@
           <div class="tlm-pills"><span class="tlm-pill">QHSE</span><span class="tlm-pill">Certification CID</span><span class="tlm-pill">Kaizen</span><span class="tlm-pill" data-en="Waste recovery">Revalorisation déchets</span><span class="tlm-pill">Lean Sigma</span><span class="tlm-pill">TRS</span><span class="tlm-pill">6S</span></div>
         </div>
       </div>
- 
       <div class="tlm-item">
         <div class="tlm-left"><div class="tlm-year">Été 2022</div></div>
         <div class="tlm-spine"><div class="tlm-dot gray"></div><div class="tlm-line"></div></div>
@@ -470,7 +753,6 @@
           <div class="tlm-sub">Saint-Herblain (44) · Services bancaires</div>
         </div>
       </div>
- 
       <div class="tlm-item">
         <div class="tlm-left"><div class="tlm-year">2021 <span class="tlm-arrow">→</span> 2024</div></div>
         <div class="tlm-spine"><div class="tlm-dot gold"></div><div class="tlm-line"></div></div>
@@ -481,7 +763,6 @@
           <div class="tlm-pills"><span class="tlm-pill">Bac+3</span><span class="tlm-pill">RNCP 6</span><span class="tlm-pill" data-en="Alternance ID Logistics">Alternance ID Logistics</span></div>
         </div>
       </div>
- 
       <div class="tlm-item">
         <div class="tlm-left"><div class="tlm-year">Déc. 2021</div></div>
         <div class="tlm-spine"><div class="tlm-dot gray"></div><div class="tlm-line"></div></div>
@@ -491,7 +772,6 @@
           <div class="tlm-sub">Carquefou (44) · Logistique industrielle · SAP</div>
         </div>
       </div>
- 
       <div class="tlm-item">
         <div class="tlm-left"><div class="tlm-year">Juil. 2021</div></div>
         <div class="tlm-spine"><div class="tlm-dot gray"></div></div>
@@ -501,159 +781,28 @@
           <div class="tlm-sub">Saint-Herblain (44) · Gestion stocks & logistique interne</div>
         </div>
       </div>
- 
-    </div>
-  </div>
-</section>
- 
-<!-- COMPÉTENCES -->
-<section id="competences" class="section light">
-  <div class="sec-label" data-en="03 — Skills">03 — Compétences</div>
-  <h2 class="sec-title" data-en="Expertise<br>& Tools">Expertise<br>& Outils</h2>
- 
-  <div class="skills-mosaic reveal">
-    <div class="skill-tile wide">
-      <img src="images/qualite-industrielle.jpg" alt="Qualité industrielle">
-      <div class="skill-tile-overlay">
-        <div class="skill-tile-cat" data-en="Standards">Référentiels</div>
-        <div class="skill-tile-title" data-en="Quality & Standards">Qualité & Normes</div>
-        <div class="skill-pills">
-          <span class="skill-pill gold">EN 9100 / AS9100</span>
-          <span class="skill-pill">ISO 9001:2015</span>
-          <span class="skill-pill" data-en="Internal audit">Audit interne</span>
-          <span class="skill-pill" data-en="Control plan">Plan de surveillance</span>
-          <span class="skill-pill">CAPA</span>
-        </div>
-      </div>
-    </div>
-    <div class="skill-tile">
-      <img src="images/lean-qhse.jpg" alt="Lean QHSE">
-      <div class="skill-tile-overlay">
-        <div class="skill-tile-cat" data-en="Continuous improvement">Amélioration continue</div>
-        <div class="skill-tile-title">Lean & QHSE</div>
-        <div class="skill-pills">
-          <span class="skill-pill gold">Lean Green Belt</span>
-          <span class="skill-pill">Kaizen</span>
-          <span class="skill-pill">QHSE</span>
-          <span class="skill-pill">5S</span>
-        </div>
-      </div>
-    </div>
-    <div class="skill-tile">
-      <img src="images/methodes-qualite.jpg" alt="Méthodes qualité">
-      <div class="skill-tile-overlay">
-        <div class="skill-tile-cat" data-en="Quality tools">Outils qualité</div>
-        <div class="skill-tile-title" data-en="Methods">Méthodes</div>
-        <div class="skill-pills">
-          <span class="skill-pill">AMDEC / FMEA</span>
-          <span class="skill-pill">8D</span>
-          <span class="skill-pill">QRQC</span>
-          <span class="skill-pill">Ishikawa</span>
-        </div>
-      </div>
-    </div>
-    <div class="skill-tile">
-      <img src="images/outils-numeriques.jpg" alt="Excel VBA Power Platform">
-      <div class="skill-tile-overlay">
-        <div class="skill-tile-cat" data-en="Software">Logiciels</div>
-        <div class="skill-tile-title" data-en="Digital tools">Outils numériques</div>
-        <div class="skill-pills">
-          <span class="skill-pill gold">Excel + VBA</span>
-          <span class="skill-pill">Power Platform</span>
-          <span class="skill-pill" data-en="Office Pack">Pack Office</span>
-          <span class="skill-pill" data-en="Advanced Excel TOSA">TOSA Avancé</span>
-        </div>
-      </div>
-    </div>
-    <div class="skill-tile wide">
-      <img src="images/management-projet.jpg" alt="Management projet">
-      <div class="skill-tile-overlay">
-        <div class="skill-tile-cat" data-en="Transversal">Transversal</div>
-        <div class="skill-tile-title" data-en="Management & Project Management">Management & Gestion de projet</div>
-        <div class="skill-pills">
-          <span class="skill-pill" data-en="Project management">Gestion de projet</span>
-          <span class="skill-pill" data-en="Analysis & Reporting">Analyse & Reporting</span>
-          <span class="skill-pill" data-en="Versatility">Polyvalence</span>
-          <span class="skill-pill" data-en="Document management">Gestion documentaire</span>
-          <span class="skill-pill" data-en="Communication">Communication</span>
-        </div>
-      </div>
-    </div>
-    <div class="skill-tile">
-      <img src="images/cybersecurite.jpg" alt="Cybersécurité ANSSI">
-      <div class="skill-tile-overlay">
-        <div class="skill-tile-cat" data-en="Certification">Certification</div>
-        <div class="skill-tile-title" data-en="Cybersecurity">Cybersécurité</div>
-        <div class="skill-pills">
-          <span class="skill-pill gold">MOOC ANSSI</span>
-          <span class="skill-pill" data-en="IT Best practices">Bonnes pratiques SI</span>
-        </div>
-      </div>
-    </div>
-  </div>
- 
-  <div class="skills-langs" style="margin-top:3px">
-    <div class="lang-card reveal">
-      <div class="lang-flag">🇫🇷</div>
-      <div>
-        <div class="lang-name" data-en="French">Français</div>
-        <div class="lang-level" data-en="Native">Natif</div>
-        <div class="lang-bar"><div class="lang-fill" style="width:100%"></div></div>
-      </div>
-    </div>
-    <div class="lang-card reveal reveal-delay-1">
-      <div class="lang-flag">🇬🇧</div>
-      <div>
-        <div class="lang-name" data-en="English">Anglais</div>
-        <div class="lang-level" data-en="C1 — Fluent">C1 — Courant</div>
-        <div class="lang-bar"><div class="lang-fill" style="width:85%"></div></div>
-      </div>
-    </div>
-    <div class="lang-card reveal reveal-delay-2">
-      <div class="lang-flag">🇩🇪</div>
-      <div>
-        <div class="lang-name" data-en="German">Allemand</div>
-        <div class="lang-level" data-en="A2 — Basic">A2 — Notions</div>
-        <div class="lang-bar"><div class="lang-fill" style="width:30%"></div></div>
-      </div>
     </div>
   </div>
 </section>
  
 <!-- EXPÉRIENCES -->
 <section id="experiences" class="section tinted">
-  <div class="sec-label" data-en="04 — Experience">04 — Expériences</div>
+  <div class="sec-label" data-en="03 — Experience">03 — Expériences</div>
   <h2 class="sec-title" data-en="Professional<br>Background">Parcours<br>Professionnel</h2>
- 
-  <!-- FILTRE DESIGN -->
   <div class="modern-filter-wrap reveal">
     <div class="filter-instructions" data-en="Filter by type:">Filtrer par type :</div>
     <div class="modern-filter-container">
-      <button class="m-filter-btn active" data-filter="alternance">
-        <span class="filter-dot"></span>
-        <span data-en="Work-study">Alternance</span>
-      </button>
-      <button class="m-filter-btn active" data-filter="stage">
-        <span class="filter-dot"></span>
-        <span data-en="Internships">Stages</span>
-      </button>
-      <button class="m-filter-btn active" data-filter="job">
-        <span class="filter-dot"></span>
-        <span data-en="Summer jobs">Jobs d'été</span>
-      </button>
+      <button class="m-filter-btn active" data-filter="alternance"><span class="filter-dot"></span><span data-en="Work-study">Alternance</span></button>
+      <button class="m-filter-btn active" data-filter="stage"><span class="filter-dot"></span><span data-en="Internships">Stages</span></button>
+      <button class="m-filter-btn active" data-filter="job"><span class="filter-dot"></span><span data-en="Summer jobs">Jobs d'été</span></button>
     </div>
     <span class="filter-count" id="filter-count">7 expériences affichées</span>
   </div>
- 
   <div class="exp-list">
- 
     <!-- ArianeGroup -->
     <div class="exp-card alternance reveal">
       <div>
-        <div class="exp-top">
-          <span class="exp-period">09/2025 — 10/2026</span>
-          <span class="exp-type alt" data-en="Work-study">Alternance</span>
-        </div>
+        <div class="exp-top"><span class="exp-period">09/2025 — 10/2026</span><span class="exp-type alt" data-en="Work-study">Alternance</span></div>
         <h3 class="exp-title" data-en="Quality & Continuous Improvement Engineer">Ingénieur Qualité & Amélioration Continue</h3>
         <div class="exp-company">ArianeGroup</div>
         <div class="exp-location" data-en="📍 Saint-Médard en Jalles (33) — Aeronautics & Space">📍 Saint-Médard en Jalles (33) — Aéronautique & Spatial</div>
@@ -664,35 +813,18 @@
           <li data-en="Improve the quality culture at all levels of the organization">Améliorer la culture qualité à tous les niveaux de l'organisation</li>
           <li data-en="Conduct workstation audits and EN9100 internal audits">Mener des audits de poste et audits internes EN9100</li>
         </ul>
-        <div class="exp-chips">
-          <span class="exp-chip">EN 9100</span>
-          <span class="exp-chip">VBA / Excel</span>
-          <span class="exp-chip" data-en="Internal audit">Audit interne</span>
-          <span class="exp-chip" data-en="Document management">Gestion documentaire</span>
-          <span class="exp-chip" data-en="Quality Culture">Culture Qualité</span>
-        </div>
+        <div class="exp-chips"><span class="exp-chip">EN 9100</span><span class="exp-chip">VBA / Excel</span><span class="exp-chip" data-en="Internal audit">Audit interne</span><span class="exp-chip" data-en="Document management">Gestion documentaire</span><span class="exp-chip" data-en="Quality Culture">Culture Qualité</span></div>
       </div>
-      <div class="exp-logo-wrap">
-        <img src="images/arianegroup-logo.png" alt="ArianeGroup" class="exp-logo" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
-        <div style="display:none;width:120px;height:60px;background:var(--blue-light);border-radius:6px;align-items:center;justify-content:center;font-size:0.75rem;font-weight:700;color:var(--blue);text-align:center">Ariane<br>Group</div>
-      </div>
+      <div class="exp-logo-wrap"><img src="images/arianegroup-logo.png" alt="ArianeGroup" class="exp-logo" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><div style="display:none;width:120px;height:60px;background:var(--blue-light);border-radius:6px;align-items:center;justify-content:center;font-size:0.75rem;font-weight:700;color:var(--blue);text-align:center">Ariane<br>Group</div></div>
     </div>
- 
     <!-- DAHER AEROSPACE -->
     <div class="exp-card stage reveal">
       <div>
-        <div class="exp-top">
-          <span class="exp-period">01/2025 — 06/2025</span>
-          <span class="exp-type stage" data-en="Internship">Stage</span>
-        </div>
+        <div class="exp-top"><span class="exp-period">01/2025 — 06/2025</span><span class="exp-type stage" data-en="Internship">Stage</span></div>
         <h3 class="exp-title" data-en="Quality Specialist">Spécialiste Qualité</h3>
         <div class="exp-company">DAHER Aerospace</div>
         <div class="exp-location" data-en="📍 Le Haillan (33) — Aeronautics">📍 Le Haillan (33) — Aéronautique</div>
-        <div style="display:inline-flex;align-items:center;gap:0.5rem;margin-bottom:1.25rem;margin-top:-0.5rem;background:var(--bg);border:1px solid var(--border2);border-left:3px solid var(--blue);border-radius:0 4px 4px 0;padding:0.3rem 0.9rem;">
-          <span style="font-size:0.65rem;color:var(--blue);font-weight:700;letter-spacing:0.06em;text-transform:uppercase;font-family:var(--font-m)">Site client</span>
-          <span style="color:var(--border2);font-size:0.7rem">·</span>
-          <span style="font-size:0.8rem;font-weight:600;color:var(--navy)" data-en="Dassault Aviation — Martignas-sur-Jalle base">Base Dassault Aviation — Martignas-sur-Jalle</span>
-        </div>
+        <div style="display:inline-flex;align-items:center;gap:0.5rem;margin-bottom:1.25rem;margin-top:-0.5rem;background:var(--bg);border:1px solid var(--border2);border-left:3px solid var(--blue);border-radius:0 4px 4px 0;padding:0.3rem 0.9rem;"><span style="font-size:0.65rem;color:var(--blue);font-weight:700;letter-spacing:0.06em;text-transform:uppercase;font-family:var(--font-m)">Site client</span><span style="color:var(--border2);font-size:0.7rem">·</span><span style="font-size:0.8rem;font-weight:600;color:var(--navy)" data-en="Dassault Aviation — Martignas-sur-Jalle base">Base Dassault Aviation — Martignas-sur-Jalle</span></div>
         <ul class="exp-tasks">
           <li data-en="Collect data and update perimeter documents to ensure traceability">Recueillir les données et mettre à jour les documents du périmètre pour assurer la traçabilité</li>
           <li data-en="Create or standardize procedures and operating methods to ensure process consistency">Créer ou uniformiser les procédures et modes opératoires pour garantir la cohérence des processus</li>
@@ -711,31 +843,14 @@
           <li class="result-kpi" data-en="<strong>🏆 Best practice award:</strong> Elected best quality practice of the group in May 2025 for a process guide created in card format."><strong>🏆 Meilleure pratique qualité :</strong> Élu meilleure pratique qualité du groupe en mai 2025 pour un guide créé sous format card.</li>
           <li class="result-kpi" data-en="<strong>📊 Result:</strong> 100% structuring of the documentary base + standardized procedures deployed on the entire perimeter."><strong>📊 Résultat :</strong> Base documentaire structurée à 100% + procédures uniformisées déployées sur l'ensemble du périmètre.</li>
         </ul>
-        <div class="exp-chips">
-          <span class="exp-chip">EN 9100</span>
-          <span class="exp-chip">SMQ</span>
-          <span class="exp-chip">Power Platform</span>
-          <span class="exp-chip" data-en="Visual management">Management visuel</span>
-          <span class="exp-chip">CAPA</span>
-          <span class="exp-chip">HSE</span>
-          <span class="exp-chip" data-en="Logigrammes">Logigrammes</span>
-          <span class="exp-chip" data-en="Document base">Base documentaire</span>
-          <span class="exp-chip" data-en="Change management">Conduite du changement</span>
-        </div>
+        <div class="exp-chips"><span class="exp-chip">EN 9100</span><span class="exp-chip">SMQ</span><span class="exp-chip">Power Platform</span><span class="exp-chip" data-en="Visual management">Management visuel</span><span class="exp-chip">CAPA</span><span class="exp-chip">HSE</span><span class="exp-chip" data-en="Logigrammes">Logigrammes</span><span class="exp-chip" data-en="Document base">Base documentaire</span><span class="exp-chip" data-en="Change management">Conduite du changement</span></div>
       </div>
-      <div class="exp-logo-wrap">
-        <img src="images/daher-logo.png" alt="DAHER Aerospace" class="exp-logo" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
-        <div style="display:none;width:120px;height:60px;background:#FFF3E0;border-radius:6px;align-items:center;justify-content:center;font-size:0.75rem;font-weight:700;color:#E65100;text-align:center">DAHER<br>Aerospace</div>
-      </div>
+      <div class="exp-logo-wrap"><img src="images/daher-logo.png" alt="DAHER Aerospace" class="exp-logo" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><div style="display:none;width:120px;height:60px;background:#FFF3E0;border-radius:6px;align-items:center;justify-content:center;font-size:0.75rem;font-weight:700;color:#E65100;text-align:center">DAHER<br>Aerospace</div></div>
     </div>
- 
     <!-- ID LOGISTICS -->
     <div class="exp-card alternance reveal">
       <div>
-        <div class="exp-top">
-          <span class="exp-period">09/2022 — 09/2024</span>
-          <span class="exp-type alt" data-en="Work-study">Alternance</span>
-        </div>
+        <div class="exp-top"><span class="exp-period">09/2022 — 09/2024</span><span class="exp-type alt" data-en="Work-study">Alternance</span></div>
         <h3 class="exp-title" data-en="QHSE Work-study Student">Alternant QHSE</h3>
         <div class="exp-company">ID Logistics</div>
         <div class="exp-location" data-en="📍 Derval (44) — Logistics & Industry">📍 Derval (44) — Logistique & Industrie</div>
@@ -767,36 +882,14 @@
           <li class="result-kpi" data-en="<strong>🏆 Result:</strong> Zero major non-conformity during the CID internal certification audit — certification maintained over 2 years of work-study."><strong>🏆 Résultat :</strong> Zéro non-conformité majeure lors de l'audit de certification interne CID — certification maintenue sur 2 ans d'alternance.</li>
           <li class="result-kpi" data-en="<strong>📊 Result:</strong> Reduction in incident rate on site following deployment of HSE actions and staff training."><strong>📊 Résultat :</strong> Réduction du taux d'incidents sur le site suite au déploiement des actions HSE et à la formation du personnel.</li>
         </ul>
-        <div class="exp-chips">
-          <span class="exp-chip">QHSE</span>
-          <span class="exp-chip" data-en="Internal audit">Audit interne</span>
-          <span class="exp-chip" data-en="Regulatory compliance">Conformité réglementaire</span>
-          <span class="exp-chip">Kaizen</span>
-          <span class="exp-chip" data-en="CID Certification">Certification CID</span>
-          <span class="exp-chip" data-en="Risk management">Gestion des risques</span>
-          <span class="exp-chip" data-en="HSE Procedures">Procédures HSE</span>
-          <span class="exp-chip" data-en="Team training">Formation équipes</span>
-          <span class="exp-chip">Lean Sigma</span>
-          <span class="exp-chip" data-en="Operational excellence">Excellence opérationnelle</span>
-          <span class="exp-chip">Obeya</span>
-          <span class="exp-chip" data-en="Change management">Conduite du changement</span>
-          <span class="exp-chip">TRS</span>
-          <span class="exp-chip">6S</span>
-        </div>
+        <div class="exp-chips"><span class="exp-chip">QHSE</span><span class="exp-chip" data-en="Internal audit">Audit interne</span><span class="exp-chip" data-en="Regulatory compliance">Conformité réglementaire</span><span class="exp-chip">Kaizen</span><span class="exp-chip" data-en="CID Certification">Certification CID</span><span class="exp-chip" data-en="Risk management">Gestion des risques</span><span class="exp-chip" data-en="HSE Procedures">Procédures HSE</span><span class="exp-chip" data-en="Team training">Formation équipes</span><span class="exp-chip">Lean Sigma</span><span class="exp-chip" data-en="Operational excellence">Excellence opérationnelle</span><span class="exp-chip">Obeya</span><span class="exp-chip" data-en="Change management">Conduite du changement</span><span class="exp-chip">TRS</span><span class="exp-chip">6S</span></div>
       </div>
-      <div class="exp-logo-wrap">
-        <img src="images/id-logistics-logo.png" alt="ID Logistics" class="exp-logo" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
-        <div style="display:none;width:120px;height:60px;background:#E8F5E9;border-radius:6px;align-items:center;justify-content:center;font-size:0.75rem;font-weight:700;color:#2E7D32;text-align:center">ID<br>Logistics</div>
-      </div>
+      <div class="exp-logo-wrap"><img src="images/id-logistics-logo.png" alt="ID Logistics" class="exp-logo" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><div style="display:none;width:120px;height:60px;background:#E8F5E9;border-radius:6px;align-items:center;justify-content:center;font-size:0.75rem;font-weight:700;color:#2E7D32;text-align:center">ID<br>Logistics</div></div>
     </div>
- 
     <!-- BPGO 2022 -->
     <div class="exp-card job reveal">
       <div>
-        <div class="exp-top">
-          <span class="exp-period">Juil. 2022 — Août 2022</span>
-          <span class="exp-type job" data-en="Summer Job">Job d'été</span>
-        </div>
+        <div class="exp-top"><span class="exp-period">Juil. 2022 — Août 2022</span><span class="exp-type job" data-en="Summer Job">Job d'été</span></div>
         <h3 class="exp-title" data-en="Summer Auxiliary">Auxiliaire Vacances</h3>
         <div class="exp-company">Banque Populaire Grand Ouest</div>
         <div class="exp-location" data-en="📍 Saint-Herblain (44) — Banking services">📍 Saint-Herblain (44) — Services bancaires</div>
@@ -805,25 +898,14 @@
           <li data-en="Commercial offer: account opening, loyalty cards, and tax-free service">Offre commerciale : ouverture de comptes, cartes de fidélisation et service détaxe</li>
           <li data-en="Handling complaints, managing the queue, and issuing invoices">Traitement des réclamations, gestion de la file d'attente et édition des factures</li>
         </ul>
-        <div class="exp-chips">
-          <span class="exp-chip" data-en="Organizational skills">Sens de l'organisation</span>
-          <span class="exp-chip" data-en="Listening skills">Sens de l'écoute</span>
-          <span class="exp-chip" data-en="Office automation">Bureautique</span>
-        </div>
+        <div class="exp-chips"><span class="exp-chip" data-en="Organizational skills">Sens de l'organisation</span><span class="exp-chip" data-en="Listening skills">Sens de l'écoute</span><span class="exp-chip" data-en="Office automation">Bureautique</span></div>
       </div>
-      <div class="exp-logo-wrap">
-        <img src="images/logo-BP-scaled-1.png" alt="Banque Populaire Grand Ouest" class="exp-logo" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
-        <div style="display:none;width:120px;height:60px;background:#E3F2FD;border-radius:6px;align-items:center;justify-content:center;font-size:0.75rem;font-weight:700;color:#1565C0;text-align:center;line-height:1.2">Banque<br>Populaire</div>
-      </div>
+      <div class="exp-logo-wrap"><img src="images/logo-BP-scaled-1.png" alt="Banque Populaire Grand Ouest" class="exp-logo" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><div style="display:none;width:120px;height:60px;background:#E3F2FD;border-radius:6px;align-items:center;justify-content:center;font-size:0.75rem;font-weight:700;color:#1565C0;text-align:center;line-height:1.2">Banque<br>Populaire</div></div>
     </div>
- 
     <!-- JOHNSON CONTROLS -->
     <div class="exp-card stage reveal">
       <div>
-        <div class="exp-top">
-          <span class="exp-period">Nov. 2021 — Déc. 2021</span>
-          <span class="exp-type stage" data-en="Internship">Stage</span>
-        </div>
+        <div class="exp-top"><span class="exp-period">Nov. 2021 — Déc. 2021</span><span class="exp-type stage" data-en="Internship">Stage</span></div>
         <h3 class="exp-title" data-en="Order Picker">Préparateur de commandes</h3>
         <div class="exp-company">Johnson Controls</div>
         <div class="exp-location" data-en="📍 Carquefou (44) — Logistics & Industry">📍 Carquefou (44) — Logistique & Industrie</div>
@@ -831,25 +913,14 @@
           <li data-en="Rigorous management of customer demand and inventory management">Gestion rigoureuse de la demande client et gestion des stocks</li>
           <li data-en="Active participation in projects to optimize order preparation">Participation active à des projets d'optimisation de la préparation des commandes</li>
         </ul>
-        <div class="exp-chips">
-          <span class="exp-chip" data-en="Order management">Gestion des commandes</span>
-          <span class="exp-chip" data-en="Project management">Management de projet</span>
-          <span class="exp-chip" data-en="Organization">Organisation</span>
-        </div>
+        <div class="exp-chips"><span class="exp-chip" data-en="Order management">Gestion des commandes</span><span class="exp-chip" data-en="Project management">Management de projet</span><span class="exp-chip" data-en="Organization">Organisation</span></div>
       </div>
-      <div class="exp-logo-wrap">
-        <img src="images/johnson.png" alt="Johnson Controls" class="exp-logo" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
-        <div style="display:none;width:120px;height:60px;background:#E0F2F1;border-radius:6px;align-items:center;justify-content:center;font-size:0.75rem;font-weight:700;color:#00695C;text-align:center;line-height:1.2">Johnson<br>Controls</div>
-      </div>
+      <div class="exp-logo-wrap"><img src="images/johnson.png" alt="Johnson Controls" class="exp-logo" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><div style="display:none;width:120px;height:60px;background:#E0F2F1;border-radius:6px;align-items:center;justify-content:center;font-size:0.75rem;font-weight:700;color:#00695C;text-align:center;line-height:1.2">Johnson<br>Controls</div></div>
     </div>
- 
     <!-- BPGO 2021 -->
     <div class="exp-card job reveal">
       <div>
-        <div class="exp-top">
-          <span class="exp-period">Juil. 2021 — Juil. 2021</span>
-          <span class="exp-type job" data-en="Summer Job">Job d'été</span>
-        </div>
+        <div class="exp-top"><span class="exp-period">Juil. 2021 — Juil. 2021</span><span class="exp-type job" data-en="Summer Job">Job d'été</span></div>
         <h3 class="exp-title" data-en="Summer Auxiliary Fleet Management Services">Auxiliaire vacances Services Gestion des Parcs</h3>
         <div class="exp-company">Banque Populaire Grand Ouest</div>
         <div class="exp-location" data-en="📍 Saint-Herblain (44) — Internal support">📍 Saint-Herblain (44) — Support interne</div>
@@ -858,25 +929,14 @@
           <li data-en="Commissary management: inventory status and order placement">Gestion de l'économat : état des stocks et passation de commandes</li>
           <li data-en="Logistical processing of returned equipment (iPad, professional phones...)">Traitement logistique des retours de matériels (iPad, téléphone professionnels...)</li>
         </ul>
-        <div class="exp-chips">
-          <span class="exp-chip" data-en="Communication">Communication</span>
-          <span class="exp-chip" data-en="Inventory management">Gestion de stock</span>
-          <span class="exp-chip" data-en="Office automation">Bureautique</span>
-        </div>
+        <div class="exp-chips"><span class="exp-chip" data-en="Communication">Communication</span><span class="exp-chip" data-en="Inventory management">Gestion de stock</span><span class="exp-chip" data-en="Office automation">Bureautique</span></div>
       </div>
-      <div class="exp-logo-wrap">
-        <img src="images/logo-BP-scaled-1.png" alt="Banque Populaire Grand Ouest" class="exp-logo" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
-        <div style="display:none;width:120px;height:60px;background:#E3F2FD;border-radius:6px;align-items:center;justify-content:center;font-size:0.75rem;font-weight:700;color:#1565C0;text-align:center;line-height:1.2">Banque<br>Populaire</div>
-      </div>
+      <div class="exp-logo-wrap"><img src="images/logo-BP-scaled-1.png" alt="Banque Populaire Grand Ouest" class="exp-logo" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><div style="display:none;width:120px;height:60px;background:#E3F2FD;border-radius:6px;align-items:center;justify-content:center;font-size:0.75rem;font-weight:700;color:#1565C0;text-align:center;line-height:1.2">Banque<br>Populaire</div></div>
     </div>
- 
     <!-- CASTEL VIANDES -->
     <div class="exp-card stage reveal">
       <div>
-        <div class="exp-top">
-          <span class="exp-period">Janv. 2021 — Janv. 2021</span>
-          <span class="exp-type stage" data-en="Internship">Stage</span>
-        </div>
+        <div class="exp-top"><span class="exp-period">Janv. 2021 — Janv. 2021</span><span class="exp-type stage" data-en="Internship">Stage</span></div>
         <h3 class="exp-title" data-en="Order Picker">Préparateur de commande</h3>
         <div class="exp-company">Castel Viandes</div>
         <div class="exp-location" data-en="📍 Châteaubriant (44) — Food industry">📍 Châteaubriant (44) — Agroalimentaire</div>
@@ -885,76 +945,59 @@
           <li data-en="Use of the company's SAP software to process orders and inventory">Utilisation du logiciel SAP de l'entreprise pour traiter les commandes et les stocks</li>
           <li data-en="Teamwork to achieve collectively set goals">Travail en équipe pour atteindre les objectifs fixés collectivement</li>
         </ul>
-        <div class="exp-chips">
-          <span class="exp-chip">SAP</span>
-          <span class="exp-chip" data-en="Autonomy">Autonomie</span>
-          <span class="exp-chip" data-en="Teamwork">Travail d'équipe</span>
-        </div>
+        <div class="exp-chips"><span class="exp-chip">SAP</span><span class="exp-chip" data-en="Autonomy">Autonomie</span><span class="exp-chip" data-en="Teamwork">Travail d'équipe</span></div>
       </div>
-      <div class="exp-logo-wrap">
-        <img src="images/CASTEL-VIANDE.jpg" alt="Castel Viandes" class="exp-logo" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
-        <div style="display:none;width:120px;height:60px;background:#FFEBEE;border-radius:6px;align-items:center;justify-content:center;font-size:0.75rem;font-weight:700;color:#C62828;text-align:center;line-height:1.2">Castel<br>Viandes</div>
-      </div>
+      <div class="exp-logo-wrap"><img src="images/CASTEL-VIANDE.jpg" alt="Castel Viandes" class="exp-logo" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><div style="display:none;width:120px;height:60px;background:#FFEBEE;border-radius:6px;align-items:center;justify-content:center;font-size:0.75rem;font-weight:700;color:#C62828;text-align:center;line-height:1.2">Castel<br>Viandes</div></div>
     </div>
- 
   </div>
 </section>
  
-<!-- PROJETS CONCRETS — UNDER CONSTRUCTION -->
+<!-- PROJETS CONCRETS — 7 PROJETS (4 études de cas + 3 en construction) -->
 <section id="projets" class="projets-wip-section">
-  <div class="sec-label" data-en="04.5 — Concrete Projects">04.5 — Projets concrets</div>
+  <div class="sec-label" data-en="04 — Concrete Projects">04 — Projets concrets</div>
   <h2 class="sec-title" data-en="Key<br>Achievements">Réalisations<br>Clés</h2>
-  <div class="wip-badge"><span class="wip-dot"></span> <span data-en="Section under construction — coming soon">Section en cours de construction — bientôt disponible</span></div>
+  <div class="wip-badge"><span class="wip-dot"></span> <span data-en="Click on highlighted projects to explore the full case study">Cliquez sur les projets mis en avant pour découvrir l'étude de cas complète</span></div>
  
   <div class="projets-grid-wip">
  
-    <!-- ID Logistics -->
-    <div class="projet-wip-card reveal">
+    <!-- 1. ID Logistics — Revalorisation déchets — CLICKABLE -->
+    <div class="projet-wip-card projet-live reveal" onclick="openProjectModal('reval')">
       <div class="projet-wip-bg" style="background-image:url('https://images.unsplash.com/photo-1553413077-190dd305871c?w=800&q=80')"></div>
       <div class="projet-wip-content">
         <div class="projet-wip-company">ID Logistics · Derval (44)</div>
         <div class="projet-wip-title" data-en="Waste Recovery & Site Implantation">Revalorisation des déchets & refonte de l'implantation</div>
-        <div class="projet-wip-desc" data-en="Led the complete waste recovery project: identification of waste streams, redesign of site layout, creation of a scaled Excel map. Significant reduction in waste generated and improved recovery rate.">Pilotage du projet de revalorisation des déchets, refonte complète de l'implantation du site et création d'une cartographie à l'échelle sous Excel. Réduction significative des déchets et amélioration du taux de revalorisation.</div>
+        <div class="projet-wip-desc" data-en="920 tonnes of waste in 2023, 142,735€ in treatment costs. Objective: -10% costs. Ishikawa, Gemba Walk, full site layout redesign.">920 tonnes de déchets en 2023, 142 735 € de coûts. Objectif : -10% coûts. Ishikawa, Gemba Walk, refonte implantation du site.</div>
         <div class="projet-wip-tags">
+          <span class="projet-wip-tag">Ishikawa</span>
+          <span class="projet-wip-tag">Gemba Walk</span>
           <span class="projet-wip-tag">Lean Sigma</span>
-          <span class="projet-wip-tag">6S</span>
-          <span class="projet-wip-tag">Obeya</span>
-          <span class="projet-wip-tag">TRS</span>
+          <span class="projet-wip-tag">ISO 14001</span>
           <span class="projet-wip-tag" data-en="Excel mapping">Cartographie Excel</span>
-          <span class="projet-wip-tag" data-en="Waste recovery">Revalorisation</span>
+          <span class="projet-wip-tag">📊 -10% coûts</span>
         </div>
       </div>
-      <div class="projet-wip-overlay">
-        <span class="wip-lock">🔒</span>
-        <span class="wip-label" data-en="Under construction">En construction</span>
-        <span class="wip-sublabel" data-en="Detailed case study coming soon">Étude de cas détaillée à venir</span>
-      </div>
+      <div class="projet-live-cta"><span data-en="View case study →">Voir l'étude de cas →</span></div>
     </div>
  
-    <!-- DAHER Aerospace -->
-    <div class="projet-wip-card reveal">
+    <!-- 2. DAHER — Guide Qualité & Missions Stage — CLICKABLE -->
+    <div class="projet-wip-card projet-live reveal" onclick="openProjectModal('daher')">
       <div class="projet-wip-bg" style="background-image:url('https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=800&q=80')"></div>
       <div class="projet-wip-content">
         <div class="projet-wip-company">DAHER Aerospace · Le Haillan (33)</div>
         <div class="projet-wip-title" data-en="Quality Guide — Best Group Practice 2025">Guide Qualité — Meilleure pratique du groupe 2025</div>
-        <div class="projet-wip-desc" data-en="Creation of a process guide in card format that won the best quality practice award of the DAHER group in May 2025. Deployment of the guide across the entire group. 100% structuring of the documentary base.">Création d'un guide de processus sous format card élu meilleure pratique qualité du groupe DAHER en mai 2025. Déploiement sur l'ensemble du groupe. Base documentaire structurée à 100%.</div>
+        <div class="projet-wip-desc" data-en="Quality process guide (card format) — awarded best practice of the DAHER group, May 2025. Digitalisation of NC tracking system, collaborator evaluation tool, visual displays, forklift operator guide.">Guide de processus qualité (format card) — élu meilleure pratique du groupe DAHER, mai 2025. Digitalisation du système de gestion des NC, outil d'évaluation collaborateurs, affichages visuels, guide à l'attention des caristes.</div>
         <div class="projet-wip-tags">
           <span class="projet-wip-tag">EN 9100</span>
           <span class="projet-wip-tag">SMQ</span>
           <span class="projet-wip-tag" data-en="Change management">Conduite du changement</span>
-          <span class="projet-wip-tag">PowerApps</span>
           <span class="projet-wip-tag" data-en="Visual management">Mgt visuel</span>
           <span class="projet-wip-tag">🏆 Prix groupe</span>
         </div>
       </div>
-      <div class="projet-wip-overlay">
-        <span class="wip-lock">🔒</span>
-        <span class="wip-label" data-en="Under construction">En construction</span>
-        <span class="wip-sublabel" data-en="Detailed case study coming soon">Étude de cas détaillée à venir</span>
-      </div>
+      <div class="projet-live-cta"><span data-en="View case study →">Voir l'étude de cas →</span></div>
     </div>
  
-    <!-- ArianeGroup -->
+    <!-- 3. ArianeGroup — Application VBA -->
     <div class="projet-wip-card reveal">
       <div class="projet-wip-bg" style="background-image:url('https://images.unsplash.com/photo-1517976487492-5750f3195933?w=800&q=80')"></div>
       <div class="projet-wip-content">
@@ -976,6 +1019,87 @@
       </div>
     </div>
  
+    <!-- 4. ID Logistics — Certification CID — CLICKABLE -->
+    <div class="projet-wip-card projet-live reveal reveal-delay-1" onclick="openProjectModal('cid')">
+      <div class="projet-wip-bg" style="background-image:url('https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&q=80')"></div>
+      <div class="projet-wip-content">
+        <div class="projet-wip-company">ID Logistics · Derval (44)</div>
+        <div class="projet-wip-title" data-en="CID Certification, Audits & Fleet Management">Certification CID, Audits & Gestion de parc</div>
+        <div class="projet-wip-desc" data-en="2 pre-audits/month, 14+16 criteria, 95%+ at official audits. 80 forklifts, 80 GED documents. SMATS, fire permits, prevention plans. Zero major NC.">2 pré-audits/mois, 14+16 critères, +95% aux audits officiels. 80 chariots, 80 documents GED. SMATS, permis feu, plans de prévention. Zéro NC majeure.</div>
+        <div class="projet-wip-tags">
+          <span class="projet-wip-tag">Certification CID</span>
+          <span class="projet-wip-tag" data-en="Pre-audits (2/month)">Pré-audits (2/mois)</span>
+          <span class="projet-wip-tag" data-en="80 forklifts">80 chariots</span>
+          <span class="projet-wip-tag">GED</span>
+          <span class="projet-wip-tag">SMATS</span>
+          <span class="projet-wip-tag">🏆 +95% audit officiel</span>
+        </div>
+      </div>
+      <div class="projet-live-cta"><span data-en="View case study →">Voir l'étude de cas →</span></div>
+    </div>
+ 
+    <!-- 5. NOUVEAU — DAHER — PowerApps & Cartographie -->
+    <div class="projet-wip-card reveal reveal-delay-2">
+      <div class="projet-wip-bg" style="background-image:url('https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&q=80')"></div>
+      <div class="projet-wip-content">
+        <div class="projet-wip-company">DAHER Aerospace · Le Haillan (33)</div>
+        <div class="projet-wip-title" data-en="PowerApps Deployment & Process Mapping">Déploiement PowerApps & Cartographie processus</div>
+        <div class="projet-wip-desc" data-en="Automation of quality tools via Power Platform. Complete creation of flowcharts, process maps and visual management tools. Support for process owners during QMS deployment on the Dassault Aviation base.">Automatisation des outils qualité via Power Platform. Création complète de logigrammes, cartographies de processus et outils de management visuel. Accompagnement des pilotes de processus lors du déploiement du SMQ sur la base Dassault Aviation.</div>
+        <div class="projet-wip-tags">
+          <span class="projet-wip-tag">PowerApps</span>
+          <span class="projet-wip-tag">Power Platform</span>
+          <span class="projet-wip-tag" data-en="Process mapping">Cartographie processus</span>
+          <span class="projet-wip-tag" data-en="Flowcharts">Logigrammes</span>
+          <span class="projet-wip-tag">SMQ</span>
+        </div>
+      </div>
+      <div class="projet-wip-overlay">
+        <span class="wip-lock">🔒</span>
+        <span class="wip-label" data-en="Under construction">En construction</span>
+        <span class="wip-sublabel" data-en="Detailed case study coming soon">Étude de cas détaillée à venir</span>
+      </div>
+    </div>
+ 
+    <!-- 6. NOUVEAU — ArianeGroup — Audits & Culture Qualité -->
+    <div class="projet-wip-card reveal reveal-delay-3">
+      <div class="projet-wip-bg" style="background-image:url('https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=800&q=80')"></div>
+      <div class="projet-wip-content">
+        <div class="projet-wip-company">ArianeGroup · Saint-Médard en Jalles (33)</div>
+        <div class="projet-wip-title" data-en="EN9100 Audits & Quality Culture Program">Programme Audits EN9100 & Culture Qualité</div>
+        <div class="projet-wip-desc" data-en="Conducting workstation audits and EN9100 internal audits. Deployment of a quality culture improvement program at all levels of the organization. Document management and visual overhaul of quality procedures for better adoption.">Conduite d'audits de poste et audits internes EN9100. Déploiement d'un programme d'amélioration de la culture qualité à tous les niveaux de l'organisation. Gestion documentaire et refonte visuelle des procédures qualité pour une meilleure adoption.</div>
+        <div class="projet-wip-tags">
+          <span class="projet-wip-tag">EN 9100</span>
+          <span class="projet-wip-tag" data-en="Internal audit">Audit interne</span>
+          <span class="projet-wip-tag" data-en="Quality culture">Culture qualité</span>
+          <span class="projet-wip-tag" data-en="Document management">Gestion documentaire</span>
+          <span class="projet-wip-tag" data-en="Change management">Conduite du changement</span>
+        </div>
+      </div>
+      <div class="projet-wip-overlay">
+        <span class="wip-lock">🔒</span>
+        <span class="wip-label" data-en="Under construction">En construction</span>
+        <span class="wip-sublabel" data-en="Detailed case study coming soon">Étude de cas détaillée à venir</span>
+      </div>
+    </div>
+ 
+    <!-- 7. ID Logistics — SMARTLOCKER — CLICKABLE -->
+    <div class="projet-wip-card projet-live reveal" onclick="openProjectModal('smartlocker')">
+      <div class="projet-wip-bg" style="background-image:url('images/Smartlocker.jpg')"></div>
+      <div class="projet-wip-content">
+        <div class="projet-wip-company">ID Logistics · Derval (44)</div>
+        <div class="projet-wip-title" data-en="SMARTLOCKER — Smart Locker Deployment & Equipment Management">SMARTLOCKER — Déploiement casiers intelligents & Gestion du matériel</div>
+        <div class="projet-wip-desc" data-en="Full project management: 10 smart locker cabinets, 1,600 lockers, 185+ RFID-tagged equipment. 25 managers trained. 1-month deadline. Deployed alongside WMS migration to Manhattan.">Chef de projet : 10 armoires intelligentes, 1 600 casiers, 185+ équipements tagués RFID. 25 encadrants formés. Délai 1 mois. Déployé en parallèle de la migration WMS vers Manhattan.</div>
+        <div class="projet-wip-tags">
+          <span class="projet-wip-tag">RFID / NFC</span>
+          <span class="projet-wip-tag" data-en="Project management">Chef de projet</span>
+          <span class="projet-wip-tag" data-en="Training">Formation</span>
+          <span class="projet-wip-tag">My Asset</span>
+          <span class="projet-wip-tag">🏆 1 600 casiers</span>
+        </div>
+      </div>
+      <div class="projet-live-cta"><span data-en="View case study →">Voir l'étude de cas →</span></div>
+    </div>
+ 
   </div>
  
   <div class="projet-wip-bottom">
@@ -988,122 +1112,59 @@
   <div class="sec-label">05 — Hard &amp; Soft Skills</div>
   <h2 class="sec-title" data-en="My<br>Skills">Mes<br>Compétences</h2>
   <p class="sec-intro" data-en="A synthesis of technical expertise and behavioral qualities developed through 3 professional experiences and 5 years of training.">Synthèse des expertises techniques et des qualités comportementales développées au fil de 3 expériences professionnelles et 5 ans de formation.</p>
- 
   <div class="skills-two-col">
- 
-    <!-- ── HARD SKILLS ── -->
     <div class="reveal">
       <div class="hs-col-title" data-en="Hard Skills — Technical Expertise">Hard Skills — Expertise technique</div>
- 
       <div class="hs-group blue">
         <div class="hs-group-label" data-en="Quality Standards & Compliance">Référentiels Qualité & Conformité</div>
-        <div class="hs-tags">
-          <span class="hs-pill">EN 9100 / AS9100</span>
-          <span class="hs-pill">ISO 9001:2015</span>
-          <span class="hs-pill" data-en="Internal audit">Audit interne</span>
-          <span class="hs-pill">QHSE / HSE</span>
-          <span class="hs-pill" data-en="Control plan">Plan de surveillance</span>
-          <span class="hs-pill">CAPA</span>
-          <span class="hs-pill" data-en="Regulatory compliance">Conformité réglementaire</span>
-          <span class="hs-pill" data-en="CID Certification">Certification CID</span>
-          <span class="hs-pill" data-en="Documentary management">Gestion documentaire</span>
-          <span class="hs-pill" data-en="Process mapping">Cartographie des processus</span>
-        </div>
+        <div class="hs-tags"><span class="hs-pill">EN 9100 / AS9100</span><span class="hs-pill">ISO 9001:2015</span><span class="hs-pill" data-en="Internal audit">Audit interne</span><span class="hs-pill">QHSE / HSE</span><span class="hs-pill" data-en="Control plan">Plan de surveillance</span><span class="hs-pill">CAPA</span><span class="hs-pill" data-en="Regulatory compliance">Conformité réglementaire</span><span class="hs-pill" data-en="CID Certification">Certification CID</span><span class="hs-pill" data-en="Documentary management">Gestion documentaire</span><span class="hs-pill" data-en="Process mapping">Cartographie des processus</span></div>
       </div>
- 
       <div class="hs-group gold">
         <div class="hs-group-label" data-en="Methods & Continuous Improvement">Méthodes & Amélioration Continue</div>
-        <div class="hs-tags">
-          <span class="hs-pill">AMDEC / FMEA</span>
-          <span class="hs-pill">8D / QRQC</span>
-          <span class="hs-pill">Ishikawa / 5 Pourquoi</span>
-          <span class="hs-pill">MSP / SPC</span>
-          <span class="hs-pill">Lean Green Belt</span>
-          <span class="hs-pill">Lean Sigma</span>
-          <span class="hs-pill">Kaizen</span>
-          <span class="hs-pill">5S / 6S</span>
-          <span class="hs-pill" data-en="Visual management">Management visuel</span>
-          <span class="hs-pill" data-en="Flowcharts / Process mapping">Logigrammes / Processus</span>
-          <span class="hs-pill" data-en="Risk management">Gestion des risques</span>
-          <span class="hs-pill" data-en="Waste recovery">Revalorisation des déchets</span>
-          <span class="hs-pill" data-en="Site layout / Implantation">Implantation / Layout</span>
-          <span class="hs-pill">TRS</span>
-          <span class="hs-pill">Obeya</span>
-          <span class="hs-pill" data-en="Operational excellence">Excellence opérationnelle</span>
-          <span class="hs-pill" data-en="Change management">Conduite du changement</span>
-        </div>
+        <div class="hs-tags"><span class="hs-pill">AMDEC / FMEA</span><span class="hs-pill">8D / QRQC</span><span class="hs-pill">Ishikawa / 5 Pourquoi</span><span class="hs-pill">MSP / SPC</span><span class="hs-pill">Lean Green Belt</span><span class="hs-pill">Lean Sigma</span><span class="hs-pill">Kaizen</span><span class="hs-pill">5S / 6S</span><span class="hs-pill" data-en="Visual management">Management visuel</span><span class="hs-pill" data-en="Flowcharts / Process mapping">Logigrammes / Processus</span><span class="hs-pill" data-en="Risk management">Gestion des risques</span><span class="hs-pill" data-en="Waste recovery">Revalorisation des déchets</span><span class="hs-pill" data-en="Site layout / Implantation">Implantation / Layout</span><span class="hs-pill">TRS</span><span class="hs-pill">Obeya</span><span class="hs-pill" data-en="Operational excellence">Excellence opérationnelle</span><span class="hs-pill" data-en="Change management">Conduite du changement</span></div>
       </div>
- 
       <div class="hs-group teal">
         <div class="hs-group-label" data-en="Digital Tools & Software">Outils Numériques & Logiciels</div>
-        <div class="hs-tags">
-          <span class="hs-pill">Excel Avancé + VBA</span>
-          <span class="hs-pill">Power Platform</span>
-          <span class="hs-pill">PowerApps</span>
-          <span class="hs-pill">Pack Office</span>
-          <span class="hs-pill">SAP</span>
-          <span class="hs-pill" data-en="Excel mapping (scaled)">Cartographie Excel à l'échelle</span>
-          <span class="hs-pill" data-en="Dashboards / KPIs">Tableaux de bord / KPIs</span>
-          <span class="hs-pill" data-en="Quality tools automation">Automatisation outils qualité</span>
-          <span class="hs-pill" data-en="Cybersecurity (ANSSI)">Cybersécurité (ANSSI)</span>
-          <span class="hs-pill" data-en="Web Development">Développement web</span>
-        </div>
+        <div class="hs-tags"><span class="hs-pill">Excel Avancé + VBA</span><span class="hs-pill">Power Platform</span><span class="hs-pill">PowerApps</span><span class="hs-pill">Pack Office</span><span class="hs-pill">SAP</span><span class="hs-pill" data-en="Excel mapping (scaled)">Cartographie Excel à l'échelle</span><span class="hs-pill" data-en="Dashboards / KPIs">Tableaux de bord / KPIs</span><span class="hs-pill" data-en="Quality tools automation">Automatisation outils qualité</span><span class="hs-pill" data-en="Cybersecurity (ANSSI)">Cybersécurité (ANSSI)</span><span class="hs-pill" data-en="Web Development">Développement web</span></div>
       </div>
     </div>
- 
-    <!-- ── SOFT SKILLS ── -->
     <div class="reveal reveal-delay-2">
       <div class="ss-col-title" data-en="Soft Skills — Behavioral Qualities">Soft Skills — Qualités comportementales</div>
       <div class="ss-grid">
- 
-        <div class="ss-card" style="--ss-color:#E8C06A">
-          <span class="ss-icon">🎯</span>
-          <div class="ss-name" data-en="Analytical Rigor">Rigueur analytique</div>
-          <div class="ss-desc" data-en="Structured, precise approach to data, documents, and processes — developed through 3 quality missions.">Approche structurée et précise des données, documents et processus — développée sur 3 missions qualité.</div>
-        </div>
- 
-        <div class="ss-card" style="--ss-color:#4B8EBF">
-          <span class="ss-icon">🔄</span>
-          <div class="ss-name" data-en="Change management">Conduite du changement</div>
-          <div class="ss-desc" data-en="Led QMS deployment and quality culture transformation across teams at DAHER and ID Logistics.">Accompagnement du déploiement SMQ et transformation de la culture qualité chez DAHER et ID Logistics.</div>
-        </div>
- 
-        <div class="ss-card" style="--ss-color:#1D9E75">
-          <span class="ss-icon">🏫</span>
-          <div class="ss-name" data-en="Pedagogy & Training">Pédagogie & Formation</div>
-          <div class="ss-desc" data-en="Trained and raised teams' awareness of HSE, certifications and risk management good practices.">Formation et sensibilisation des équipes aux exigences HSE, certification et bonnes pratiques risques.</div>
-        </div>
- 
-        <div class="ss-card" style="--ss-color:#E8C06A">
-          <span class="ss-icon">🤝</span>
-          <div class="ss-name" data-en="Cross-functional leadership">Leadership transversal</div>
-          <div class="ss-desc" data-en="Coordination of multiple stakeholders across operational, quality, and management teams.">Coordination de plusieurs parties prenantes : équipes opérationnelles, qualité et direction.</div>
-        </div>
- 
-        <div class="ss-card" style="--ss-color:#4B8EBF">
-          <span class="ss-icon">💡</span>
-          <div class="ss-name" data-en="Initiative & Creativity">Initiative & Créativité</div>
-          <div class="ss-desc" data-en="Created the best quality practice of the DAHER group in May 2025 — a card-format process guide.">Création de la meilleure pratique qualité du groupe DAHER en mai 2025 — guide sous format card.</div>
-        </div>
- 
-        <div class="ss-card" style="--ss-color:#1D9E75">
-          <span class="ss-icon">🔧</span>
-          <div class="ss-name" data-en="Problem Solving">Résolution de problèmes</div>
-          <div class="ss-desc" data-en="Structured approach using 8D, QRQC, Ishikawa — applied to non-conformities at ArianeGroup and DAHER.">Approche 8D, QRQC, Ishikawa appliquée aux non-conformités chez ArianeGroup et DAHER.</div>
-        </div>
- 
-        <div class="ss-card" style="--ss-color:#E8C06A">
-          <span class="ss-icon">📢</span>
-          <div class="ss-name" data-en="Communication">Communication</div>
-          <div class="ss-desc" data-en="Adapted reporting to all levels: operators, managers, and group directors. Good level of English (C1).">Reporting adapté à tous les niveaux : opérateurs, managers, direction groupe. Bon niveau d'anglais (C1).</div>
-        </div>
- 
-        <div class="ss-card" style="--ss-color:#4B8EBF">
-          <span class="ss-icon">⚡</span>
-          <div class="ss-name" data-en="Adaptability">Adaptabilité</div>
-          <div class="ss-desc" data-en="3 different industrial environments (aerospace, logistics, food industry) — quickly operational in each.">3 environnements industriels différents (aérospatiale, logistique, agroalimentaire) — rapidement opérationnel dans chaque contexte.</div>
-        </div>
- 
+        <div class="ss-card" style="--ss-color:#E8C06A"><span class="ss-icon">🎯</span><div class="ss-name" data-en="Analytical Rigor">Rigueur analytique</div><div class="ss-desc" data-en="Structured, precise approach to data, documents, and processes — developed through 3 quality missions.">Approche structurée et précise des données, documents et processus — développée sur 3 missions qualité.</div></div>
+        <div class="ss-card" style="--ss-color:#4B8EBF"><span class="ss-icon">🔄</span><div class="ss-name" data-en="Change management">Conduite du changement</div><div class="ss-desc" data-en="Led QMS deployment and quality culture transformation across teams at DAHER and ID Logistics.">Accompagnement du déploiement SMQ et transformation de la culture qualité chez DAHER et ID Logistics.</div></div>
+        <div class="ss-card" style="--ss-color:#1D9E75"><span class="ss-icon">🏫</span><div class="ss-name" data-en="Pedagogy & Training">Pédagogie & Formation</div><div class="ss-desc" data-en="Trained and raised teams' awareness of HSE, certifications and risk management good practices.">Formation et sensibilisation des équipes aux exigences HSE, certification et bonnes pratiques risques.</div></div>
+        <div class="ss-card" style="--ss-color:#E8C06A"><span class="ss-icon">🤝</span><div class="ss-name" data-en="Cross-functional leadership">Leadership transversal</div><div class="ss-desc" data-en="Coordination of multiple stakeholders across operational, quality, and management teams.">Coordination de plusieurs parties prenantes : équipes opérationnelles, qualité et direction.</div></div>
+        <div class="ss-card" style="--ss-color:#4B8EBF"><span class="ss-icon">💡</span><div class="ss-name" data-en="Initiative & Creativity">Initiative & Créativité</div><div class="ss-desc" data-en="Created the best quality practice of the DAHER group in May 2025 — a card-format process guide.">Création de la meilleure pratique qualité du groupe DAHER en mai 2025 — guide sous format card.</div></div>
+        <div class="ss-card" style="--ss-color:#1D9E75"><span class="ss-icon">🔧</span><div class="ss-name" data-en="Problem Solving">Résolution de problèmes</div><div class="ss-desc" data-en="Structured approach using 8D, QRQC, Ishikawa — applied to non-conformities at ArianeGroup and DAHER.">Approche 8D, QRQC, Ishikawa appliquée aux non-conformités chez ArianeGroup et DAHER.</div></div>
+        <div class="ss-card" style="--ss-color:#E8C06A"><span class="ss-icon">📢</span><div class="ss-name" data-en="Communication">Communication</div><div class="ss-desc" data-en="Adapted reporting to all levels: operators, managers, and group directors. Good level of English (C1).">Reporting adapté à tous les niveaux : opérateurs, managers, direction groupe. Bon niveau d'anglais (C1).</div></div>
+        <div class="ss-card" style="--ss-color:#4B8EBF"><span class="ss-icon">⚡</span><div class="ss-name" data-en="Adaptability">Adaptabilité</div><div class="ss-desc" data-en="3 different industrial environments (aerospace, logistics, food industry) — quickly operational in each.">3 environnements industriels différents (aérospatiale, logistique, agroalimentaire) — rapidement opérationnel dans chaque contexte.</div></div>
+      </div>
+    </div>
+  </div>
+  <div class="skills-langs-dark" style="display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;margin-top:3rem;">
+    <div class="lang-card reveal" style="background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);">
+      <div class="lang-flag">🇫🇷</div>
+      <div>
+        <div class="lang-name" data-en="French" style="color:rgba(255,255,255,0.9)">Français</div>
+        <div class="lang-level" data-en="Native" style="color:rgba(255,255,255,0.4)">Natif</div>
+        <div class="lang-bar" style="background:rgba(255,255,255,0.1)"><div class="lang-fill" style="width:100%"></div></div>
+      </div>
+    </div>
+    <div class="lang-card reveal reveal-delay-1" style="background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);">
+      <div class="lang-flag">🇬🇧</div>
+      <div>
+        <div class="lang-name" data-en="English" style="color:rgba(255,255,255,0.9)">Anglais</div>
+        <div class="lang-level" data-en="C1 — Fluent" style="color:rgba(255,255,255,0.4)">C1 — Courant</div>
+        <div class="lang-bar" style="background:rgba(255,255,255,0.1)"><div class="lang-fill" style="width:85%"></div></div>
+      </div>
+    </div>
+    <div class="lang-card reveal reveal-delay-2" style="background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);">
+      <div class="lang-flag">🇩🇪</div>
+      <div>
+        <div class="lang-name" data-en="German" style="color:rgba(255,255,255,0.9)">Allemand</div>
+        <div class="lang-level" data-en="A2 — Basic" style="color:rgba(255,255,255,0.4)">A2 — Notions</div>
+        <div class="lang-bar" style="background:rgba(255,255,255,0.1)"><div class="lang-fill" style="width:30%"></div></div>
       </div>
     </div>
   </div>
@@ -1114,47 +1175,12 @@
   <div class="sec-label" data-en="06 — Certifications">06 — Certifications</div>
   <h2 class="sec-title" data-en="Diplomas &<br>Certifications">Diplômes &<br>Certifications</h2>
   <div class="certs-grid">
-    <div class="cert-card reveal">
-      <span class="cert-icon">🎓</span>
-      <div class="cert-org">Kedge Business School — Talence</div>
-      <div class="cert-name" data-en="Master ISMQ — Quality Management">Master ISMQ — Management par la qualité</div>
-      <div class="cert-year">09/2024 — 10/2026</div>
-      <span class="cert-obtained" data-en="In progress">En cours</span>
-    </div>
-    <div class="cert-card reveal reveal-delay-1">
-      <span class="cert-icon">🏭</span>
-      <div class="cert-org">IUT de Nantes — Carquefou</div>
-      <div class="cert-name" data-en="Bachelor QLIO — Quality, Industrial Logistics, Organization">Bachelor QLIO — Qualité, Logistique, Industrielle, Organisation</div>
-      <div class="cert-year">09/2021 — 08/2024</div>
-      <span class="cert-obtained" data-en="Graduated">Diplômé</span>
-    </div>
-    <div class="cert-card gold-line reveal reveal-delay-2">
-      <span class="cert-icon">🟢</span>
-      <div class="cert-org">Lean Management</div>
-      <div class="cert-name">Lean Green Belt</div>
-      <div class="cert-year" data-en="Certification obtained">Certification obtenue</div>
-      <span class="cert-obtained" data-en="Certified">Certifié</span>
-    </div>
-    <div class="cert-card gold-line reveal reveal-delay-3">
-      <span class="cert-icon">📊</span>
-      <div class="cert-org" data-en="TOSA — IT Certification">TOSA — Certification Bureautique</div>
-      <div class="cert-name" data-en="Advanced Excel (TOSA)">Excel Avancé (TOSA)</div>
-      <div class="cert-year" data-en="Certification obtained">Certification obtenue</div>
-      <span class="cert-obtained" data-en="Certified">Certifié</span>
-    </div>
-    <div class="cert-card reveal reveal-delay-1">
-      <span class="cert-icon">🔒</span>
-      <div class="cert-org">ANSSI</div>
-      <div class="cert-name" data-en="Cybersecurity MOOC — Best practices">MOOC Cybersécurité — Bonnes pratiques</div>
-      <div class="cert-year" data-en="Certification obtained">Certification obtenue</div>
-      <span class="cert-obtained" data-en="Certified">Certifié</span>
-    </div>
-    <div class="cert-card reveal reveal-delay-2">
-      <span class="cert-icon">🚗</span>
-      <div class="cert-org" data-en="Mobility">Mobilité</div>
-      <div class="cert-name" data-en="Driver's License — Vehicle owner">Permis B — Véhiculé</div>
-      <div class="cert-year" data-en="National mobility">Mobilité nationale</div>
-    </div>
+    <div class="cert-card reveal"><span class="cert-icon">🎓</span><div class="cert-org">Kedge Business School — Talence</div><div class="cert-name" data-en="Master ISMQ — Quality Management">Master ISMQ — Management par la qualité</div><div class="cert-year">09/2024 — 10/2026</div><span class="cert-obtained" data-en="In progress">En cours</span></div>
+    <div class="cert-card reveal reveal-delay-1"><span class="cert-icon">🏭</span><div class="cert-org">IUT de Nantes — Carquefou</div><div class="cert-name" data-en="Bachelor QLIO — Quality, Industrial Logistics, Organization">Bachelor QLIO — Qualité, Logistique, Industrielle, Organisation</div><div class="cert-year">09/2021 — 08/2024</div><span class="cert-obtained" data-en="Graduated">Diplômé</span></div>
+    <div class="cert-card gold-line reveal reveal-delay-2"><span class="cert-icon">🟢</span><div class="cert-org">Lean Management</div><div class="cert-name">Lean Green Belt</div><div class="cert-year" data-en="Certification obtained">Certification obtenue</div><span class="cert-obtained" data-en="Certified">Certifié</span></div>
+    <div class="cert-card gold-line reveal reveal-delay-3"><span class="cert-icon">📊</span><div class="cert-org" data-en="TOSA — IT Certification">TOSA — Certification Bureautique</div><div class="cert-name" data-en="Advanced Excel (TOSA)">Excel Avancé (TOSA)</div><div class="cert-year" data-en="Certification obtained">Certification obtenue</div><span class="cert-obtained" data-en="Certified">Certifié</span></div>
+    <div class="cert-card reveal reveal-delay-1"><span class="cert-icon">🔒</span><div class="cert-org">ANSSI</div><div class="cert-name" data-en="Cybersecurity MOOC — Best practices">MOOC Cybersécurité — Bonnes pratiques</div><div class="cert-year" data-en="Certification obtained">Certification obtenue</div><span class="cert-obtained" data-en="Certified">Certifié</span></div>
+    <div class="cert-card reveal reveal-delay-2"><span class="cert-icon">🚗</span><div class="cert-org" data-en="Mobility">Mobilité</div><div class="cert-name" data-en="Driver's License — Vehicle owner">Permis B — Véhiculé</div><div class="cert-year" data-en="National mobility">Mobilité nationale</div></div>
   </div>
 </section>
  
@@ -1163,36 +1189,12 @@
   <div class="sec-label" data-en="07 — Hobbies">07 — Loisirs</div>
   <h2 class="sec-title" data-en="Areas of<br>Interest">Centres<br>d'intérêt</h2>
   <div class="loisirs-grid">
-    <div class="loisir-card reveal">
-      <img src="images/football.jpg" alt="Football" class="loisir-img" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1517466787929-bc90951d0974?w=400&q=80'">
-      <div class="loisir-title">Football</div>
-      <p class="loisir-desc" data-en="Practicing football for 13 years, in a team and as a Sunday player. I've developed my ability to communicate under pressure, to coordinate within a group with different profiles, and to stay calm in high-stakes situations.">Je pratique le football depuis 13 ans, en équipe et en amateur. J'y ai développé ma capacité à communiquer sous pression, à me coordonner au sein d'un groupe aux profils variés et à garder mon sang-froid dans les moments décisifs.</p>
-    </div>
-    <div class="loisir-card reveal reveal-delay-1">
-      <img src="https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?w=400&q=80" alt="Musique" class="loisir-img">
-      <div class="loisir-title" data-en="Music & Piano">Musique & Piano</div>
-      <p class="loisir-desc" data-en="Passionate about music and piano player for 1 year. Learning an instrument without a teacher has strengthened my autonomy, my patience for slow progress and my ability to break down complex problems into small achievable steps.">Passionné de musique et joueur de piano depuis 1 an. Apprendre un instrument sans professeur a renforcé mon autonomie, ma patience face à la progression lente et ma capacité à décomposer un problème complexe en petites étapes maîtrisables.</p>
-    </div>
-    <div class="loisir-card reveal reveal-delay-2">
-      <img src="https://images.unsplash.com/photo-1554068865-24cecd4e34b8?w=400&q=80" alt="Tennis Badminton" class="loisir-img">
-      <div class="loisir-title">Tennis / Badminton</div>
-      <p class="loisir-desc" data-en="Racket sports practitioner in leisure and friendly competition. These sports sharpened my reflexes, my reading of situations in real time and my capacity to quickly adapt my strategy to an evolving opponent.">Pratique des sports de raquette en loisir et compétition amicale. Ces sports ont aiguisé mes réflexes, ma lecture des situations en temps réel et ma capacité à adapter rapidement ma stratégie face à un adversaire qui évolue.</p>
-    </div>
-    <div class="loisir-card reveal reveal-delay-3">
-      <img src="images/lecture.jpg" alt="Voyages" class="loisir-img" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?w=400&q=80'">
-      <div class="loisir-title" data-en="Travel & Reading">Voyages & Lecture</div>
-      <p class="loisir-desc" data-en="I travel when the opportunity arises and read regularly — fiction, technical works, sector news. These habits developed my curiosity, my ability to quickly assimilate new information and my openness to different ways of thinking.">Je voyage dès que l'occasion se présente et lis régulièrement — fiction, ouvrages techniques, actualité sectorielle. Ces habitudes ont développé ma curiosité, ma capacité à assimiler rapidement de nouvelles informations et mon ouverture à différentes façons de penser.</p>
-    </div>
-    <div class="loisir-card reveal reveal-delay-1">
-      <img src="https://images.unsplash.com/photo-1461749280684-dccba630e2f6?w=400&q=80" alt="Développement web et code" class="loisir-img">
-      <div class="loisir-title" data-en="Coding & Dev">Développement & Code</div>
-      <p class="loisir-desc" data-en="Passionate about programming since discovering VBA, I code personal projects — tools, scripts and small web applications. This has given me a logical and structured approach to problem-solving, and a real taste for automation.">Passionné de code depuis la découverte du VBA, je développe des projets personnels — outils, scripts et petites applications web. Cela m'a donné une approche logique et structurée de la résolution de problèmes, et un vrai goût pour l'automatisation.</p>
-    </div>
-    <div class="loisir-card reveal reveal-delay-2">
-      <img src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?w=400&q=80" alt="Cybersécurité" class="loisir-img">
-      <div class="loisir-title" data-en="Cybersecurity">Cybersécurité</div>
-      <p class="loisir-desc" data-en="Genuinely attracted to the world of cybersecurity, I completed the ANSSI MOOC and follow sector news regularly. This curiosity has sharpened my critical thinking, my attention to invisible details and my awareness of digital risks.">Véritablement attiré par l'univers de la cybersécurité, j'ai réalisé le MOOC ANSSI et suis l'actualité du domaine régulièrement. Cette curiosité a affiné mon esprit critique, mon attention aux détails invisibles et ma conscience des risques numériques.</p>
-    </div>
+    <div class="loisir-card reveal"><img src="images/football.jpg" alt="Football" class="loisir-img" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1517466787929-bc90951d0974?w=400&q=80'"><div class="loisir-title">Football</div><p class="loisir-desc" data-en="13 years of practice, team and recreational player.">13 ans de pratique, en club et en loisir.</p></div>
+    <div class="loisir-card reveal reveal-delay-1"><img src="https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?w=400&q=80" alt="Musique" class="loisir-img"><div class="loisir-title" data-en="Music & Piano">Musique & Piano</div><p class="loisir-desc" data-en="Self-taught piano player for 1 year, music lover.">Piano en autodidacte depuis 1 an, passionné de musique.</p></div>
+    <div class="loisir-card reveal reveal-delay-2"><img src="https://images.unsplash.com/photo-1554068865-24cecd4e34b8?w=400&q=80" alt="Tennis Badminton" class="loisir-img"><div class="loisir-title">Tennis / Badminton</div><p class="loisir-desc" data-en="Racket sports, leisure and friendly competition.">Sports de raquette en loisir et compétition amicale.</p></div>
+    <div class="loisir-card reveal reveal-delay-3"><img src="images/lecture.jpg" alt="Voyages" class="loisir-img" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?w=400&q=80'"><div class="loisir-title" data-en="Travel & Reading">Voyages & Lecture</div><p class="loisir-desc" data-en="Travel, fiction, technical reading, aerospace sector watch.">Voyages, fiction, lecture technique, veille aérospatiale.</p></div>
+    <div class="loisir-card reveal reveal-delay-1"><img src="https://images.unsplash.com/photo-1461749280684-dccba630e2f6?w=400&q=80" alt="Développement web et code" class="loisir-img"><div class="loisir-title" data-en="Coding & Dev">Développement & Code</div><p class="loisir-desc" data-en="Personal projects: tools, scripts, web apps, automation.">Projets perso : outils, scripts, applis web, automatisation.</p></div>
+    <div class="loisir-card reveal reveal-delay-2"><img src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?w=400&q=80" alt="Cybersécurité" class="loisir-img"><div class="loisir-title" data-en="Cybersecurity">Cybersécurité</div><p class="loisir-desc" data-en="ANSSI certified, sector news monitoring, best practices.">Certifié ANSSI, veille sectorielle, bonnes pratiques.</p></div>
   </div>
 </section>
  
@@ -1204,23 +1206,11 @@
   <div class="reco-grid reveal">
     <div class="reco-card">
       <p class="reco-quote" data-en="Maxime not only demonstrated a strong ability to combine theory and practice, but he also showed rigor and initiative in proposing innovative solutions. He notably set up a tool for reporting and tracking non-conformities. Thanks to his technical skills and analytical mind, he quickly brought real added value.">Maxime a non seulement démontré une forte capacité à allier théorie et pratique, mais il a aussi fait preuve de rigueur et d'initiative en proposant des solutions novatrices. Il a notamment mis en place un outil de remontée et suivi des non-conformités. Grâce à ses compétences techniques et son esprit d'analyse, il a rapidement apporté une réelle valeur ajoutée.</p>
-      <div class="reco-author">
-        <div class="reco-avatar" style="background: #E65100;">T</div>
-        <div>
-          <div class="reco-name">Théa Blatzheim</div>
-          <div class="reco-role" data-en="Quality Engineer — DAHER Aerospace">Ingénieure Qualité — DAHER Aerospace</div>
-        </div>
-      </div>
+      <div class="reco-author"><div class="reco-avatar" style="background: #E65100;">T</div><div><div class="reco-name">Théa Blatzheim</div><div class="reco-role" data-en="Quality Engineer — DAHER Aerospace">Ingénieure Qualité — DAHER Aerospace</div></div></div>
     </div>
     <div class="reco-card">
       <p class="reco-quote" data-en="Maxime demonstrated an exceptional ability to integrate and collaborate effectively with the QHSE department. He successfully managed our internal certification process and set up dashboards (forklift tracking, accidentology). His dynamism, enthusiasm, and sense of efficiency will be a valuable asset.">Maxime a démontré une capacité exceptionnelle à s'intégrer et à collaborer efficacement avec le service QHSE. Il a assuré avec succès l'animation de notre processus de certification interne et a mis en place des tableaux de bord (suivi chariots, accidentologie). Son dynamisme, son enthousiasme et son sens de l'efficacité seront un atout précieux.</p>
-      <div class="reco-author">
-        <div class="reco-avatar" style="background: #2E7D32;">L</div>
-        <div>
-          <div class="reco-name">Laurent Garnier</div>
-          <div class="reco-role" data-en="Site Manager — ID Logistics">Responsable de Site — ID Logistics</div>
-        </div>
-      </div>
+      <div class="reco-author"><div class="reco-avatar" style="background: #2E7D32;">L</div><div><div class="reco-name">Laurent Garnier</div><div class="reco-role" data-en="Site Manager — ID Logistics">Responsable de Site — ID Logistics</div></div></div>
     </div>
   </div>
 </section>
@@ -1231,34 +1221,10 @@
     <div class="contact-left">
       <p class="contact-tagline" data-en="Let's Recruit<br><em>Together</em>?">Recrutez<br><em>Ensemble</em> ?</p>
       <p class="contact-sub" data-en="Available for a permanent contract from July 2026. Feel free to contact me to discuss your needs.">Disponible pour un CDI à partir de juillet 2026. N'hésitez pas à me contacter pour échanger autour de votre besoin.</p>
-      <div class="contact-item">
-        <div class="ci-icon">✉</div>
-        <div>
-          <div class="ci-label">Email</div>
-          <div class="ci-value"><a href="mailto:maximemearpro@gmail.com">maximemearpro@gmail.com</a></div>
-        </div>
-      </div>
-      <div class="contact-item">
-        <div class="ci-icon" style="font-size:0.75rem;font-weight:700">in</div>
-        <div>
-          <div class="ci-label">LinkedIn</div>
-          <div class="ci-value"><a href="https://www.linkedin.com/in/maxime-méar" target="_blank">Maxime MEAR</a></div>
-        </div>
-      </div>
-      <div class="contact-item">
-        <div class="ci-icon">☎</div>
-        <div>
-          <div class="ci-label" data-en="Phone">Téléphone</div>
-          <div class="ci-value">+33 7 83 16 84 86</div>
-        </div>
-      </div>
-      <div class="contact-item">
-        <div class="ci-icon">📍</div>
-        <div>
-          <div class="ci-label" data-en="Location">Localisation</div>
-          <div class="ci-value" data-en="Bordeaux / Saint-Médard en Jalles — National mobility">Bordeaux / Saint-Médard en Jalles — Mobilité nationale</div>
-        </div>
-      </div>
+      <div class="contact-item"><div class="ci-icon">✉</div><div><div class="ci-label">Email</div><div class="ci-value"><a href="mailto:maximemearpro@gmail.com">maximemearpro@gmail.com</a></div></div></div>
+      <div class="contact-item"><div class="ci-icon" style="font-size:0.75rem;font-weight:700">in</div><div><div class="ci-label">LinkedIn</div><div class="ci-value"><a href="https://www.linkedin.com/in/maxime-méar" target="_blank">Maxime MEAR</a></div></div></div>
+      <div class="contact-item"><div class="ci-icon">☎</div><div><div class="ci-label" data-en="Phone">Téléphone</div><div class="ci-value">+33 7 83 16 84 86</div></div></div>
+      <div class="contact-item"><div class="ci-icon">📍</div><div><div class="ci-label" data-en="Location">Localisation</div><div class="ci-value" data-en="Bordeaux / Saint-Médard en Jalles — National mobility">Bordeaux / Saint-Médard en Jalles — Mobilité nationale</div></div></div>
     </div>
     <div class="contact-right">
       <div class="form-title" data-en="Send a message">Envoyez un message</div>
@@ -1275,10 +1241,213 @@
         <button type="button" class="btn-submit" id="btn-send-mail" data-en="Send via email →">Envoyer via ma messagerie →</button>
         <p style="font-size:0.75rem;color:var(--light);margin-top:0.75rem;text-align:center;" data-en="Opens your mail app (Outlook, Gmail…) with the message pre-filled.">Ouvre votre application mail (Outlook, Gmail…) avec le message pré-rempli.</p>
       </form>
-      </form>
     </div>
   </div>
 </section>
+ 
+<!-- MODAL — Revalorisation déchets -->
+<div class="pm-overlay" id="modal-reval">
+  <div class="pm-modal">
+    <button class="pm-close" onclick="closeProjectModal()">&times;</button>
+    <div class="pm-hero">
+      <img src="https://images.unsplash.com/photo-1553413077-190dd305871c?w=1200&q=80" alt="Waste management">
+      <div class="pm-hero-overlay">
+        <div class="pm-hero-company">ID Logistics · Derval (44) · Site 36 000 m² · 170 collaborateurs</div>
+        <div class="pm-hero-title" data-en="Waste Recovery & Site Layout Redesign">Revalorisation des déchets & refonte de l'implantation</div>
+      </div>
+    </div>
+    <div class="pm-body">
+      <div class="pm-section-title" data-en="Context & Challenges">Contexte & Enjeux</div>
+      <p class="pm-text" data-en="In 2023, the Derval site generated 920 tonnes of waste for a total cost of 142,735€ (treatment: 68,983€ + rotation: 41,240€ + equipment rental: 32,512€). Five waste streams: 658T wood, 96T ultimate waste, 148T cardboard, 16T plastic, 8T rubble. Sorting was poorly executed — industrial waste (DIB) was mixed into all bins. No regular tracking, no dedicated resources, no clear objectives.">En 2023, le site de Derval a généré 920 tonnes de déchets pour un coût total de 142 735 € (traitement : 68 983 € + rotation : 41 240 € + location : 32 512 €). Cinq flux : 658T bois, 96T déchets ultimes, 148T cartons, 16T plastique, 8T gravats. Le tri était mal exécuté — les DIB se retrouvaient dans toutes les bennes. Aucun suivi régulier, aucune ressource dédiée, pas d'objectif clair.</p>
+      <div class="pm-kpis">
+        <div class="pm-kpi"><div class="pm-kpi-n">920 T</div><div class="pm-kpi-l" data-en="Waste in 2023">Déchets en 2023</div></div>
+        <div class="pm-kpi"><div class="pm-kpi-n">142 735 €</div><div class="pm-kpi-l" data-en="Total cost 2023">Coût total 2023</div></div>
+        <div class="pm-kpi"><div class="pm-kpi-n">-10%</div><div class="pm-kpi-l" data-en="Cost reduction target">Objectif réduction</div></div>
+        <div class="pm-kpi"><div class="pm-kpi-n">50+</div><div class="pm-kpi-l" data-en="Operators interviewed">Opérateurs interrogés</div></div>
+        <div class="pm-kpi"><div class="pm-kpi-n">89</div><div class="pm-kpi-l" data-en="Bins audited">Bacs audités</div></div>
+        <div class="pm-kpi"><div class="pm-kpi-n">3 ans</div><div class="pm-kpi-l" data-en="Data analyzed (2022-2024)">Données analysées</div></div>
+      </div>
+ 
+      <div class="pm-section-title" data-en="Methodology">Méthodologie déployée</div>
+      <div class="pm-steps">
+        <div class="pm-step"><div class="pm-step-num">1</div><div><div class="pm-step-title" data-en="Ishikawa Diagnosis (6M)">Diagnostic Ishikawa (6M)</div><div class="pm-step-desc" data-en="Complete analysis across 6 axes: workforce (training gaps), raw materials (waste stream analysis), measurement (no tracking), methods (outdated procedures), machines (bin rotation costs: 41,240€/year), environment (89 bins poorly distributed across 6 cells).">Analyse complète sur 6 axes : main d'œuvre (formation insuffisante), matière (analyse des flux), mesure (aucun suivi), méthode (procédures obsolètes), machines (coûts rotations : 41 240 €/an), milieu (89 bacs mal répartis sur 6 cellules).</div></div></div>
+        <div class="pm-step"><div class="pm-step-num">2</div><div><div class="pm-step-title" data-en="Gemba Walk & Field Survey">Gemba Walk & Enquête terrain</div><div class="pm-step-desc" data-en="50+ operators interviewed. Visual inspection of all bins: incorrect sorting observed (nylon strapping mixed with labels in DIB). Waste stream mapping per cell (A to F) based on products handled.">50+ opérateurs rencontrés. Inspection visuelle de toutes les bennes : tri incorrect constaté (cerclage nylon mélangé aux étiquettes dans les DIB). Cartographie des flux de déchets par cellule (A à F) selon les produits manipulés.</div></div></div>
+        <div class="pm-step"><div class="pm-step-num">3</div><div><div class="pm-step-title" data-en="Data Collection & Dashboard Creation">Collecte de données & Création de tableaux de bord</div><div class="pm-step-desc" data-en="Built a complete Excel database from scratch: monthly invoicing data from 2022-2024, waste register (Paprec), pivot tables (TCD), tracking by waste type (quantity + cost), seasonal trend analysis, non-conformity tracking.">Création d'une base de données Excel complète : préfacturations mensuelles 2022-2024, registre des déchets (Paprec), tableaux croisés dynamiques (TCD), suivi par matière (quantité + coût), analyse des saisonnalités, suivi des NC.</div></div></div>
+        <div class="pm-step"><div class="pm-step-num">4</div><div><div class="pm-step-title" data-en="Site Layout & ROI Analysis">Cartographie du site & Analyse ROI</div><div class="pm-step-desc" data-en="Scaled Excel map of all 6 cells + 3 mezzanines (44,000m²). Bin inventory: 31 blue (cardboard), 20 black (DIB), 32 yellow (plastic), 6 tipping. ROI analysis for duo/trio flux bag holders (Manutan): solution at 9,727€ abandoned (too expensive). Bin purchase ROI: 44% over 2.3 years — abandoned.">Cartographie à l'échelle sous Excel des 6 cellules + 3 mezzanines (44 000 m²). Inventaire : 31 bacs bleus (carton), 20 noirs (DIB), 32 jaunes (plastique), 6 basculantes. Analyse ROI portes-sachets duo/trio flux (Manutan) : solution à 9 727 € abandonnée. ROI rachat bacs : 44% sur 2,3 ans — non retenu.</div></div></div>
+        <div class="pm-step"><div class="pm-step-num">5</div><div><div class="pm-step-title" data-en="Cardboard Recycling Machine Project">Projet machine de recyclage carton</div><div class="pm-step-desc" data-en="Recycling cardboard into padding/dividers for pallets (replacing bubble wrap). Machine cost: 5,000€. Potential gains: 27,030€/year for ID Logistics + 3,974€ for client DSC. Analysis of 150T cardboard recycling at 100%, reduction from 36 to 3 annual rotations.">Recyclage du carton en rembourrage/intercalaires pour palettes (remplacement du papier bulle). Coût machine : 5 000 €. Gains potentiels : 27 030 €/an pour IDL + 3 974 € pour le client DSC. Analyse du recyclage de 150T de carton à 100%, réduction de 36 à 3 rotations annuelles.</div></div></div>
+        <div class="pm-step"><div class="pm-step-num">6</div><div><div class="pm-step-title" data-en="Paper Sorting Implementation">Mise en place du tri papier</div><div class="pm-step-desc" data-en="Deployed paper collection across 7 departments. 4-week measurement: 20 kg/week = 1.04T/year. Benchmarked 3 providers (Lyreco, Paprec, Manutan). Selected Paprec pallbox: 163.59€/year including collection and recycling.">Déploiement du tri papier sur 7 services. Mesure sur 4 semaines : 20 kg/sem = 1,04T/an. Benchmark de 3 prestataires (Lyreco, Paprec, Manutan). Solution retenue : pallbox Paprec à 163,59 €/an collecte et recyclage inclus.</div></div></div>
+      </div>
+ 
+      <div class="pm-section-title" data-en="Tools & Methods">Outils & Méthodes</div>
+      <div class="pm-pills">
+        <span class="pm-pill">Ishikawa / 6M</span><span class="pm-pill">Gemba Walk</span><span class="pm-pill">QQOQCCP</span><span class="pm-pill">TCD / Pivot Tables</span><span class="pm-pill">Excel avancé</span><span class="pm-pill">Lean Sigma</span><span class="pm-pill">6S</span><span class="pm-pill">Obeya</span><span class="pm-pill">TRS</span><span class="pm-pill gold">ROI / Amortissement</span><span class="pm-pill gold">Analyse NC Paprec</span><span class="pm-pill gold">Cartographie Excel</span>
+      </div>
+ 
+      <div class="pm-results">
+        <div class="pm-results-title" data-en="Key Results">Résultats clés</div>
+        <div class="pm-result-item" data-en="5,009€ savings between 2022 and 2023 (147,744€ → 142,735€)">5 009 € d'économies entre 2022 et 2023 (147 744 € → 142 735 €)</div>
+        <div class="pm-result-item" data-en="95 tonnes less waste produced year-on-year (1,015T → 920T)">95 tonnes de déchets en moins d'une année sur l'autre (1 015T → 920T)</div>
+        <div class="pm-result-item" data-en="NC reduced from 39 (2022) to 20 (2023) to 3 (Jan-Apr 2024)">NC réduites de 39 (2022) à 20 (2023) puis 3 (jan-avr 2024)</div>
+        <div class="pm-result-item" data-en="NC costs: 666€ → 564€ → 140€ on comparable periods">Coûts NC : 666 € → 564 € → 140 € sur périodes comparables</div>
+        <div class="pm-result-item" data-en="Potential gains identified: ~20,000€/year + 27,030€ (cardboard machine)">Gains potentiels identifiés : ~20 000 €/an + 27 030 € (machine carton)</div>
+        <div class="pm-result-item" data-en="Paper sorting launched: 1.04T/year recycled at 163€/year">Tri papier lancé : 1,04T/an recyclées pour 163 €/an</div>
+      </div>
+    </div>
+  </div>
+</div>
+ 
+<!-- MODAL — Certification CID -->
+<div class="pm-overlay" id="modal-cid">
+  <div class="pm-modal">
+    <button class="pm-close" onclick="closeProjectModal()">&times;</button>
+    <div class="pm-hero">
+      <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=1200&q=80" alt="Audit dashboard">
+      <div class="pm-hero-overlay">
+        <div class="pm-hero-company">ID Logistics · Derval (44) · Certification EuraCRP · 2 ans</div>
+        <div class="pm-hero-title" data-en="CID Certification, Internal Audits & Fleet Management">Certification CID, Audits internes & Gestion de parc</div>
+      </div>
+    </div>
+    <div class="pm-body">
+      <div class="pm-section-title" data-en="Context">Contexte</div>
+      <p class="pm-text" data-en="The CID (Certification ID Logistics) is an internal certification framework audited annually by an external body (EuraCRP). It covers 14 operational and 16 regulatory criteria. Scoring: A (95%), B (85%), C (75%), D (65%), E (55%). A single NC can downgrade a site rated A. My mission: maintain certification over 2 years. Result: grade A (95%+) achieved at every official audit.">La CID (Certification ID Logistics) est un référentiel interne audité annuellement par un organisme externe (EuraCRP). Elle couvre 14 engagements opérationnels et 16 réglementaires. Notation : A (95%), B (85%), C (75%), D (65%), E (55%). Une seule NC peut déclasser un site noté A. Ma mission : maintenir la certification sur 2 ans. Résultat : grade A (+95%) obtenu à chaque audit officiel.</p>
+      <div class="pm-kpis">
+        <div class="pm-kpi"><div class="pm-kpi-n">+95%</div><div class="pm-kpi-l" data-en="Official audit score (grade A)">Note audit officiel (grade A)</div></div>
+        <div class="pm-kpi"><div class="pm-kpi-n">2/mois</div><div class="pm-kpi-l" data-en="Pre-audits conducted">Pré-audits menés</div></div>
+        <div class="pm-kpi"><div class="pm-kpi-n">30</div><div class="pm-kpi-l" data-en="Total criteria (14+16)">Critères (14+16)</div></div>
+        <div class="pm-kpi"><div class="pm-kpi-n">80</div><div class="pm-kpi-l" data-en="Forklifts tracked">Chariots suivis</div></div>
+        <div class="pm-kpi"><div class="pm-kpi-n">80</div><div class="pm-kpi-l" data-en="GED documents">Documents GED</div></div>
+        <div class="pm-kpi"><div class="pm-kpi-n">0</div><div class="pm-kpi-l" data-en="Major NC at audit">NC majeure à l'audit</div></div>
+      </div>
+ 
+      <div class="pm-section-title" data-en="Missions Carried Out">Missions réalisées</div>
+      <div class="pm-steps">
+        <div class="pm-step"><div class="pm-step-num">1</div><div><div class="pm-step-title" data-en="Internal Pre-Audits (2/month)">Pré-audits internes (2/mois)</div><div class="pm-step-desc" data-en="2 pre-audits per month to prepare for the official audit. Pre-audit score: 85% — used to identify improvement areas before the real audit. Official audit results: above 95% (grade A) every year. Process: audit notification, CID checklist extraction, field + office audit, closing meeting with site director, corrective action plan deployed with operators and team leaders.">2 pré-audits par mois pour préparer l'audit officiel. Score pré-audit : 85% — utilisé pour identifier les points d'amélioration avant le vrai audit. Résultat aux audits officiels : supérieur à 95% (grade A) chaque année. Process : notification d'audit, extraction checklist CID, audit terrain + bureaux, réunion de clôture avec le directeur de site, plan d'actions correctives déployé avec opérateurs et chefs d'équipes.</div></div></div>
+        <div class="pm-step"><div class="pm-step-num">2</div><div><div class="pm-step-title" data-en="Fleet Management — 80 Toyota Forklifts">Gestion du parc — 80 chariots Toyota</div><div class="pm-step-desc" data-en="Hour meter extraction from Toyota portal, intranet data entry, field checks for untraceable forklifts, entry/exit management, end-of-lease contracts, VGP verification with Toyota. Complete documentary backup.">Extraction hora mètres depuis le portail Toyota, saisie intranet, vérifications terrain pour chariots intraçables automatiquement, gestion entrées/sorties, contrats fin de location, vérification VGP avec Toyota. Sauvegarde documentaire complète.</div></div></div>
+        <div class="pm-step"><div class="pm-step-num">3</div><div><div class="pm-step-title" data-en="GED & Document Management — 80 Documents">GED & Gestion documentaire — 80 documents</div><div class="pm-step-desc" data-en="Management of the electronic document system: 80 documents to update (organization charts, training guides, WMS procedures). Documents sorted by process, theme and date. Approval by authorized members. Preparation for GED 2.0 migration.">Pilotage de la GED : 80 documents à mettre à jour (organigrammes, guides de formation, procédures WMS). Documents classés par processus, thème et date. Approbation par les membres autorisés. Préparation de la migration GED 2.0.</div></div></div>
+        <div class="pm-step"><div class="pm-step-num">4</div><div><div class="pm-step-title" data-en="HSE: SMATS, Fire Permits, Prevention Plans">HSE : SMATS, Permis feu, Plans de prévention</div><div class="pm-step-desc" data-en="SMATS safety observations on the ground with operators (15 min). Goal: prevent dangerous actions (AD) and conditions (CD), reduce work accidents. Fire permits for all site interventions. Prevention plans: risk identification per sector (QQOQCCP), archiving (physical + digital).">Observations sécurité SMATS sur le terrain avec opérateurs (15 min). Objectif : prévenir les actions dangereuses (AD) et conditions dangereuses (CD), réduire les AT. Permis feu pour toute intervention. Plans de prévention : identification risques par secteur (QQOQCCP), archivage physique et numérique.</div></div></div>
+        <div class="pm-step"><div class="pm-step-num">5</div><div><div class="pm-step-title" data-en="Property & Contract Monitoring">Suivi immobilier & Contrats</div><div class="pm-step-desc" data-en="Intranet tracking of contract durations, automatic next visit scheduling, intervention proof archiving. Maintenance contracts, equipment inspections, regulatory compliance documentation — all auditable at any time.">Suivi intranet des durées de contrats, planification automatique des prochaines visites, archivage des preuves d'intervention. Contrats de maintenance, inspections équipements, documents de conformité réglementaire — consultables à tout moment pour l'auditeur.</div></div></div>
+      </div>
+ 
+      <div class="pm-section-title" data-en="Tools & Methods">Outils & Méthodes</div>
+      <div class="pm-pills">
+        <span class="pm-pill">Certification CID / EuraCRP</span><span class="pm-pill">Audit interne</span><span class="pm-pill">Check-list CID</span><span class="pm-pill">GED</span><span class="pm-pill">SMATS</span><span class="pm-pill">QQOQCCP</span><span class="pm-pill">Intranet ID</span><span class="pm-pill gold">Portail Toyota</span><span class="pm-pill gold">Plans de prévention</span><span class="pm-pill gold">Permis feu</span>
+      </div>
+ 
+      <div class="pm-results">
+        <div class="pm-results-title" data-en="Key Results">Résultats clés</div>
+        <div class="pm-result-item" data-en="Zero major non-conformity at official CID audit — certification maintained over 2 years">Zéro non-conformité majeure à l'audit CID officiel — certification maintenue sur 2 ans</div>
+        <div class="pm-result-item" data-en="Score above 95% (grade A) at every official CID audit — pre-audits at 85% used to prepare and improve">Score supérieur à 95% (grade A) à chaque audit CID officiel — pré-audits à 85% utilisés pour préparer et améliorer</div>
+        <div class="pm-result-item" data-en="80 forklifts tracked with full documentation and VGP compliance">80 chariots suivis avec documentation complète et conformité VGP</div>
+        <div class="pm-result-item" data-en="80 GED documents updated, approved and audit-ready">80 documents GED mis à jour, approuvés et prêts pour l'audit</div>
+        <div class="pm-result-item" data-en="Incident rate reduction following HSE actions and staff training">Réduction du taux d'incidents suite aux actions HSE et formation du personnel</div>
+      </div>
+    </div>
+  </div>
+</div>
+ 
+<!-- MODAL — DAHER Aerospace — Guide Qualité & Missions -->
+<div class="pm-overlay" id="modal-daher">
+  <div class="pm-modal">
+    <button class="pm-close" onclick="closeProjectModal()">&times;</button>
+    <div class="pm-hero">
+      <img src="https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=1200&q=80" alt="DAHER Aerospace">
+      <div class="pm-hero-overlay">
+        <div class="pm-hero-company">DAHER Aerospace · Le Haillan (33) · Service Qualité · Site Dassault Aviation Martignas</div>
+        <div class="pm-hero-title" data-en="Quality Guide, Digitalisation & Field Expertise">Guide Qualité, Digitalisation & Expertise terrain</div>
+      </div>
+    </div>
+    <div class="pm-body">
+      <div class="pm-section-title" data-en="Context & Strategic Stakes">Contexte & Enjeux stratégiques</div>
+      <p class="pm-text" data-en="DAHER Aerospace — a major aeronautics player — was looking to reduce its non-quality costs significantly. The Quality service is built around four pillars: Excellence (ISO 9001 / EN 9100), Client satisfaction, Deadlines, and Costs. My missions combined document digitalisation and field expertise to support continuous improvement of processes on the Dassault Aviation site in Martignas.">DAHER Aerospace — acteur majeur de l'aéronautique — cherchait à réduire significativement ses coûts de non-qualité. Le service Qualité s'articule autour de quatre piliers : Excellence (ISO 9001 / EN 9100), Satisfaction client, Délai et Coûts. Mes missions ont combiné digitalisation documentaire et expertise terrain pour accompagner l'amélioration continue des processus sur le site Dassault Aviation de Martignas.</p>
+      <div class="pm-kpis">
+        <div class="pm-kpi"><div class="pm-kpi-n">DAHER</div><div class="pm-kpi-l" data-en="Major aeronautics group">Groupe aéronautique majeur</div></div>
+        <div class="pm-kpi"><div class="pm-kpi-n">DA</div><div class="pm-kpi-l" data-en="Dassault Aviation — Martignas">Dassault Aviation — Martignas</div></div>
+        <div class="pm-kpi"><div class="pm-kpi-n">🏆</div><div class="pm-kpi-l" data-en="Best group practice 2025">Prix groupe 2025</div></div>
+        <div class="pm-kpi"><div class="pm-kpi-n">100%</div><div class="pm-kpi-l" data-en="Doc base structured">Base doc structurée</div></div>
+      </div>
+ 
+      <div class="pm-section-title" data-en="Mission 1 — Document Digitalisation">Mission 1 — Digitalisation des documents</div>
+      <div class="pm-steps">
+        <div class="pm-step"><div class="pm-step-num">1</div><div><div class="pm-step-title" data-en="NC Tracking System — Built from scratch">Système de gestion des non-conformités — Création de zéro</div><div class="pm-step-desc" data-en="No existing system to report and manage non-conformities. Designed and deployed a complete NC tracking solution: from declaration to corrective action, including analysis, assignment, and closure. Enabled traceability and reduced processing time.">Aucun système existant pour remonter et gérer les non-conformités. Conception et déploiement d'une solution complète de suivi des NC : de la déclaration à l'action corrective, incluant analyse, affectation et clôture. Traçabilité assurée et temps de traitement réduit.</div></div></div>
+        <div class="pm-step"><div class="pm-step-num">2</div><div><div class="pm-step-title" data-en="Collaborator Evaluation Tool">Outil d'évaluation des collaborateurs</div><div class="pm-step-desc" data-en="Created a digital tool to evaluate collaborator skills and performance. Designed to support managers in tracking competency development, identifying training needs, and aligning teams with quality objectives.">Création d'un outil digital d'évaluation des compétences et de la performance des collaborateurs. Conçu pour accompagner les managers dans le suivi des montées en compétence, l'identification des besoins de formation et l'alignement des équipes sur les objectifs qualité.</div></div></div>
+      </div>
+ 
+      <div class="pm-section-title" data-en="Mission 2 — Field Expertise">Mission 2 — Expertise terrain</div>
+      <div class="pm-steps">
+        <div class="pm-step"><div class="pm-step-num">3</div><div><div class="pm-step-title" data-en="Existing Documentation Improvement">Amélioration de la documentation existante</div><div class="pm-step-desc" data-en="Audit and overhaul of existing quality documentation. Rewriting of outdated procedures, alignment with EN 9100 requirements, new formatting for better readability and compliance during audits.">Audit et refonte de la documentation qualité existante. Réécriture des procédures obsolètes, mise en conformité EN 9100, nouveau formatage pour une meilleure lisibilité et conformité lors des audits.</div></div></div>
+        <div class="pm-step"><div class="pm-step-num">4</div><div><div class="pm-step-title" data-en="Visual Displays Creation">Création de nouveaux affichages</div><div class="pm-step-desc" data-en="Designed and deployed new visual management displays for the production floor: quality indicators, safety instructions, process reminders. Used graphic design tools to create professional, pedagogical content that improved information accessibility for operators.">Conception et déploiement de nouveaux affichages de management visuel pour l'atelier : indicateurs qualité, consignes sécurité, rappels processus. Utilisation d'outils de création graphique pour produire du contenu professionnel et pédagogique améliorant l'accessibilité de l'information pour les opérateurs.</div></div></div>
+        <div class="pm-step"><div class="pm-step-num">5</div><div><div class="pm-step-title" data-en="Forklift Operator Guide">Guide à l'attention des caristes</div><div class="pm-step-desc" data-en="Wrote a comprehensive guide for forklift operators: safety rules, operational procedures, visual schemas. Designed for easy on-site use. Involved field analysis, stakeholder interviews, and iterative validation with team leaders. This guide later evolved into the quality process guide that won the best practice award.">Rédaction d'un guide complet à l'attention des caristes : règles de sécurité, procédures opérationnelles, schémas visuels. Conçu pour une utilisation terrain facile. Démarche : analyse terrain, entretiens parties prenantes, validation itérative avec les chefs d'équipes. Ce guide a ensuite évolué vers le guide de processus qualité élu meilleure pratique du groupe.</div></div></div>
+      </div>
+ 
+      <div class="pm-section-title" data-en="Quality Guide — Best Group Practice 2025">Guide Qualité — Prix groupe 2025</div>
+      <p class="pm-text" data-en="Based on the documentation and field expertise acquired, I created a process quality guide in a card format. Presented during a group-wide remote meeting dedicated to the best continuous improvement ideas, it was elected best quality practice of the DAHER group in May 2025. Deployed on the Dassault Aviation site in Martignas. 100% structured documentary base supporting EN 9100 compliance and continuous improvement.">Fort de l'expertise documentaire et terrain acquise, j'ai créé un guide de processus qualité sous format card. Présenté lors d'une réunion groupe en distanciel dédiée aux meilleures idées d'amélioration continue, il a été élu meilleure pratique qualité du groupe DAHER en mai 2025. Déployé sur le site Dassault Aviation de Martignas. Base documentaire structurée à 100% soutenant la conformité EN 9100 et l'amélioration continue.</p>
+ 
+      <div class="pm-section-title" data-en="Skills & Tools">Compétences & Outils</div>
+      <div class="pm-pills">
+        <span class="pm-pill">EN 9100</span><span class="pm-pill">ISO 9001</span><span class="pm-pill">SMQ</span><span class="pm-pill" data-en="Process analysis">Analyse des processus</span><span class="pm-pill" data-en="Technical writing">Rédaction technique</span><span class="pm-pill" data-en="Change management">Conduite du changement</span><span class="pm-pill" data-en="Visual management">Management visuel</span><span class="pm-pill" data-en="Graphic design tools">Création graphique</span><span class="pm-pill" data-en="Needs analysis">Analyse du besoin</span><span class="pm-pill gold" data-en="Training & coaching">Formation & accompagnement</span><span class="pm-pill gold" data-en="Internal communication">Communication interne</span><span class="pm-pill gold" data-en="Project management">Gestion de projet</span>
+      </div>
+ 
+      <div class="pm-results">
+        <div class="pm-results-title" data-en="Key Results">Résultats clés</div>
+        <div class="pm-result-item" data-en="Best quality practice award of the DAHER group — May 2025">Prix de la meilleure pratique qualité du groupe DAHER — Mai 2025</div>
+        <div class="pm-result-item" data-en="Quality guide deployed on the Dassault Aviation site in Martignas">Guide qualité déployé sur le site Dassault Aviation de Martignas</div>
+        <div class="pm-result-item" data-en="NC tracking system created from scratch — full traceability established">Système de gestion des NC créé de zéro — traçabilité complète établie</div>
+        <div class="pm-result-item" data-en="Collaborator evaluation tool operational for quality managers">Outil d'évaluation des collaborateurs opérationnel pour les responsables qualité</div>
+        <div class="pm-result-item" data-en="Documentary base 100% structured and EN 9100 compliant">Base documentaire structurée à 100% et conforme EN 9100</div>
+        <div class="pm-result-item" data-en="New visual displays deployed on the production floor">Nouveaux affichages déployés sur le terrain de production</div>
+      </div>
+    </div>
+  </div>
+</div>
+ 
+<!-- MODAL — SMARTLOCKER — ID Logistics -->
+<div class="pm-overlay" id="modal-smartlocker">
+  <div class="pm-modal">
+    <button class="pm-close" onclick="closeProjectModal()">&times;</button>
+    <div class="pm-hero">
+      <img src="images/Smartlocker.jpg" alt="Smart Lockers">
+      <div class="pm-hero-overlay">
+        <div class="pm-hero-company">ID Logistics · Derval (44) · Site 44 000 m² · 150 collaborateurs</div>
+        <div class="pm-hero-title" data-en="SMARTLOCKER — Smart Locker Deployment & Equipment Management">SMARTLOCKER — Déploiement casiers intelligents & Gestion du matériel</div>
+      </div>
+    </div>
+    <div class="pm-body">
+      <div class="pm-section-title" data-en="Context & Strategic Stakes">Contexte & Enjeux</div>
+      <p class="pm-text" data-en="In early 2024, the Derval site underwent two simultaneous transformations: the migration of the WMS from Infolog to Manhattan (February 20th), and the complete modernization of operator equipment with intelligent locker cabinets (SMARTLOCKER). The site director entrusted me with full project management of the SMARTLOCKER deployment — with a hard deadline of 1 month to have everything operational.">Début 2024, le site de Derval a connu deux transformations simultanées : la migration du WMS d'Infolog vers Manhattan (20 février) et la modernisation complète du matériel opérateur avec des casiers intelligents (SMARTLOCKER). Le directeur du site m'a confié la gestion totale du projet SMARTLOCKER — avec un délai ferme d'1 mois pour rendre le tout opérationnel.</p>
+      <div class="pm-kpis">
+        <div class="pm-kpi"><div class="pm-kpi-n">10</div><div class="pm-kpi-l" data-en="Smart cabinets (A to J)">Armoires (A à J)</div></div>
+        <div class="pm-kpi"><div class="pm-kpi-n">1 600</div><div class="pm-kpi-l" data-en="Lockers available">Casiers disponibles</div></div>
+        <div class="pm-kpi"><div class="pm-kpi-n">185+</div><div class="pm-kpi-l" data-en="Tagged equipment">Équipements tagués</div></div>
+        <div class="pm-kpi"><div class="pm-kpi-n">25</div><div class="pm-kpi-l" data-en="Managers trained">Encadrants formés</div></div>
+        <div class="pm-kpi"><div class="pm-kpi-n">1 mois</div><div class="pm-kpi-l" data-en="Hard deadline">Délai ferme</div></div>
+        <div class="pm-kpi"><div class="pm-kpi-n">RFID</div><div class="pm-kpi-l" data-en="Tag ID / NFC technology">Technologie Tag ID / NFC</div></div>
+      </div>
+ 
+      <div class="pm-section-title" data-en="Project Methodology">Méthodologie projet</div>
+      <div class="pm-steps">
+        <div class="pm-step"><div class="pm-step-num">1</div><div><div class="pm-step-title" data-en="Needs Definition & Equipment Creation">Définition du besoin & Création du matériel</div><div class="pm-step-desc" data-en="Met with each team leader to gather a first estimate of needs, then validated with service managers. Transported equipment from storage (Cell A) to the 10 cabinets. Scanned 185+ items (rings, headsets, PDAs) via RFID tags. Created a detailed Excel inventory (Tag ID + serial number for each item). Designed custom kits per job role (e.g., preparation = headset + ring + PDA without handle for voice picking).">Rencontre de chaque chef d'équipe pour recueillir une première estimation des besoins, puis validation avec les responsables de service. Transport du matériel depuis le stock (Cellule A) vers les 10 armoires. Scan de 185+ équipements (bagues, casques, PDA) via tags RFID. Création d'un inventaire Excel détaillé (Tag ID + n° de série). Conception de kits sur-mesure par métier (ex. préparation = casque + bague + PDA sans poignée pour le voice picking).</div></div></div>
+        <div class="pm-step"><div class="pm-step-num">2</div><div><div class="pm-step-title" data-en="User Badge Creation">Création des badges utilisateurs</div><div class="pm-step-desc" data-en="Created individual profiles for all users (permanent and temporary) via the SMARTLOCKER tablet: name, position, line manager. Navigated outdated staff rosters that required cross-referencing with actual positions. Built an Excel tracking file for temporary workers: badge number, name, department, creation and return dates. Organized badges by job and service in labeled boxes for efficient distribution.">Création individuelle des profils pour tous les utilisateurs (CDI et intérimaires) via la tablette SMARTLOCKER : nom, poste, responsable hiérarchique. Gestion de plannings non à jour nécessitant des recoupements avec les postes réels. Création d'un fichier Excel de suivi des intérimaires : n° de badge, nom, département, dates de création et restitution. Organisation des badges par métier et service dans des boîtes étiquetées pour une distribution efficace.</div></div></div>
+        <div class="pm-step"><div class="pm-step-num">3</div><div><div class="pm-step-title" data-en="Manager & Team Leader Training">Formation des responsables & Chefs d'équipe</div><div class="pm-step-desc" data-en="Designed a full training presentation from scratch. Presented at the 9am daily meeting, then collected availability for individual sessions. Reserved a training room with projector. Trained 25 people (14 team leaders + 11 managers) in small groups organized by service. Covered: cabinet usage, My Asset web portal, equipment tracking, and RMA process for defective items.">Conception d'un support de formation complet. Présentation au top 15 du matin, puis collecte des disponibilités pour les sessions individuelles. Réservation d'une salle de formation avec vidéoprojecteur. Formation de 25 personnes (14 chefs d'équipe + 11 responsables) en petits groupes par service. Contenu : utilisation des armoires, portail web My Asset, suivi du matériel et processus RMA pour le matériel défectueux.</div></div></div>
+        <div class="pm-step"><div class="pm-step-num">4</div><div><div class="pm-step-title" data-en="Equipment Monitoring & Ongoing Support">Suivi du matériel & Accompagnement continu</div><div class="pm-step-desc" data-en="Deployed ongoing equipment tracking using Excel files created during the project. Managed defective equipment returns (RMA process — batched for efficiency). Continued training for new managers joining the team. The Excel tracking tools and training sessions enabled team leaders and managers to fully understand the importance and stakes of equipment monitoring.">Mise en place du suivi continu du matériel via les fichiers Excel créés pendant le projet. Gestion des retours de matériel défectueux (processus RMA — envois par lots pour optimiser). Formation continue pour les nouveaux encadrants. Les outils de suivi Excel et les formations ont permis aux chefs d'équipe et responsables de comprendre pleinement l'importance et les enjeux du suivi du matériel.</div></div></div>
+      </div>
+ 
+      <div class="pm-section-title" data-en="Tools & Technologies">Outils & Technologies</div>
+      <div class="pm-pills">
+        <span class="pm-pill">RFID / NFC</span><span class="pm-pill">Tag ID / QR Code</span><span class="pm-pill">SMARTLOCKER</span><span class="pm-pill">My Asset (portail web)</span><span class="pm-pill">Excel avancé</span><span class="pm-pill" data-en="WMS Manhattan">WMS Manhattan</span><span class="pm-pill" data-en="Project management">Gestion de projet</span><span class="pm-pill gold" data-en="Training design">Conception de formation</span><span class="pm-pill gold" data-en="Change management">Conduite du changement</span><span class="pm-pill gold" data-en="Stakeholder management">Gestion parties prenantes</span>
+      </div>
+ 
+      <div class="pm-results">
+        <div class="pm-results-title" data-en="Key Results">Résultats clés</div>
+        <div class="pm-result-item" data-en="10 smart cabinets operational within the 1-month deadline">10 armoires intelligentes opérationnelles dans le délai d'1 mois</div>
+        <div class="pm-result-item" data-en="1,600 lockers configured and assigned to operators">1 600 casiers configurés et affectés aux opérateurs</div>
+        <div class="pm-result-item" data-en="185+ equipment items inventoried, tagged and tracked via RFID">185+ équipements inventoriés, tagués et suivis par RFID</div>
+        <div class="pm-result-item" data-en="25 managers and team leaders trained on the new system">25 responsables et chefs d'équipes formés au nouveau système</div>
+        <div class="pm-result-item" data-en="Custom equipment kits designed per job role (voice picking, etc.)">Kits de matériel sur-mesure conçus par métier (voice picking, etc.)</div>
+        <div class="pm-result-item" data-en="Faster equipment retrieval for operators — direct productivity increase">Récupération du matériel accélérée pour les opérateurs — gain de productivité direct</div>
+      </div>
+    </div>
+  </div>
+</div>
  
 <!-- FOOTER -->
 <footer>
@@ -1348,6 +1517,7 @@ btnEn.addEventListener('click', (e) => {
   e.preventDefault();
   if (btnEn.classList.contains('active')) return;
   btnFr.classList.remove('active'); btnEn.classList.add('active');
+  document.body.classList.add('lang-en');
   translatableElements.forEach(el => { el.innerHTML = el.getAttribute('data-en'); });
   document.querySelectorAll('input[placeholder], textarea[placeholder]').forEach(el => {
     if (!el.getAttribute('data-fr-ph')) el.setAttribute('data-fr-ph', el.getAttribute('placeholder'));
@@ -1361,6 +1531,7 @@ btnFr.addEventListener('click', (e) => {
   e.preventDefault();
   if (btnFr.classList.contains('active')) return;
   btnEn.classList.remove('active'); btnFr.classList.add('active');
+  document.body.classList.remove('lang-en');
   translatableElements.forEach(el => { el.innerHTML = el.getAttribute('data-fr'); });
   document.querySelectorAll('input[placeholder], textarea[placeholder]').forEach(el => {
     if (el.getAttribute('data-fr-ph')) el.setAttribute('placeholder', el.getAttribute('data-fr-ph'));
@@ -1368,6 +1539,7 @@ btnFr.addEventListener('click', (e) => {
   updateCount();
   if (pageTitle) document.title = pageTitle.getAttribute('data-fr');
 });
+ 
 // MAILTO — formulaire de contact dynamique
 document.getElementById('btn-send-mail').addEventListener('click', () => {
   const name    = document.getElementById('cf-name').value.trim();
@@ -1396,14 +1568,12 @@ document.getElementById('btn-send-mail').addEventListener('click', () => {
  
   window.location.href = mailto;
  
-  // Vider les champs après le clic
   setTimeout(() => {
     document.getElementById('cf-name').value    = '';
     document.getElementById('cf-email').value   = '';
     document.getElementById('cf-subject').value = '';
     document.getElementById('cf-message').value = '';
  
-    // Afficher un message de confirmation temporaire
     const btn = document.getElementById('btn-send-mail');
     const original = btn.textContent;
     btn.textContent = '✓ Application mail ouverte !';
@@ -1413,6 +1583,237 @@ document.getElementById('btn-send-mail').addEventListener('click', () => {
       btn.style.background = '';
     }, 3000);
   }, 500);
+});
+ 
+// ═══════════════════════════════════════════
+// ÉLÉMENTS DYNAMIQUES
+// ═══════════════════════════════════════════
+ 
+// ── ANIMATED NUMBER COUNTERS ──
+function animateCounter(el, target, suffix) {
+  suffix = suffix || '';
+  var isDecimal = String(target).indexOf('.') !== -1;
+  var duration = 1800;
+  var start = performance.now();
+  function tick(now) {
+    var elapsed = now - start;
+    var progress = Math.min(elapsed / duration, 1);
+    var eased = 1 - Math.pow(1 - progress, 3);
+    var current = eased * target;
+    if (isDecimal) {
+      el.textContent = current.toFixed(1).replace('.', ',') + suffix;
+    } else {
+      el.textContent = Math.floor(current) + suffix;
+    }
+    if (progress < 1) requestAnimationFrame(tick);
+    else {
+      if (isDecimal) el.textContent = String(target).replace('.', ',') + suffix;
+      else el.textContent = target + suffix;
+    }
+  }
+  requestAnimationFrame(tick);
+}
+ 
+var counterObserver = new IntersectionObserver(function(entries) {
+  entries.forEach(function(e) {
+    if (e.isIntersecting && !e.target.dataset.counted) {
+      e.target.dataset.counted = 'true';
+      var text = e.target.textContent.trim();
+      var skip = ['🏆','Bac+5','Bac+6','N°1','~50%','100%','80%','3 ans'];
+      if (skip.indexOf(text) !== -1) return;
+      var cleaned = text.replace(/\s/g, '').replace(',', '.').replace('+', '');
+      var num = parseFloat(cleaned);
+      if (isNaN(num)) return;
+      var suffix = text.indexOf('+') !== -1 ? '+' : '';
+      animateCounter(e.target, num, suffix);
+    }
+  });
+}, { threshold: 0.5 });
+document.querySelectorAll('.hstat-n, .ak-number, .kpi-n').forEach(function(el) {
+  counterObserver.observe(el);
+});
+ 
+// ── HERO PARTICLE CANVAS ──
+(function() {
+  var hero = document.getElementById('hero');
+  if (!hero) return;
+  var canvas = document.createElement('canvas');
+  canvas.id = 'hero-particles';
+  canvas.style.cssText = 'position:absolute;inset:0;z-index:0;pointer-events:none;opacity:0.35;';
+  hero.insertBefore(canvas, hero.querySelector('.hero-content'));
+  var ctx = canvas.getContext('2d');
+  var w, h, particles = [];
+  function resize() { w = canvas.width = hero.offsetWidth; h = canvas.height = hero.offsetHeight; }
+  resize();
+  window.addEventListener('resize', resize);
+  for (var i = 0; i < 45; i++) {
+    particles.push({ x: Math.random()*(w||1200), y: Math.random()*(h||800), r: Math.random()*1.5+0.5, dx: (Math.random()-0.5)*0.25, dy: (Math.random()-0.5)*0.15-0.1, opacity: Math.random()*0.5+0.15 });
+  }
+  function draw() {
+    ctx.clearRect(0, 0, w, h);
+    for (var i = 0; i < particles.length; i++) {
+      var p = particles[i];
+      p.x += p.dx; p.y += p.dy;
+      if (p.x < 0) p.x = w; if (p.x > w) p.x = 0;
+      if (p.y < 0) p.y = h; if (p.y > h) p.y = 0;
+      ctx.beginPath(); ctx.arc(p.x, p.y, p.r, 0, Math.PI*2);
+      ctx.fillStyle = 'rgba(232,192,106,' + p.opacity + ')'; ctx.fill();
+    }
+    for (var a = 0; a < particles.length; a++) {
+      for (var b = a+1; b < particles.length; b++) {
+        var dx = particles[a].x - particles[b].x;
+        var dy = particles[a].y - particles[b].y;
+        var dist = Math.sqrt(dx*dx + dy*dy);
+        if (dist < 110) {
+          ctx.beginPath(); ctx.moveTo(particles[a].x, particles[a].y); ctx.lineTo(particles[b].x, particles[b].y);
+          ctx.strokeStyle = 'rgba(232,192,106,' + (0.07*(1-dist/110)) + ')'; ctx.lineWidth = 0.5; ctx.stroke();
+        }
+      }
+    }
+    requestAnimationFrame(draw);
+  }
+  draw();
+})();
+ 
+// ── HERO TYPING EFFECT — single cycle, starts after 10s ──
+(function() {
+  var el = document.querySelector('.hero-sub');
+  if (!el) return;
+  function isFr() { return document.getElementById('btn-fr').classList.contains('active'); }
+  var phrases = {
+    fr: ['Maxime MEAR · Aéronautique · Spatial · Défense','Ingénieur Qualité & Amélioration Continue','EN 9100 · ISO 9001 · Lean Green Belt','Disponible CDI — Septembre 2026'],
+    en: ['Maxime MEAR · Aeronautics · Space · Defense','Quality & Continuous Improvement Engineer','EN 9100 · ISO 9001 · Lean Green Belt','Available for CDI — September 2026']
+  };
+  var idx = 0, charIdx = 0, deleting = false, pauseTime = 0;
+  var totalPhrases = phrases.fr.length;
+  var cyclesDone = 0;
+  function getPhrase() { var list = isFr() ? phrases.fr : phrases.en; return list[idx % list.length]; }
+  function tick() {
+    var phrase = getPhrase();
+    if (pauseTime > 0) { pauseTime--; setTimeout(tick, 50); return; }
+    if (!deleting) {
+      charIdx++; el.textContent = phrase.substring(0, charIdx);
+      if (charIdx >= phrase.length) {
+        cyclesDone++;
+        if (cyclesDone >= totalPhrases) { el.classList.add('typing-done'); return; } // Stop after all phrases shown
+        deleting = true; pauseTime = 60;
+      }
+      setTimeout(tick, 45 + Math.random()*30);
+    } else {
+      charIdx--; el.textContent = phrase.substring(0, charIdx);
+      if (charIdx <= 0) { deleting = false; idx++; setTimeout(tick, 300); }
+      else setTimeout(tick, 25);
+    }
+  }
+  setTimeout(function() { charIdx = getPhrase().length; pauseTime = 80; cyclesDone = 0; deleting = true; tick(); }, 10000);
+})();
+ 
+// ── PARALLAX SUBTIL — bande d'images ──
+(function() {
+  var band = document.querySelector('.img-band');
+  if (!band) return;
+  var imgs = band.querySelectorAll('img');
+  window.addEventListener('scroll', function() {
+    var rect = band.getBoundingClientRect();
+    if (rect.top < window.innerHeight && rect.bottom > 0) {
+      var progress = (window.innerHeight - rect.top) / (window.innerHeight + rect.height);
+      var offset = (progress - 0.5) * 30;
+      imgs.forEach(function(img) { img.style.transform = 'translateY('+offset+'px) scale(1.05)'; });
+    }
+  }, { passive: true });
+})();
+ 
+// ── MAGNETIC HOVER — bouton nav CTA ──
+(function() {
+  var btn = document.querySelector('.nav-cta');
+  if (!btn) return;
+  btn.addEventListener('mousemove', function(e) {
+    var rect = btn.getBoundingClientRect();
+    var x = e.clientX - rect.left - rect.width/2;
+    var y = e.clientY - rect.top - rect.height/2;
+    btn.style.transform = 'translate('+(x*0.12)+'px,'+(y*0.12)+'px)';
+  });
+  btn.addEventListener('mouseleave', function() {
+    btn.style.transform = '';
+    btn.style.transition = 'transform 0.3s ease';
+    setTimeout(function(){ btn.style.transition = ''; }, 300);
+  });
+})();
+ 
+// ── COMPTEUR DE PROJETS dans le badge WIP ──
+(function() {
+  var badge = document.querySelector('.wip-badge');
+  if (!badge) return;
+  var countSpan = document.createElement('span');
+  countSpan.style.cssText = 'margin-left:0.75rem;padding:0.15rem 0.6rem;background:rgba(232,192,106,0.3);border-radius:100px;font-size:0.65rem;letter-spacing:0.08em;';
+  var cards = document.querySelectorAll('.projet-wip-card');
+  function isFr() { return document.getElementById('btn-fr').classList.contains('active'); }
+  countSpan.textContent = cards.length + (isFr() ? ' projets' : ' projects');
+  badge.appendChild(countSpan);
+})();
+ 
+// ── HAMBURGER MENU MOBILE ──
+(function() {
+  var hamburger = document.getElementById('nav-hamburger');
+  var menu = document.getElementById('nav-links-menu');
+  if (!hamburger || !menu) return;
+  hamburger.addEventListener('click', function() {
+    hamburger.classList.toggle('open');
+    menu.classList.toggle('mobile-open');
+    document.body.style.overflow = menu.classList.contains('mobile-open') ? 'hidden' : '';
+  });
+  // Close menu when a link is clicked
+  menu.querySelectorAll('a').forEach(function(link) {
+    link.addEventListener('click', function() {
+      hamburger.classList.remove('open');
+      menu.classList.remove('mobile-open');
+      document.body.style.overflow = '';
+    });
+  });
+})();
+ 
+// ── MODALES PROJETS ──
+function openProjectModal(id) {
+  var modal = document.getElementById('modal-' + id);
+  if (!modal) return;
+  modal.classList.add('open');
+  document.body.style.overflow = 'hidden';
+  // Re-run translation if EN is active
+  if (document.getElementById('btn-en').classList.contains('active')) {
+    modal.querySelectorAll('[data-en]').forEach(function(el) {
+      if (!el.getAttribute('data-fr')) el.setAttribute('data-fr', el.innerHTML);
+      el.innerHTML = el.getAttribute('data-en');
+    });
+  }
+}
+function closeProjectModal() {
+  document.querySelectorAll('.pm-overlay.open').forEach(function(m) { m.classList.remove('open'); });
+  document.body.style.overflow = '';
+}
+// Close on overlay click (not modal body)
+document.querySelectorAll('.pm-overlay').forEach(function(overlay) {
+  overlay.addEventListener('click', function(e) {
+    if (e.target === overlay) closeProjectModal();
+  });
+});
+// Close on Escape key
+document.addEventListener('keydown', function(e) {
+  if (e.key === 'Escape') closeProjectModal();
+});
+ 
+// ── SKILL TILES — tilt 3D au hover ──
+document.querySelectorAll('.skill-tile').forEach(function(tile) {
+  tile.addEventListener('mousemove', function(e) {
+    var rect = tile.getBoundingClientRect();
+    var x = (e.clientX - rect.left) / rect.width - 0.5;
+    var y = (e.clientY - rect.top) / rect.height - 0.5;
+    tile.style.transform = 'perspective(600px) rotateY('+(x*5)+'deg) rotateX('+(-y*5)+'deg)';
+  });
+  tile.addEventListener('mouseleave', function() {
+    tile.style.transform = '';
+    tile.style.transition = 'transform 0.4s ease';
+    setTimeout(function(){ tile.style.transition = ''; }, 400);
+  });
 });
 </script>
 </body>
