@@ -619,3 +619,142 @@
   .mm-toast.show {
     opacity:1; transform:translateX(-50%) translateY(0);
   }
+
+  /* ═══ NAVBAR REDESIGN — Bigger, darker, more design ═══ */
+  #navbar {
+    height:68px !important;
+    padding:0 clamp(1.5rem, 5vw, 5rem) !important;
+    background:rgba(255,255,255,0.95) !important;
+    border-bottom:none !important;
+    box-shadow:0 1px 0 var(--border);
+  }
+  #navbar.scrolled {
+    box-shadow:0 4px 24px rgba(10,31,61,0.1) !important;
+    background:rgba(255,255,255,0.98) !important;
+  }
+  .nav-logo {
+    font-size:1.35rem !important;
+    font-weight:400 !important;
+    color:var(--navy) !important;
+    letter-spacing:0.02em;
+  }
+  .nav-logo span {
+    color:var(--navy) !important;
+    font-weight:400 !important;
+    font-style:italic;
+  }
+  .nav-links {
+    gap:2rem !important;
+  }
+  .nav-links a {
+    font-size:0.85rem !important;
+    font-weight:600 !important;
+    letter-spacing:0.06em !important;
+    color:var(--navy) !important;
+    opacity:0.55;
+    transition:opacity 0.2s, color 0.2s !important;
+    position:relative;
+    padding-bottom:2px;
+  }
+  .nav-links a:hover, .nav-links a.active {
+    opacity:1 !important;
+    color:var(--blue) !important;
+  }
+  .nav-links a.active::after {
+    content:'';
+    position:absolute; bottom:-4px; left:0; right:0; height:2px;
+    background:var(--blue);
+    border-radius:1px;
+    animation:navUnderline 0.3s ease;
+  }
+  @keyframes navUnderline { from{transform:scaleX(0)} to{transform:scaleX(1)} }
+  .nav-cta {
+    background:var(--navy) !important;
+    padding:0.55rem 1.5rem !important;
+    font-size:0.8rem !important;
+    font-weight:600 !important;
+    letter-spacing:0.05em !important;
+    border-radius:6px !important;
+    transition:all 0.2s !important;
+  }
+  .nav-cta:hover {
+    background:var(--blue) !important;
+    box-shadow:0 4px 16px rgba(20,89,160,0.25);
+    transform:translateY(-1px);
+  }
+
+  /* ═══ FLOATING CV BUTTON ═══ */
+  .floating-cv {
+    position:fixed; bottom:1.5rem; left:1.5rem; z-index:999;
+    background:var(--sky); color:#fff;
+    padding:0.6rem 1.2rem; border-radius:100px;
+    font-size:0.78rem; font-weight:700; letter-spacing:0.04em;
+    text-decoration:none;
+    box-shadow:0 4px 20px rgba(75,142,191,0.35);
+    opacity:0; transform:translateY(10px);
+    transition:all 0.35s ease;
+    pointer-events:none;
+    display:flex; align-items:center; gap:0.4rem;
+  }
+  .floating-cv.show {
+    opacity:1; transform:translateY(0); pointer-events:auto;
+  }
+  .floating-cv:hover {
+    background:var(--blue); color:#fff;
+    transform:translateY(-2px);
+    box-shadow:0 6px 28px rgba(20,89,160,0.4);
+  }
+  @media (max-width:768px) {
+    .floating-cv { bottom:1rem; left:1rem; font-size:0.7rem; padding:0.5rem 1rem; }
+  }
+
+  /* ═══ SCROLL SPY — Lateral dots ═══ */
+  .scroll-spy {
+    position:fixed; right:1.25rem; top:50%; transform:translateY(-50%);
+    z-index:998; display:flex; flex-direction:column; gap:12px;
+    opacity:0; transition:opacity 0.4s;
+    pointer-events:none;
+  }
+  .scroll-spy.show {
+    opacity:1; pointer-events:auto;
+  }
+  .spy-dot {
+    width:10px; height:10px; border-radius:50%;
+    background:var(--border2); border:2px solid transparent;
+    cursor:pointer; transition:all 0.25s ease;
+    position:relative;
+  }
+  .spy-dot:hover {
+    background:var(--sky);
+    transform:scale(1.4);
+  }
+  .spy-dot.active {
+    background:var(--navy);
+    box-shadow:0 0 0 3px rgba(10,31,61,0.15);
+    transform:scale(1.2);
+  }
+  .spy-dot::before {
+    content:attr(title);
+    position:absolute; right:22px; top:50%; transform:translateY(-50%);
+    background:var(--navy); color:#fff;
+    padding:0.3rem 0.7rem; border-radius:4px;
+    font-size:0.65rem; font-weight:600; letter-spacing:0.04em;
+    white-space:nowrap; opacity:0; pointer-events:none;
+    transition:opacity 0.2s, transform 0.2s;
+    transform:translateY(-50%) translateX(5px);
+  }
+  .spy-dot:hover::before {
+    opacity:1;
+    transform:translateY(-50%) translateX(0);
+  }
+  @media (max-width:768px) {
+    .scroll-spy { display:none; }
+  }
+
+  /* ═══ FOOTER UPDATE DATE ═══ */
+  .ft-update {
+    font-family:var(--font-m);
+    font-size:0.65rem;
+    letter-spacing:0.08em;
+    color:rgba(255,255,255,0.25);
+  }

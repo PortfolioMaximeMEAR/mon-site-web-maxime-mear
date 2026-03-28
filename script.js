@@ -6,9 +6,12 @@ console.log('%c📧 maximemearpro@gmail.com', 'font-size:0.85rem;color:#B8882E;f
 console.log('%cSi vous lisez ceci, vous êtes curieux — exactement le profil que je recherche dans une équipe qualité. Contactez-moi !', 'font-size:0.85rem;color:#5A6E85;font-style:italic;');
 console.log('%c─────────────────────────────────────', 'color:#DDE4EE;');
 
-// ── PROGRESS BAR + BACK TO TOP + NAVBAR + DYNAMIC FAVICON ──
+// ── PROGRESS BAR + BACK TO TOP + NAVBAR + DYNAMIC FAVICON + FLOATING CV + SCROLL SPY ──
 var progressBar = document.getElementById('progress-bar');
 var backToTop = document.getElementById('back-to-top');
+var floatingCv = document.getElementById('floating-cv');
+var scrollSpy = document.getElementById('scroll-spy');
+var spyDots = scrollSpy ? scrollSpy.querySelectorAll('.spy-dot') : [];
 var faviconEl = document.querySelector('link[rel="icon"]');
 var faviconDefault = faviconEl ? faviconEl.href : '';
 var faviconCache = {};
@@ -45,6 +48,17 @@ window.addEventListener('scroll', () => {
   
   // Back to top button
   if (backToTop) backToTop.classList.toggle('show', scrollY > 500);
+
+  // Floating CV button — show after hero
+  if (floatingCv) floatingCv.classList.toggle('show', scrollY > 600);
+
+  // Scroll spy — show after hero, update active dot
+  if (scrollSpy) {
+    scrollSpy.classList.toggle('show', scrollY > 300);
+    spyDots.forEach(function(dot) {
+      dot.classList.toggle('active', dot.dataset.target === (cur || 'hero'));
+    });
+  }
 
   // Dynamic favicon based on current section
   if (faviconEl) {
@@ -539,4 +553,18 @@ document.querySelectorAll('.skill-tile').forEach(function(tile) {
       setTimeout(function() { toast.remove(); }, 400);
     }, 2500);
   }
+})();
+
+// ── SCROLL SPY — Click to navigate ──
+(function() {
+  var dots = document.querySelectorAll('.spy-dot[data-target]');
+  dots.forEach(function(dot) {
+    dot.addEventListener('click', function() {
+      var target = document.getElementById(dot.dataset.target);
+      if (!target) return;
+      var offset = 80;
+      var pos = target.getBoundingClientRect().top + window.scrollY - offset;
+      window.scrollTo({ top: pos, behavior: 'smooth' });
+    });
+  });
 })();
