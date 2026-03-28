@@ -1,6 +1,25 @@
-// ── PROGRESS BAR + PARALLAX + BACK TO TOP + NAVBAR ──
+// ── EASTER EGG — Console message for curious recruiters ──
+console.log('%c👋 Bienvenue dans le code source !', 'font-size:1.5rem;font-weight:bold;color:#0A1F3D;');
+console.log('%cMaxime MEAR — Ingénieur Qualité & Amélioration Continue', 'font-size:1rem;color:#1459A0;font-weight:600;');
+console.log('%c🚀 ArianeGroup · DAHER Aerospace · ID Logistics', 'font-size:0.85rem;color:#4B8EBF;');
+console.log('%c📧 maximemearpro@gmail.com', 'font-size:0.85rem;color:#B8882E;font-weight:600;');
+console.log('%cSi vous lisez ceci, vous êtes curieux — exactement le profil que je recherche dans une équipe qualité. Contactez-moi !', 'font-size:0.85rem;color:#5A6E85;font-style:italic;');
+console.log('%c─────────────────────────────────────', 'color:#DDE4EE;');
+
+// ── PROGRESS BAR + BACK TO TOP + NAVBAR + DYNAMIC FAVICON ──
 var progressBar = document.getElementById('progress-bar');
 var backToTop = document.getElementById('back-to-top');
+var faviconEl = document.querySelector('link[rel="icon"]');
+var faviconDefault = faviconEl ? faviconEl.href : '';
+var faviconCache = {};
+function makeFavicon(emoji) {
+  if (faviconCache[emoji]) return faviconCache[emoji];
+  var svg = "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><text x='16' y='24' font-size='24' text-anchor='middle'>" + emoji + "</text></svg>";
+  var url = "data:image/svg+xml," + encodeURIComponent(svg);
+  faviconCache[emoji] = url;
+  return url;
+}
+var currentFavicon = 'default';
 
 window.addEventListener('scroll', () => {
   var scrollY = window.scrollY;
@@ -26,6 +45,22 @@ window.addEventListener('scroll', () => {
   
   // Back to top button
   if (backToTop) backToTop.classList.toggle('show', scrollY > 500);
+
+  // Dynamic favicon based on current section
+  if (faviconEl) {
+    var fav = 'default';
+    if (cur === 'contact' || cur === 'recherche') fav = '📧';
+    else if (cur === 'skills') fav = '⚙️';
+    else if (cur === 'projets') fav = '🚀';
+    else if (cur === 'experiences') fav = '💼';
+    else if (cur === 'formations') fav = '🎓';
+    else if (cur === 'about') fav = '👤';
+    else fav = 'default';
+    if (fav !== currentFavicon) {
+      currentFavicon = fav;
+      faviconEl.href = fav === 'default' ? faviconDefault : makeFavicon(fav);
+    }
+  }
 });
 
 // Back to top click
@@ -457,3 +492,51 @@ document.querySelectorAll('.skill-tile').forEach(function(tile) {
     setTimeout(function(){ tile.style.transition = ''; }, 400);
   });
 });
+
+// ── SMOOTH SCROLL — offset 80px for fixed navbar ──
+(function() {
+  document.querySelectorAll('a[href^="#"]').forEach(function(link) {
+    link.addEventListener('click', function(e) {
+      var targetId = this.getAttribute('href');
+      if (targetId === '#') return;
+      var target = document.querySelector(targetId);
+      if (!target) return;
+      e.preventDefault();
+      var offset = 80;
+      var targetPos = target.getBoundingClientRect().top + window.scrollY - offset;
+      window.scrollTo({ top: targetPos, behavior: 'smooth' });
+      history.pushState(null, '', targetId);
+    });
+  });
+})();
+
+// ── COPY EMAIL ON CLICK + TOAST ──
+(function() {
+  var emailLinks = document.querySelectorAll('a[href="mailto:maximemearpro@gmail.com"]');
+  emailLinks.forEach(function(link) {
+    link.addEventListener('click', function(e) {
+      e.preventDefault();
+      var email = 'maximemearpro@gmail.com';
+      navigator.clipboard.writeText(email).then(function() {
+        showToast('📋 Email copié — maximemearpro@gmail.com');
+      }).catch(function() {
+        // Fallback: open mailto
+        window.location.href = 'mailto:' + email;
+      });
+    });
+  });
+
+  function showToast(msg) {
+    var existing = document.querySelector('.mm-toast');
+    if (existing) existing.remove();
+    var toast = document.createElement('div');
+    toast.className = 'mm-toast';
+    toast.textContent = msg;
+    document.body.appendChild(toast);
+    requestAnimationFrame(function() { toast.classList.add('show'); });
+    setTimeout(function() {
+      toast.classList.remove('show');
+      setTimeout(function() { toast.remove(); }, 400);
+    }, 2500);
+  }
+})();

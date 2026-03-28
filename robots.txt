@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://portfoliomaximemear.github.io/mon-site-web-maxime-mear/sitemap.xml
